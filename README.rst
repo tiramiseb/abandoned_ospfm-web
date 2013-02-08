@@ -5,8 +5,8 @@ OSPFM-web
 *OSPFM-web*  is a web GUI  (graphical user interface)  for OSPFM  (*Open Source
 Personal Finance Management server*).
 
-OSPFM-web is meant  to be part of a  Software-as-a-Service finance application,
-whose name is still undecided.
+OSPFM-web is a part of a future Software-as-a-Service finance application named
+everCount.
 
 Short technical description
 ===========================
