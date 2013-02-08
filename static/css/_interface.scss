@@ -1,0 +1,205 @@
+//
+//    Copyright 2012 Sebastien Maccagnoni-Munch
+//
+//    This file is part of OSPFM-web.
+//
+//    OSPFM-web is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU Affero General Public License as published
+//    by the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    OSPFM-web is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU Affero General Public License for more details.
+//
+//    You should have received a copy of the GNU Affero General Public License
+//    along with OSPFM-web.  If not, see <http://www.gnu.org/licenses/>.
+
+////////// Icons
+
+span.icon {
+    font-family: 'icons', sans-serif;
+/*
+    font-weight: normal !important;
+*/
+}
+
+
+
+////////// Buttons
+
+button {
+    border: #555 1px solid;
+    border-radius: 4px;
+    color: #fff !important;
+    height: 30px;
+    font-size: 100%;
+    margin: 2px;
+    padding: 0 8px;
+    cursor: pointer;
+    transition-property: background;
+    transition-duration: 500ms;
+    &:active {
+        box-shadow: #fff 0px 0px 8px inset !important;
+    }
+    * {
+    cursor: pointer;
+    }
+    span.buttontext {
+        margin-left: 6px;
+        white-space: nowrap;
+    }
+    &:disabled, &:disabled:hover {
+        box-shadow: #888 0px 1px 0px inset;
+        background:#aaa;
+        color:#ddd;
+        text-shadow: #888 0 1px 1px;
+        cursor: default;
+    }
+    &.notext {
+        width: 36px;
+        padding: 0;
+    }
+}
+button.blue {
+    box-shadow: #4af 0px 1px 0px inset;
+    background: #0080ff;
+    text-shadow: #048 0 1px 1px;
+    &:hover {
+        box-shadow: #18f 0px 1px 0px inset;
+        background: #06c;
+    }
+}
+button.green {
+    box-shadow: #0d0 0px 1px 0px inset;
+    background: #00c400;
+    text-shadow: #008600 0 1px 1px;
+    &:hover {
+        box-shadow: #0c0 0 1px 0px inset;
+        background: #00a900;
+    }
+}
+button.red {
+    box-shadow: #f88 0px 1px 0px inset;
+    background: #f55;
+    text-shadow: #f00 0 1px 1px;
+    &:hover {
+        box-shadow: #f55 0px 1px 0px inset;
+        background: #f00;
+    }
+}
+
+
+
+////////// Dialog window
+
+div#dialogshadow {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+    background: #555;
+    z-index: 20;
+}
+div#dialogwindow {
+    position: fixed;
+    max-width: 600px;
+    background: #fff;
+    border:1px solid #aaa;
+    padding: 15px;
+    box-shadow: #ccc 0 0 20px inset;
+    border-radius: 15px;
+    z-index: 30;
+}
+div#dialogcontent.withbuttons {
+    margin-bottom: 15px;
+}
+div#dialogcontent h1 {
+    font-weight: bold;
+    font-size: 22px;
+    margin: 0 3% 15px 3%;
+}
+
+
+
+////////// Tooltip
+
+div#tooltip {
+    background: #333;
+    color: #ddd;
+    border-radius: 6px;
+    padding: 4px 6px;
+    font-size: 95%;
+    white-space: nowrap;
+    z-index: 99;
+    text-shadow: none;
+    // Position before displaying the tooltip
+    position: fixed;
+    left: -10000px;
+    box-shadow: #000 0 0 5px;
+    td.label {
+        padding-right: 5px;
+    }
+    td.amount {
+        text-align: right;
+    }
+}
+
+
+
+////////// Popup
+
+div#popup, div#spinner {
+    font-size: 90%;
+    border: 1px solid #fc6;
+    background: #feb;
+    padding: 5px 10px;
+    position: fixed;
+    top: 40px;
+    left: 300px;
+    box-shadow: #777 0 0 10px;
+    border-radius: 4px;
+    z-index: 30;
+}
+div#popup.errorpopup {
+    border: 1px solid #a00;
+    background: #fbb;
+}
+
+
+
+////////// Tabs
+
+div.tabs > ul {
+    padding: 0 5px 2px 5px;
+    border-bottom: 1px solid #999;
+    margin: 7px 0 10px 0;
+    li {
+        display: inline;
+        list-style-type: none;
+        margin: 0 2px 0 2px;
+        border-left: 1px solid #999;
+        border-top: 1px solid #999;
+        border-right: 1px solid #999;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        padding: 5px;
+        text-shadow: #999 0 1px 1px;
+        cursor: pointer;
+        white-space: nowrap;
+        transition-property: background, color;
+        transition-duration: 500ms;
+        &:hover {
+            text-decoration: none;
+            background: #ddf;
+        }
+    }
+    li.activetab {
+        background: #ffc;
+        color: #008;
+    }
+}

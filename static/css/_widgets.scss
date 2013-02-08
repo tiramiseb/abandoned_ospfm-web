@@ -1,0 +1,257 @@
+//
+//    Copyright 2012 Sebastien Maccagnoni-Munch
+//
+//    This file is part of OSPFM-web.
+//
+//    OSPFM-web is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU Affero General Public License as published
+//    by the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    OSPFM-web is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU Affero General Public License for more details.
+//
+//    You should have received a copy of the GNU Affero General Public License
+//    along with OSPFM-web.  If not, see <http://www.gnu.org/licenses/>.
+
+
+@mixin topwidgetli {
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    padding: 0 5px;
+}
+
+// Margins in the unused widgets screen
+ul#unusedwidgets {
+    margin-bottom: 10px;
+}
+
+//////////////////////////////////////// Common to all screens
+
+li.widget {
+    list-style-type: none;
+}
+
+ul#topwidgets li.widget {
+    @include topwidgetli;
+}
+
+ul#unusedwidgets li.widget {
+    display: block;
+    width: 200px;
+    margin: 15px 10px 0 10px;
+}
+
+li.widget h1, ul#unusedwidgets li.widget h1 {
+    color: #444;
+    font-size: 110%;
+    text-align: right;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-shadow: #fff 0 1px 1px;
+    border: 0;
+}
+
+ul#topwidgets li.widget h1 {
+    display: inline;
+}
+
+ul#unusedwidgets li.widget h1 {
+    margin-right: 10px !important;
+}
+
+li.widget.forcedisplay h1 {
+    color: #0080ff;
+}
+
+li.widget h1 span {
+    margin-left: 5px;
+}
+
+ul#topwidgets li.widget h1 span.name {
+    display: none;
+}
+ul#topwidgets li.widget:hover h1 span.name {
+    display: inline;
+}
+
+span.widgetsetup {
+    display: none;
+    cursor: pointer;
+    color: #f00;
+    text-shadow: #f00 0 0 10px, #f00 0 0 10px;
+}
+
+ul#topwidgets li.widget:hover span.widgetsetup {
+    display: inline;
+}
+
+li.widget div.content {
+    font-size: 90% !important;
+    background: #fff;
+    box-shadow: #777 1px 1px 5px, #ccc 0 0 20px inset;
+    border:1px solid #aaa;
+    padding: 5px;
+    color: #111;
+    text-shadow: #999 0 1px 1px;
+    z-index: 10;
+}
+
+ul#topwidgets li.widget div.content {
+    position: absolute;
+    width: 188px;
+    display: none;
+}
+ul#topwidgets li.widget:hover div.content {
+    display: block;
+}
+
+//////////////////////////////////////// Computer screens
+
+@media (min-width:1025px) {
+    ul#sidewidgets li.widget {
+        display: block;
+        width: 200px;
+        margin: 15px 10px 0 10px;
+    }
+}
+
+//////////////////////////////////////// Tablets
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    ul#sidewidgets li.widget {
+        display: block;
+        width: 160px;
+        margin: 10px 5px 0 5px;
+    }
+}
+
+//////////////////////////////////////// Tablets && computers
+
+@media (min-width: 769px) {
+    ul#sidewidgets li.widget h1 {
+        margin-right: 10px !important;
+    }
+    ul#sidewidgets h1:hover span.widgetsetup {
+        display: inline;
+    }
+}
+
+//////////////////////////////////////// Phones
+
+@media (max-width: 768px) {
+    ul#sidewidgets li.widget {
+        @include topwidgetli;
+    }
+    ul#sidewidgets li.widget h1 {
+        display: inline;
+    }
+    ul#sidewidgets li.widget h1 span.name {
+        display: none;
+    }
+    ul#sidewidgets li.widget:hover h1 span.name {
+        display: inline;
+    }
+    ul#sidewidgets li.widget:hover span.widgetsetup {
+        display: inline;
+    }
+    ul#sidewidgets li.widget div.content {
+        position: absolute;
+        width: 188px;
+        display: none;
+    }
+    ul#sidewidgets li.widget:hover div.content {
+        display: block;
+    }
+}
+
+//////////////////////////////////////// Very small phones
+
+@media (max-width: 320px) {
+    li.widget h1 span.name {
+        display: none !important;
+    }
+    ul#sidewidgets li.widget div.content, ul#topwidgets li.widget div.content {
+        position: fixed !important;
+        left: 5px;
+    }
+}
+
+//////////////////////////////////////// Content
+
+li.widget div.line {
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+}
+li.widget div.line span.editcell {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: #fff;
+    margin:0;
+    padding-left: 10px;
+}
+
+li.widget div.line:hover, li.widget div.line:hover span.editcell {
+    background: #eea;
+}
+
+li#widget-calculator input[type=button],
+li#widget-calculator input[type=submit] {
+    width: 20%;
+    margin: 0;
+    height: 30px;
+    padding: 0;
+    background: #eee;
+    border: {
+        top: 1px solid #fff;
+        left: 1px solid #fff;
+        right: 1px solid #666;
+        bottom: 1px solid #666;
+    }
+}
+
+li.widget.forcedisplay div.content {
+    display: block !important;
+}
+
+//////////////////////////////////////// Moving widgets
+
+ul.rui-sortable li.widget div.content {
+    display: none;
+}
+span.widgethandle {
+    cursor: move;
+    color: #f00;
+    float: left;
+}
+ul#topwidgets.rui-sortable li.widget:hover div.content {
+    display: none;
+}
+ul#topwidgets.rui-sortable li.widget:hover span.name {
+    display: none !important;
+}
+ul#sidewidgets li.placeholderwidget, ul#unusedwidgets li.placeholderwidget {
+    list-style-type: none;
+    display: block;
+    margin:0;
+    width: 200px;
+    height: 5px;
+    margin: 15px 10px 0 10px;
+    background: #f00;
+}
+ul#topwidgets li.placeholderwidget {
+    list-style-type: none;
+    display: inline-block;
+    margin: 0;
+    width: 5px;
+    height: 17px;
+    background: #f00;
+}
+ul.rui-sortable span.widgetsetup {
+    display: none !important;
+}

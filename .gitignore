@@ -1,0 +1,5 @@
+*.pyc
+configuration.py
+ospfm-web.css
+ospfm-web*.js
+.sass-cache
