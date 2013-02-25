@@ -48,11 +48,11 @@ init.success = function() {
     };
 }
 init.failed = function() {
-    init.count = -100;
-    errormessage = new Element('span', {
+    var errormessage = new Element('span', {
         'class':'error',
         'html':_('Sorry, a problem occured. Please try again later...')
     });
+    init.count = -100;
     dialog(errormessage, false);
 }
 
