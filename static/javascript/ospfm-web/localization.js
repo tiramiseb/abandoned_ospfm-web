@@ -19,42 +19,62 @@
 
 locale = {};
 
-// Load locale
+/**
+ * Load locale according to the user's preferences
+ */
 preferences.on('initialized', function() {
     var preflocale = preferences.get('ospfm-web-locale');
-    if (!preflocale) {
-        Xhr.load(gui_url+'browserlocale', {
-            onSuccess: function(response) {
-                init.first_run = true;
-                do_init_localization(response.responseJSON.locale);
+    if (preflocale) {
+        if (preflocale != locale.full && preflocale != locale.shortform) {
+            // Preference locale different than browser locale
+            Xhr.load(locales_url+preflocale+'.js', {
+                onSuccess: function() {
+                    locale.full = preflocale;
+                    locale.shortform = preflocale.split('-')[0];
+                    init.fire('go');
+                },
+                onFailure: function() {
+                    dialog(new Element('p', {
+                        'html': _("Sorry, loading your preferred language failed. Please check your language setting.")
+                    }), false);
+                    init.fire('go');
+                }
+            });
+        } else {
+            // Locale already locale because it is the browser's locale
+            init.fire('go');
+        }
+    } else {
+        // TODO: "First connection" wizard dialog
+        //first_connection(preflocale);
+        init.fire('go');
+    };
+});
+
+/**
+ * First load a locale corresponding to the browser,
+ * before trying to load the app itself.
+ */
+Xhr.load(gui_url+'browserlocale', {
+    onSuccess: function(response) {
+        var newlocale = response.responseJSON.locale;
+        locale.full = newlocale;
+        locale.shortform = newlocale.split('-')[0];
+        Xhr.load(locales_url+newlocale+'.js', {
+            onSuccess: function() {
+                init.fire('browserlocaleloaded');
             },
             onFailure: function() {
                 init.failed();
             }
         });
-    } else {
-        do_init_localization(preflocale);
-    };
-
+    },
+    onFailure: function() {
+        init.failed();
+    }
 });
 
-/**
- * really initializes the localization
- *
- * @param String locale name
- */
-function do_init_localization(newlocale) {
-    locale.full = newlocale;
-    locale.shortform = newlocale.split('-')[0];
-    Xhr.load(locales_url+locale.full+'.js', {
-        onSuccess: function() {
-            init.fire('go');
-        },
-        onFailure: function() {
-            init.failed();
-        }
-    });
-};
+/*****************************************************************************/
 
 /**
  * translates a string
@@ -62,8 +82,12 @@ function do_init_localization(newlocale) {
  * @param String text to translate
  * @return String translated text
  */
-window._ = function (string) {
-    return l10n_elements[string] || string;
+_ = function (string) {
+    if (window.l10n_elements) {
+        return l10n_elements[string] || string;
+    } else {
+        return string;
+    };
 }
 
 /**
@@ -240,7 +264,7 @@ function loc_date(date, withoutdash) {
         month = date.substring(5, 7);
         day = date.substring(8, 10);
     };
-    return l10n_date.short
+    return l10n_date["short"]
                 .replace('%Y', date.substring(0, 4))
                 .replace('%m', month)
                 .replace('%d', day)
@@ -255,9 +279,9 @@ function loc_date(date, withoutdash) {
  * @return String date in the "YYYY-MM-DD" or "YYYYMMDD" format
  */
 function parse_loc_date(date, withoutdash) {
-    var fields  = l10n_date.short.match(/(%e|%d|%m|%Y)/g),
+    var fields  = l10n_date["short"].match(/(%e|%d|%m|%Y)/g),
         matches = new RegExp(
-                        l10n_date.short
+                        l10n_date["short"]
                             .replace('%e', '(\\d\\d+)')
                             .replace('%d', '(\\d\\d)')
                             .replace('%m', '(\\d\\d)')
@@ -291,7 +315,7 @@ init.on('go', function() {
         if (l10n_date.first_day_of_week != 'monday') {
             Calendar.Options.firstDay = 0;
         };
-        Calendar.Options.format = l10n_date.short,
+        Calendar.Options.format = l10n_date["short"],
         init.success();
     });
 });

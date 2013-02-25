@@ -24,38 +24,11 @@
 /**
  * an icon element
  */
-icons = {
-    accept: 'v',
-    account: 'A',
-    add: '+',
-    apply: 'v',
-    calculator: '=',
-    cancel: 'u',
-    category: 'C',
-    close: 'X',
-    coins: '$',
-    config: '/',
-    del: 'X',
-    edit: 'E',
-    erase: 'x',
-    help: '?',
-    invalid: 'X',
-    logout: 'Q',
-    mail: 'm',
-    move: 'M',
-    movelines: '≡',
-    people: 'W',
-    remove: 'X',
-    search: 'O',
-    settings: 'S',
-    subcoll: '&gt;',
-    valid: 'v',
-}
 Icon = new Class(Element, {
     initialize:function(name) {
         this.$super('span', {
-            'class':'icon',
-            'html':icons[name]
+            'class':'icon-'+name,
+            'aria-hidden':'true'
         });
     }
 });
@@ -111,13 +84,12 @@ Button = new Class(Element, {
 
 ////////// Centered dialog window
 
+// TODO: Take all space on small screens (phones)
+
 // Initializes the dialog stuff
 $(window).onResize(center_dialog);
 init.on('go', function() {
-    $('dialogbuttons').insert(
-        new Button('blue', 'close', _('Close')).onClick(close_dialog)
-    );
-    center_dialog();
+    $('dialogclosebutton').first('span.buttontext').update(_('Close'));
 });
 /**
  * displays the dialog window
@@ -138,7 +110,11 @@ dialog = function (content, displaybutton) {
     $('dialog').show();
     center_dialog();
 };
-
+$('dialogbuttons').insert(
+    new Button('blue', 'close', 'Close')
+            .set('id', 'dialogclosebutton')
+            .onClick(close_dialog)
+);
 /**
  * closes the dialog window
  */
@@ -157,6 +133,7 @@ function center_dialog() {
         top: (windowsize.y-dialogsize.y)/2+'px',
     });
 };
+center_dialog();
 
 ////////// Tooltips
 
@@ -204,23 +181,25 @@ $('tooltip').onMouseover(function() {
 function popup(content, error) {
     var delay,
         pp = $('popup');
-    if (popuptimeout) {
-        clearTimeout(popuptimeout);
-    };
-    if (error) {
-        delay = 5000;
-        pp.addClass('errorpopup');
-    } else {
-        delay = 2000;
-        pp.removeClass('errorpopup');
-    }
-    pp.update(content);
+    if (content) {
+        if (popuptimeout) {
+            clearTimeout(popuptimeout);
+        };
+        if (error) {
+            delay = 5000;
+            pp.addClass('errorpopup');
+        } else {
+            delay = 2000;
+            pp.removeClass('errorpopup');
+        }
+        pp.update(content);
 
-    pp.show('fade');
-    popuptimeout = setTimeout(function() {
-        popuptimeout = null;
-        pp.hide('fade');
-    }, delay);
+        pp.show('fade');
+        popuptimeout = setTimeout(function() {
+            popuptimeout = null;
+            pp.hide('fade');
+        }, delay);
+    };
 }
 $('popup').onClick(function(){
     this.hide('fade');

@@ -43,6 +43,7 @@ var
     dialog,
     Tabs,
         // localization.js
+    _,
     locale,
         // user.js
     user_me,
@@ -51,7 +52,6 @@ var
 
 // Put everything in a single function, to be able to minify more names
 $(document).onReady(function(){
-
     var
             // 1_additional.js
         additional,
@@ -71,6 +71,8 @@ $(document).onReady(function(){
         Account,
             // api.js
         api_rates,
+            // authentication.js
+        credentials,
             // categories.js
         CategoryCurrencyField,
         Category,

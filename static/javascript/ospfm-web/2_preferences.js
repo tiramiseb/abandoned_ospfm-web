@@ -51,15 +51,16 @@ preferences.set = function(key, value) {
         preference = new Preference({'name': key});
         preferences.add(preference);
     }
-    preference.update({'value': JSON.stringify(value)})
-
+    preference.update({'value': JSON.stringify(value)});
 }
 
-api_read('preferences', function(data) {
-    data.forEach(function(pref) {
-        preferences.add(new Preference(pref));
+init.on('browserlocaleloaded', function() {
+    api_read('preferences', function(data) {
+        data.forEach(function(pref) {
+            preferences.add(new Preference(pref));
+        });
+        preferences.fire('initialized');
+    }, function() {
+        init.failed();
     });
-    preferences.fire('initialized');
-}, function() {
-    init.failed();
 });

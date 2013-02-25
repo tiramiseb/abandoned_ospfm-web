@@ -301,6 +301,9 @@ l10n_elements = {
     'Loading...':
         'Chargement en cours...',
 
+    'Login':
+        'Connexion',
+
     'Modify':
         'Modifier',
 
@@ -324,6 +327,9 @@ l10n_elements = {
 
     'On account:':
         'Sur le compte&nbsp;:',
+
+    'Password':
+        'Mot de passe',
 
     'Period for which to display the balance':
         'Période pour laquelle afficher le solde',
@@ -363,6 +369,9 @@ l10n_elements = {
 
     'Settings':
         'Paramètres',
+
+    "Sorry, loading your preferred language failed. Please check your language setting.":
+        'Désolé, le chargement de votre langue préférée a échoué. Veuillez vérifier la langue choisie dans la configuration.',
 
     'Symbol':
         'Symbole',
@@ -426,6 +435,9 @@ l10n_elements = {
 
     'Updated personal information':
         'Informations personnelles mises à jour',
+
+    'Username':
+        'Nom d\'utilisateur',
 
     'We recommend setting your account, especially your personal information:':
         'Nous vous conseillons de paramétrer votre compte, en particulier vos informations personnelles&nbsp;:',
