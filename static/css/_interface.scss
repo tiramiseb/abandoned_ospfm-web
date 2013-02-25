@@ -18,11 +18,135 @@
 
 ////////// Icons
 
-span.icon {
-    font-family: 'icons', sans-serif;
-/*
-    font-weight: normal !important;
-*/
+.icon-accept:before, .icon-account:before, .icon-add:before,
+.icon-analysis:before, .icon-apply:before, .icon-calculator:before,
+.icon-cancel:before, .icon-category:before, .icon-chrome:before,
+.icon-close:before, .icon-coins:before, .icon-computer:before,
+.icon-config:before, .icon-debt:before, .icon-del:before, .icon-edit:before,
+.icon-envelope:before, .icon-erase:before, .icon-firefox:before,
+.icon-help:before, .icon-invalid:before, .icon-import:before,
+.icon-logout:before, .icon-mail:before, .icon-move:before,
+.icon-movelines:before, .icon-people:before, .icon-preconfigured:before,
+.icon-programmed:before, .icon-refund:before, .icon-remove:before,
+.icon-rules:before, .icon-search:before, .icon-settings:before,
+.icon-smartphone:before, .icon-subcoll:before, .icon-valid:before {
+    font-family: 'icons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+.icon-accept:before {
+    content: "v";
+}
+.icon-account:before {
+    content: "A";
+}
+.icon-add:before {
+    content: "+";
+}
+.icon-analysis:before {
+    content: "a";
+}
+.icon-apply:before {
+    content: "v";
+}
+.icon-calculator:before {
+    content: "=";
+}
+.icon-cancel:before {
+    content: "u";
+}
+.icon-category:before {
+    content: "C";
+}
+.icon-chrome:before {
+    content: "G";
+}
+.icon-close:before {
+    content: "X";
+}
+.icon-coins:before {
+    content: "$";
+}
+.icon-computer:before {
+    content: "c";
+}
+.icon-config:before {
+    content: "/";
+}
+.icon-debt:before {
+    content: "d";
+}
+.icon-del:before {
+    content: "X";
+}
+.icon-edit:before {
+    content: "E";
+}
+.icon-envelope:before {
+    content: "e";
+}
+.icon-erase:before {
+    content: "x";
+}
+.icon-firefox:before {
+    content: "F";
+}
+.icon-help:before {
+    content: "?";
+}
+.icon-invalid:before {
+    content: "X";
+}
+.icon-import:before {
+    content: "I";
+}
+.icon-logout:before {
+    content: "Q";
+}
+.icon-mail:before {
+    content: "m";
+}
+.icon-move:before {
+    content: "M";
+}
+.icon-movelines:before {
+    content: "≡";
+}
+.icon-people:before {
+    content: "W";
+}
+.icon-preconfigured:before {
+    content: "p";
+}
+.icon-programmed:before {
+    content: "P";
+}
+.icon-refund:before {
+    content: "R";
+}
+.icon-remove:before {
+    content: "X";
+}
+.icon-rules:before {
+    content: "r";
+}
+.icon-search:before {
+    content: "O";
+}
+.icon-settings:before {
+    content: "S";
+}
+.icon-smartphone:before {
+    content: "s";
+}
+.icon-subcoll:before {
+    content: ">";
+}
+.icon-valid:before {
+    content: "v";
 }
 
 

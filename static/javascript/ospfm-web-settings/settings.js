@@ -74,7 +74,7 @@ var SettingsScreen = new Class(Screen, {
                                 }).insert(
                                     l10n_locales[loc]
                                 );
-                    if (loc == locale.full) {
+                    if (loc == preferences.get('ospfm-web-locale')) {
                         option._.defaultSelected = true;
                     };
                     localesinput.insert(option);
@@ -85,7 +85,7 @@ var SettingsScreen = new Class(Screen, {
             firstnameinput.setValue(user_me.first_name());
             lastnameinput.setValue(user_me.last_name());
         });
-        personal_information_form = new Form().insert([
+        personal_information_form = new Form().insert(
             new Element('table', {'class': 'personalinfo'}).insert([
                 new Element('tr').insert([
                     new Element('td').insert(
@@ -122,10 +122,16 @@ var SettingsScreen = new Class(Screen, {
                     new Element('td').insert(
                         preferredcurrencyinput
                     )
-                ])
-            ]),
-            new Button('green', 'apply', _('Apply'), 'submit')
-        ]).onSubmit(function(event) {
+                ]),
+                new Element('tr').insert(
+                    new Element('td', {
+                        'class': 'submit', 'colspan': '2'
+                    }).insert(
+                        new Button('green', 'apply', _('Apply'), 'submit')
+                    )
+                )
+            ])
+        ).onSubmit(function(event) {
             var values   = event.currentTarget.values(),
                 language = values.language;
             event.preventDefault();
