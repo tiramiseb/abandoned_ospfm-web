@@ -31,7 +31,14 @@ transactionscreen = new Class(Screen, {
             this.translist.insert(new TransactionRow(), 'top');
             this.translist._.scrollTop = 0;
         }.bind(this));
-        searchbutton.onClick(searchbox.show_or_hide);
+        searchbutton.onClick(function(event) {
+            event.stop();
+            searchbox.show_or_hide();
+        });
+        $(document).onClick(function(event) {
+            searchbox.hide();
+        });
+
 
         this.transfilter = new Element('div', {
             'id': 'transactionstools'
@@ -105,6 +112,11 @@ SearchBox = new Class(Element, {
             searchbutton = new Button('green', 'search', _('Search'),'submit'),
             cancelbutton = new Button('blue', 'cancel', _('Cancel'), 'reset');
         this.$super('div', {'class': 'searchbox'})
+        this.onClick(function(event) {
+            // Do not propagate a click here to the document
+            // (prevent hiding the searchbox when clicking on it)
+            event.stopPropagation();
+        });
         this.hide();
         this.form = new Form().insert([
             new Element('label', {'html': _('Account')}),
