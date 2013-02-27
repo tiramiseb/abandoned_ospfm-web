@@ -41,7 +41,7 @@ l10n_name = {
 }
 l10n_date = {
     first_day_of_week: 'sunday',
-    short: '%m/%d/%Y',
+    shortformat: '%m/%d/%Y',
 }
 l10n_currency = {
     completename: '{C}: {N} ({S})'

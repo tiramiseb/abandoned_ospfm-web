@@ -264,7 +264,7 @@ function loc_date(date, withoutdash) {
         month = date.substring(5, 7);
         day = date.substring(8, 10);
     };
-    return l10n_date["short"]
+    return l10n_date.shortformat
                 .replace('%Y', date.substring(0, 4))
                 .replace('%m', month)
                 .replace('%d', day)
@@ -279,9 +279,9 @@ function loc_date(date, withoutdash) {
  * @return String date in the "YYYY-MM-DD" or "YYYYMMDD" format
  */
 function parse_loc_date(date, withoutdash) {
-    var fields  = l10n_date["short"].match(/(%e|%d|%m|%Y)/g),
+    var fields  = l10n_date.shortformat.match(/(%e|%d|%m|%Y)/g),
         matches = new RegExp(
-                        l10n_date["short"]
+                        l10n_date.shortformat
                             .replace('%e', '(\\d\\d+)')
                             .replace('%d', '(\\d\\d)')
                             .replace('%m', '(\\d\\d)')
@@ -315,7 +315,7 @@ init.on('go', function() {
         if (l10n_date.first_day_of_week != 'monday') {
             Calendar.Options.firstDay = 0;
         };
-        Calendar.Options.format = l10n_date["short"],
+        Calendar.Options.format = l10n_date.shortformat,
         init.success();
     });
 });
