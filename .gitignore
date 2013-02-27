@@ -1,5 +1,6 @@
 *.pyc
 configuration.py
-ospfm-web.css
-ospfm-web*.js
+static/css/ospfm-web.css
+static/js/ospfm-web*.js
+static/locale/*.js
 .sass-cache
