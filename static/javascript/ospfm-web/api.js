@@ -20,23 +20,60 @@
 /******************** Communication with the OSPFM server ********************/
 
 /**
+ * deals with API success
+ *
+ * @param Object request
+ * @param Function success handler
+ */
+function api_success(request, handler) {
+    do_additional(request.responseJSON.additional);
+    popup(handler(request.responseJSON.response));
+}
+/**
+ * deals with API failure
+ *
+ * @param Object request
+ * @param Function error handler
+ * @param Function the calling function
+ * @param Array args to the calling function
+ */
+function api_failure(request, errorhandler, func, args) {
+    if (request.responseJSON) {
+        if (request.responseJSON.status == 401) {
+            authentication.authenticate(func, args);
+        } else {
+            popup(errorhandler(request.responseJSON), true);
+        };
+    } else {
+        dialog(
+            new Element('span', {
+                'class':'error',
+                'html':_('Sorry, a problem occured. Please try again later...')
+            }),
+            false
+        );
+    };
+}
+
+/**
  * creates an object in the OSPFM server
  *
  * @param String object category
  * @param Object create parameters
- * @param Function success handler (must return a message for the user)
- * @param Function error handler (must return a message for the user)
+ * @param Function success handler
+ * @param Function error handler
  */
 function api_create(category, parameters, handler, errorhandler) {
+    var createargs = arguments;
+    parameters.key = authentication.key;
     Xhr.load(api_url+category, {
         method: 'post',
         params: parameters,
         onSuccess: function(request) {
-            do_additional(request.responseJSON.additional);
-            popup(handler(request.responseJSON.response));
+            api_success(request, handler)
         },
         onFailure: function(request) {
-            popup(errorhandler(request.responseJSON), true);
+            api_failure(request, errorhandler, api_create, createargs)
         }
     });
 };
@@ -52,23 +89,24 @@ function api_create(category, parameters, handler, errorhandler) {
 function api_read() {
     var uri,
         handler,
-        errorhandler;
-    if (isString(arguments[1])) {
-        uri = api_url+arguments[0]+'/'+arguments[1];
-        handler = arguments[2] || function(){};
-        errorhandler = arguments[3] || function(){};
+        errorhandler,
+        readargs = arguments;
+    if (isString(readargs[1])) {
+        uri = api_url+readargs[0]+'/'+readargs[1];
+        handler = readargs[2] || function(){};
+        errorhandler = readargs[3] || function(){};
     } else {
-        uri = api_url+arguments[0],
-        handler = arguments[1] || function(){};
-        errorhandler = arguments[2] || function(){};
+        uri = api_url+readargs[0],
+        handler = readargs[1] || function(){};
+        errorhandler = readargs[2] || function(){};
     }
     Xhr.load(uri, {
+        params: {'key': authentication.key},
         onSuccess: function(request) {
-            do_additional(request.responseJSON.additional);
-            handler(request.responseJSON.response);
+            api_success(request, handler)
         },
         onFailure: function(request) {
-            errorhandler(request.responseJSON.response);
+            api_failure(request, errorhandler, api_read, readargs)
         }
     });
 };
@@ -79,19 +117,20 @@ function api_read() {
  * @param String object category
  * @param String object identifier
  * @param Object update parameters
- * @param Function success handler (must return a message for the user)
- * @param Function error handler (must return a message for the user)
+ * @param Function success handler
+ * @param Function error handler
  */
 function api_update(category, objectid, parameters, handler, errorhandler) {
+    var updateargs = arguments;
+    parameters.key = authentication.key;
     Xhr.load(api_url+category+'/'+objectid, {
         method: 'post',
         params: parameters,
         onSuccess: function(request) {
-            do_additional(request.responseJSON.additional);
-            popup(handler(request.responseJSON.response));
+            api_success(request, handler)
         },
         onFailure: function(request) {
-            popup(errorhandler(request.responseJSON), true);
+            api_failure(request, errorhandler, api_update, updateargs)
         }
     });
 };
@@ -102,18 +141,19 @@ function api_update(category, objectid, parameters, handler, errorhandler) {
  *
  * @param String object category
  * @param String object identifier
- * @param Function success handler (must return a message for the user)
- * @param Function error handler (must return a message for the user)
+ * @param Function success handler
+ * @param Function error handler
  */
 function api_delete(category, objectid, handler, errorhandler) {
+    var deleteargs = arguments;
     Xhr.load(api_url+category+'/'+objectid, {
         method: 'delete',
+        params: {'key': authentication.key},
         onSuccess: function(request) {
-            do_additional(request.responseJSON.additional);
-            popup(handler(request.responseJSON.response));
+            api_success(request, handler)
         },
         onFailure: function(request) {
-            popup(errorhandler(request.responseJSON), true);
+            api_failure(request, errorhandler, api_delete, deleteargs)
         }
     });
 }
@@ -167,5 +207,4 @@ function api_rate(from, to, handler, value) {
         };
     };
 }
-
 api_rates = {}

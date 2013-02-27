@@ -72,7 +72,8 @@ $(document).onReady(function(){
             // api.js
         api_rates,
             // authentication.js
-        credentials,
+        Authentication,
+        authentication,
             // categories.js
         CategoryCurrencyField,
         Category,

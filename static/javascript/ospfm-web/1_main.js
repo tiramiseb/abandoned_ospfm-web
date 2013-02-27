@@ -56,10 +56,11 @@ init.failed = function() {
     dialog(errormessage, false);
 }
 
-init.on('go', function() {
-    // Translate text from the initial HTML page
-    // -> Dialog stuff
+init.on('browserlocaleloaded', function() {
     $('loadingdialogtext').update(_('Loading...'));
+});
+
+init.on('go', function() {
     $('spinner').update(_('Loading...'));
     // Small hack in order to tell when directly loading the settings screen
     // (because of the way exiting from settings is done : back in the history)

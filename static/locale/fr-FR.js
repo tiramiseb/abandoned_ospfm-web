@@ -289,6 +289,9 @@ l10n_elements = {
     'Invalid email address':
         'Adresse e-mail invalide',
 
+    'Invalid username or password...':
+        'Nom d\'utilisateur ou mot de passe invalide...',
+
     'last 30 days':
         '30 derniers jours',
 

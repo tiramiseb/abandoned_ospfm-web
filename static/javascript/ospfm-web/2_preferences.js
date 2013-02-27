@@ -54,7 +54,7 @@ preferences.set = function(key, value) {
     preference.update({'value': JSON.stringify(value)});
 }
 
-init.on('browserlocaleloaded', function() {
+init.on('authready', function() {
     api_read('preferences', function(data) {
         data.forEach(function(pref) {
             preferences.add(new Preference(pref));
