@@ -25,7 +25,6 @@ LISTEN_PORT = 5000
 
 GUI_URL = 'http://localhost:5000/'
 API_URL = 'http://localhost:5001/'
-ICONS_URL = 'http://localhost:5000/static/icon/'
 CONTENT_URL = 'http://localhost:5000/static/content/'
 LOCALES_URL = 'http://localhost:5000/static/locale/'
 SCRIPTS_URL = 'http://localhost:5000/static/'

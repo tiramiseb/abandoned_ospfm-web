@@ -48,7 +48,6 @@ def index(something=None):
     return render_template('index.html', app_name=config.APP_NAME,
                            gui_url=config.GUI_URL,
                            api_url=config.API_URL,
-                           icons_url=config.ICONS_URL,
                            locales_url=config.LOCALES_URL,
                            logout_url=config.LOGOUT_URL,
                            help_url=config.HELP_URL,

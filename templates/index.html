@@ -21,7 +21,7 @@
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <script type="text/javascript">gui_url='{{ gui_url }}',api_url='{{ api_url }}',icons_url='{{ icons_url }}',content_url='{{ content_url }}',locales_url='{{ locales_url }}',logout_url='{{ logout_url }}',help_url='{{ help_url }}',scripts_url='{{ scripts_url }}',app_name='{{ app_name }}'</script>
+    <script type="text/javascript">gui_url='{{ gui_url }}',api_url='{{ api_url }}',content_url='{{ content_url }}',locales_url='{{ locales_url }}',logout_url='{{ logout_url }}',help_url='{{ help_url }}',scripts_url='{{ scripts_url }}',app_name='{{ app_name }}'</script>
     <link rel="stylesheet" type="text/css" href="/static/ospfm-web.css" />
     <script type="text/javascript" src="{{ scripts_url }}right.js"></script>
     <script type="text/javascript" src="{{ scripts_url }}right-sortable.js"></script>
@@ -48,6 +48,7 @@
         <div id="dialogshadow"></div>
         <div id="dialogwindow">
             <div id="dialogcontent">
+                {# XXX Maybe replace with an icon from the icons font #}
                 <img width="16" height="16" src="/static/loading.gif" />
                 <span id="loadingdialogtext">Loading...</span>
             </div>
