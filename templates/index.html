@@ -21,19 +21,19 @@
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <script type="text/javascript">gui_url='{{ gui_url }}',api_url='{{ api_url }}',content_url='{{ content_url }}',locales_url='{{ locales_url }}',logout_url='{{ logout_url }}',help_url='{{ help_url }}',scripts_url='{{ scripts_url }}',app_name='{{ app_name }}'</script>
-    <link rel="stylesheet" type="text/css" href="/static/ospfm-web.css" />
-    <script type="text/javascript" src="{{ scripts_url }}right.js"></script>
-    <script type="text/javascript" src="{{ scripts_url }}right-sortable.js"></script>
-    <script type="text/javascript" src="{{ scripts_url }}right-dnd.js"></script>
-    <script type="text/javascript" src="{{ scripts_url }}right-calendar.js"></script>
-    <script type="text/javascript" src="{{ scripts_url }}right-autocompleter.js"></script>
-    <script type="text/javascript" src="{{ scripts_url }}prefixfree.min.js"></script>
-    <script type="text/javascript" src="{{ scripts_url }}ospfm-web.js"></script>
+    <script type="text/javascript">static_url='{{ static_url }}',api_url='{{ api_url }}',help_url='{{ help_url }}',app_name='{{ app_name }}'</script>
+    <link rel="stylesheet" type="text/css" href="{{ static_url }}css/ospfm-web.css" />
+    <script type="text/javascript" src="{{ static_url }}js/right.js"></script>
+    <script type="text/javascript" src="{{ static_url }}js/right-sortable.js"></script>
+    <script type="text/javascript" src="{{ static_url }}js/right-dnd.js"></script>
+    <script type="text/javascript" src="{{ static_url }}js/right-calendar.js"></script>
+    <script type="text/javascript" src="{{ static_url }}js/right-autocompleter.js"></script>
+    <script type="text/javascript" src="{{ static_url }}js/prefixfree.min.js"></script>
+    <script type="text/javascript" src="{{ static_url }}js/ospfm-web.js"></script>
     <title>{{ app_name }}</title>
 </head>
 <body>
-    <img id="applogo" src="/static/evercountlogo-alpha.png" />
+    <img id="applogo" src="{{ static_url }}image/evercountlogo-alpha.png" />
     <div id="userinfo"></div>
     <div id="widgets">
         <div id="sidebar">
@@ -48,7 +48,7 @@
         <div id="dialogshadow"></div>
         <div id="dialogwindow">
             <div id="dialogcontent">
-                <img width="16" height="16" src="/static/loading.gif" />
+                <img width="16" height="16" src="{{ static_url }}image/loading.gif" />
                 <span id="loadingdialogtext">Loading...</span>
             </div>
             <div id="dialogbuttons" class="bottombuttons" style="display:none">

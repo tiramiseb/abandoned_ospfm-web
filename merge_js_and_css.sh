@@ -19,14 +19,27 @@
 
 if [ "$1" = 'debug' ]
 then
-cat static/javascript/ospfm-web/*.js > static/ospfm-web.js
-cat static/javascript/ospfm-web-settings/*.js > static/ospfm-web-settings.js
-sass --style expanded static/css/main.scss static/ospfm-web.css
+
+cat src/js/ospfm-web/*.js > static/js/ospfm-web.js
+cat src/js/ospfm-web-settings/*.js > static/js/ospfm-web-settings.js
+for i in src/locale/*.js
+do
+cp $i static/locale/
+done
+sass --style expanded src/css/main.scss static/css/ospfm-web.css
+
 else
+
 echo "====> Minifying ospfm-web.js"
-cat static/javascript/ospfm-web/*.js | java -jar tools/yuicompressor-2.4.7.jar --type js -o static/ospfm-web.js
+cat src/js/ospfm-web/*.js | java -jar tools/yuicompressor-2.4.7.jar --type js -o static/js/ospfm-web.js
 echo "====> Minifying ospfm-web-settings.js"
-cat static/javascript/ospfm-web-settings/*.js | java -jar tools/yuicompressor-2.4.7.jar --type js -o static/ospfm-web-settings.js
+cat src/js/ospfm-web-settings/*.js | java -jar tools/yuicompressor-2.4.7.jar --type js -o static/js/ospfm-web-settings.js
+echo "====> Minifying locales js"
+for i in src/locale/*.js
+do
+cat $i | java -jar tools/yuicompressor-2.4.7.jar --type js -o static/locale/$(basename $i)
+done
 echo "====> Creating ospfm-web.css from main.scss"
-sass --style compressed static/css/main.scss static/ospfm-web.css
+sass --style compressed src/css/main.scss static/css/ospfm-web.css
+
 fi

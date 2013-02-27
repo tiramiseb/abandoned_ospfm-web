@@ -31,9 +31,9 @@ import configuration as config
 
 app = Flask(__name__)
 
-langs = [ i[:-3] for i in os.listdir('static/locale')  if i[-3:] == '.js' ]
+langs = [ i[:-3] for i in os.listdir('src/locale')  if i[-3:] == '.js' ]
 shortlangs = {}
-for entry in file('static/locale/shortcuts.txt').readlines():
+for entry in file('src/locale/shortcuts.txt').readlines():
     entry = entry.strip().split(':')
     shortlangs[entry[0]] = entry[1]
 
@@ -46,12 +46,9 @@ def index(something=None):
     if config.DEVEL:
         subprocess.call(['./merge_js_and_css.sh', 'debug'])
     return render_template('index.html', app_name=config.APP_NAME,
-                           gui_url=config.GUI_URL,
                            api_url=config.API_URL,
-                           locales_url=config.LOCALES_URL,
-                           logout_url=config.LOGOUT_URL,
                            help_url=config.HELP_URL,
-                           scripts_url=config.SCRIPTS_URL)
+                           static_url=config.STATIC_URL)
 
 @app.route('/browserlocale')
 def browserlocale():
