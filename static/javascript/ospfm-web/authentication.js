@@ -110,7 +110,6 @@ Authentication = new Class({
                 this.username = $('authusername').value();
                 this.password = $('authpassword').value();
                 dialog(new Element('span').insert([
-                    // XXX Maybe replace with an icon from the icons font
                     new Element('img', {'width':'16', 'height':'16', 'src':scripts_url+'loading.gif'}),
                     new Element('span', {'html': ' '+_('Loading...')})
                 ]), false);

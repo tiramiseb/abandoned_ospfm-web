@@ -65,7 +65,9 @@ function api_failure(request, errorhandler, func, args) {
  */
 function api_create(category, parameters, handler, errorhandler) {
     var createargs = arguments;
-    parameters.key = authentication.key;
+    if (authentication.key) {
+        parameters.key = authentication.key;
+    }
     Xhr.load(api_url+category, {
         method: 'post',
         params: parameters,
@@ -90,7 +92,11 @@ function api_read() {
     var uri,
         handler,
         errorhandler,
-        readargs = arguments;
+        readargs = arguments,
+        parameters = {};
+    if (authentication.key) {
+        parameterss.key = authentication.key
+    };
     if (isString(readargs[1])) {
         uri = api_url+readargs[0]+'/'+readargs[1];
         handler = readargs[2] || function(){};
@@ -101,7 +107,7 @@ function api_read() {
         errorhandler = readargs[2] || function(){};
     }
     Xhr.load(uri, {
-        params: {'key': authentication.key},
+        params: parameters,
         onSuccess: function(request) {
             api_success(request, handler)
         },
@@ -122,7 +128,9 @@ function api_read() {
  */
 function api_update(category, objectid, parameters, handler, errorhandler) {
     var updateargs = arguments;
-    parameters.key = authentication.key;
+    if (authentication.key) {
+        parameters.key = authentication.key;
+    };
     Xhr.load(api_url+category+'/'+objectid, {
         method: 'post',
         params: parameters,
@@ -145,10 +153,14 @@ function api_update(category, objectid, parameters, handler, errorhandler) {
  * @param Function error handler
  */
 function api_delete(category, objectid, handler, errorhandler) {
-    var deleteargs = arguments;
+    var deleteargs = arguments,
+        parameters = {};
+    if (authentication.key) {
+        parameters.key = authentication.key
+    };
     Xhr.load(api_url+category+'/'+objectid, {
         method: 'delete',
-        params: {'key': authentication.key},
+        params: parameters,
         onSuccess: function(request) {
             api_success(request, handler)
         },

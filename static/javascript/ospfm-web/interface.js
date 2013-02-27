@@ -50,6 +50,7 @@ Button = new Class(Element, {
      */
     colors: { 'blue': 'b', 'green': 'g', 'red': 'r' },
     initialize:function(color, iconname, text, type) {
+        this.color = color;
         var options = { 'class': color };
         this.$super('button', options);
         this.insert(new Icon(iconname))
@@ -58,27 +59,30 @@ Button = new Class(Element, {
             this._addtext(text);
         } else {
             this.addClass('notext')
-        }
+        };
     },
     text:function(text) {
         var existing = this.first('span.buttontext');
         if (existing) {
             existing.clean().insert(text);
         } else {
-            this._addtext(text);
-            this.removeClass('notext');
+            this._addtext(text).removeClass('notext');
         };
+        return this;
     },
     _addtext:function(text) {
-            this.insert(
-                new Element('span', {'class': 'buttontext', 'html': text})
-            )
+        return this.insert(
+            new Element('span', {'class': 'buttontext', 'html': text})
+        )
+    },
+    enable:function() {
+        if (!this.hasClass(this.color)) {
+            this.addClass(this.color).set('disabled', null);
+        }
+        return this;
     },
     disable:function() {
-        this.removeClass('blue').removeClass('green').removeClass('red')
-            .set('disabled', 'disabled')
-            .stopObserving('click');
-        return this;
+        return this.removeClass(this.color).set('disabled', 'disabled');
     }
 });
 
