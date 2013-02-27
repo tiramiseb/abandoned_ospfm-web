@@ -1,0 +1,404 @@
+//
+//    Copyright 2012 Sebastien Maccagnoni-Munch
+//
+//    This file is part of OSPFM-web.
+//
+//    OSPFM-web is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU Affero General Public License as published
+//    by the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    OSPFM-web is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU Affero General Public License for more details.
+//
+//    You should have received a copy of the GNU Affero General Public License
+//    along with OSPFM-web.  If not, see <http://www.gnu.org/licenses/>.
+
+////////// Search stuff
+
+div#transactionstools {
+    margin-bottom: 10px;
+    margin-left: 2px;
+}
+
+div.searchbox {
+    position: absolute;
+    @media (min-width:1025px) {
+        top: 110px;
+        left: 280px;
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+        top: 100px;
+        left: 230px;
+    }
+    @media (max-width: 768px) {
+        top: 95px;
+        left: 10px;
+    }
+    box-shadow: #777 1px 1px 5px, #ccc 0 0 20px inset;
+    background: #fff;
+    border:1px solid #aaa;
+    z-index: 50;
+    padding: 5px;
+    label {
+        display: block;
+    }
+    input, select {
+        width: 250px;
+    }
+    input.date {
+        width: 100px;
+    }
+    span.betweendates {
+        width: 50px;
+        text-align: center;
+        display: inline-block;
+    }
+}
+
+////////// Transactions list
+
+div#transactionslist {
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    div.transaction {
+        border-bottom: 1px solid #999;
+        position: relative;
+        height: 43px;
+        color: #333;
+        &.edit {
+            height: auto;
+            min-height: 111px;
+        }
+    }
+
+    div.opaque {
+        background: #fff;
+    }
+    div.transaction:hover, div.transaction:hover div.opaque {
+        background: #ffd;
+    }
+
+    div.transaction.edit, div.transaction.edit:hover {
+        background: #eee;
+    }
+
+    ////////// Buttons
+
+    button.edit, button.apply {
+        position: absolute;
+        top: 4px;
+        left: 2px;
+    }
+    button.cancel {
+        position: absolute;
+        top: 38px;
+        left: 2px;
+    }
+
+    button.delete {
+        position: absolute;
+        bottom: 4px;
+        left: 2px;
+    }
+    button.apply_right {
+        position: absolute;
+        bottom: 4px;
+        right: 2px;
+    }
+
+    ////////// Display elements
+
+    div.description {
+        position: absolute;
+        top: 1px;
+        left: 42px;
+        white-space: nowrap;
+    }
+
+    div.type {
+        position: absolute;
+        top: 21px;
+        left: 52px;
+        white-space: nowrap;
+        color: #999;
+        font-size: 80%;
+    }
+
+    div.amount {
+        position: absolute;
+        white-space: nowrap;
+        overflow: hidden;
+        text-align: right;
+    }
+
+    div.date {
+        position: absolute;
+        top: 1px;
+        right: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-align: right;
+    }
+
+    div.categories {
+        position: absolute;
+        color: #999;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    div.accounts {
+        position: absolute;
+        right: 0;
+        color: #999;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    ////////// Edit elements
+
+    input.description {
+        position: absolute;
+        top: 1px;
+        left: 42px;
+    }
+
+    select.type {
+        position: absolute;
+        top: 30px;
+        left: 42px;
+    }
+
+    input.date {
+        position: absolute;
+        top: 1px;
+        right: 2px;
+        width: 100px;
+        text-align: right;
+    }
+    div.rui-re-anchor {
+        right: 0;
+        top: 30px;
+    }
+    div.rui-calendar {
+        left: 0 !important;
+        top: 0 !important;
+    }
+
+    div.rui-calendar * {
+        box-sizing: content-box;
+    }
+
+    span.amount input {
+        text-align: right;
+    }
+
+    div.details span.label {
+        display: block;
+        margin-top: 6px;
+    }
+
+    div.amountline span.categoryvalue {
+        display: inline-block;
+        width: 250px;
+        text-align: right;
+    }
+
+    div.alldisplayed {
+        text-align: center;
+        padding: 15px;
+    }
+
+    //////////////////////////////////////// Computer screen
+
+    @media (min-width:1025px) {
+
+        // Display
+        div.amount {
+            right: 180px;
+        }
+        div.date, div.accounts {
+            width: 180px;
+            padding-left: 30px;
+        }
+        div.categories {
+            right: 180px;
+            max-width: 200px;
+        }
+
+        // Edit
+        div.details {
+            margin: 0 110px 0 290px;
+        }
+        div.details > div.container {
+            display: inline-block;
+            width: 250px;
+            margin-left: 10px;
+            vertical-align: top;
+        }
+        input, select {
+            width: 250px;
+        }
+
+    }
+
+    //////////////////////////////////////// Tablet
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+
+        // Display
+        div.amount {
+            right: 110px;
+        }
+        div.date, div.accounts {
+            width: 110px;
+            padding-left: 10px;
+        }
+        div.categories {
+            right: 110px;
+            max-width: 150px;
+        }
+
+    }
+
+    //////////////////////////////////////// Medium phones to tablets
+
+    @media (min-width: 399px) and (max-width: 1024px) {
+
+        // Edit
+        div.details > div.container {
+            display: inline-block;
+            width: 200px;
+            margin-left: 10px;
+            vertical-align: top;
+        }
+        button.apply_right span.buttontext {
+            display: none;
+        }
+        input, select {
+            width: 200px;
+        }
+
+    }
+
+    //////////////////////////////////////// Hybrid medias for clean edit stuff
+
+    @media (min-width: 600px) and (max-width: 1024px) {
+        div.details {
+            margin: 0 110px 0 240px;
+        }
+
+    }
+    @media (min-width: 400px) and (max-width: 599px) {
+        div.details {
+            margin: 0 110px 0 32px;
+            padding-top: 60px;
+        }
+
+    }
+
+    // For the transactions edition stuff, "small phones" are < 400px
+    @media (max-width: 399px) {
+        div.details {
+            margin: 0;
+            padding-top: 142px;
+        }
+        div.details > div.container {
+            display: inline-block;
+            width: 100%;
+            margin-left: 4px;
+            vertical-align: top;
+        }
+        button.cancel {
+            left: 42px;
+            top: 4px;
+        }
+        button.delete {
+            right: 2px;
+            top: 4px;
+            left: auto;
+            bottom: auto;
+        }
+        button.apply_right {
+            display: none;
+        }
+        input, select {
+            width: 250px;
+        }
+        input.date {
+            top: 42px;
+            left: 4px;
+        }
+        input.description {
+            top: 72px;
+            left: 4px;
+        }
+        select.type {
+            top: 102px;
+            left: 4px;
+        }
+    }
+
+    //////////////////////////////////////// Medium & large phones
+
+    @media (min-width: 321px) and (max-width: 768px) {
+        div.amount {
+            right: 110px;
+        }
+        div.categories {
+            right: 110px;
+            max-width: 150px;
+        }
+        div.date, div.accounts {
+            width: 110px;
+            padding-left: 10px;
+        }
+    }
+
+    //////////////////////////////////////// Other than very small phones
+
+    @media (min-width: 321px) {
+        div.amount {
+            top: 1px;
+        }
+        div.accounts, div.categories {
+            top: 21px;
+            font-size: 80%;
+        }
+    }
+
+    //////////////////////////////////////// Very small phones
+
+    @media (max-width: 320px) {
+        div.type {
+            display: none;
+        }
+        div.categories {
+            top: 30px;
+            font-size: 60%;
+            line-height: 100%;
+            right: 0;
+            width: 90px;
+            padding-left: 10px;
+        }
+        div.accounts {
+            top: 19px;
+            font-size: 60%;
+            line-height: 100%;
+            width: 90px;
+            padding-left: 10px;
+        }
+        div.amount {
+            top: 19px;
+            left: 45px;
+            font-size: 90%;
+        }
+    }
+
+}
