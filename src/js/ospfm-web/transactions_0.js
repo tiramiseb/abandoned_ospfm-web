@@ -17,6 +17,10 @@
  *    along with OSPFM-web.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// This file is named "transactions_0" to be sure it is interpreted before
+// the other "transactions_" files (that depends on how the system sorts the
+// files in the directory ; Ubuntu and Debian deal with that in different ways)
+
 TransactionRow = new Class(Element, {
     prebind: ['display_row', 'edit_row', 'save_transaction'],
     /**
