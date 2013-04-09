@@ -60,7 +60,7 @@ def browserlocale():
             locale = reqlocale
             break
         elif reqlocale in shortlangs.keys():
-            locale = shortlang[reqlocale]
+            locale = shortlangs[reqlocale]
             break
     return jsonify({'locale': locale})
 

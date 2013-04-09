@@ -24,9 +24,7 @@ Preference = new Class(OspfmObject, {
         this.$super(data);
         if (this.data.name == 'ospfm-web-locale') {
             this.updatesuccess = function() {
-                if (!init.first_run) {
-                    location.reload();
-                }
+                location.reload();
             };
         }
     }

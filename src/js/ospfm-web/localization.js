@@ -41,12 +41,11 @@ preferences.on('initialized', function() {
                 }
             });
         } else {
-            // Locale already locale because it is the browser's locale
+            // Locale already loaded because it is the browser's locale
             init.fire('go');
         }
     } else {
-        // TODO: "First connection" wizard dialog
-        //first_connection(preflocale);
+        init.first_run = true;
         init.fire('go');
     };
 });

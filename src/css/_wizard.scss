@@ -16,13 +16,27 @@
 //    You should have received a copy of the GNU Affero General Public License
 //    along with OSPFM-web.  If not, see <http://www.gnu.org/licenses/>.
 
-table.personalinfo {
-    input, select {
-        width: 300px;
-    }
+div#wizard label {
+    display: block;
+}
+div#wizard input[type=text], div#wizard select {
+    display: block;
 }
 
-div#settingsscreen h2 {
-    text-align: left;
-    margin-left: 2em;
+div#wizard input[type=radio] {
+    margin-right: 0.5em;
+}
+
+div#wizard td:first-child {
+    text-align: right;
+    white-space: nowrap;
+}
+
+div#wizard p.wizardname {
+    font-weight: bold;
+}
+
+div#wizard p.description {
+    font-size: 90%;
+    color: #555;
 }

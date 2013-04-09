@@ -29,6 +29,8 @@ var
         // accounts.js
     accounts,
     totalbalance,
+        // authentication.js
+    authentication,
         // categories.js
     categories,
         // contacts.js
@@ -41,6 +43,8 @@ var
     Icon,
     Button,
     dialog,
+    close_dialog,
+    popup,
     Tabs,
         // localization.js
     _,
@@ -48,7 +52,9 @@ var
         // user.js
     user_me,
         // widgets.js
-    widgets;
+    widgets,
+        // wizard.js
+    wizard;
 
 // Put everything in a single function, to be able to minify more names
 $(document).onReady(function(){
@@ -73,7 +79,6 @@ $(document).onReady(function(){
         api_rates,
             // authentication.js
         Authentication,
-        authentication,
             // categories.js
         CategoryCurrencyField,
         Category,

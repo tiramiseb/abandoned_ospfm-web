@@ -42,9 +42,6 @@ init.success = function() {
         // When initialization is finished, close the "Loading..." dialog
         close_dialog();
         this.fire('end');
-        if (this.first_run) {
-            welcome_dialog();
-        };
     };
 }
 init.failed = function() {
@@ -72,29 +69,7 @@ init.on('go', function() {
 init.on('end', function() {
     // Display the spinner when loading, only after initialization
     Xhr.Options.spinner = $('spinner');
+    if (init.first_run) {
+        wizard(true);
+    }
 });
-
-/**
- * displays a dialog for new users
- */
-function welcome_dialog() {
-    var settingsbutton = new Button('green', 'settings', _('Settings'))
-                                .onClick(function() {
-                                    screens.load('/settings');
-                                    close_dialog();
-                                });
-
-    dialog([
-        new Element('h1', {'html':_('Welcome!')}),
-        new Element('p', {'html':_('Hello, it seems you are connecting to everCount for the first time.')}),
-        new Element('p', {'html':_('We recommend setting your account, especially your personal information:')}),
-        new Element('ul').insert([
-            new Element('li', {'html':_('Your language')}),
-            new Element('li', {'html':_('Your first name and your last name')}),
-            new Element('li', {'html':_('Your preferred currency')}),
-        ]),
-        new Element('p', {'html':_('To configure your account, click on the "Settings" button below. You will also find it at the top right of the screen, with the "Help" and "Quit" buttons.')}),
-        settingsbutton
-    ]);
-
-};

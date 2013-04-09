@@ -168,7 +168,7 @@ button {
         box-shadow: #fff 0px 0px 8px inset !important;
     }
     * {
-    cursor: pointer;
+        cursor: pointer;
     }
     span.buttontext {
         margin-left: 6px;
@@ -238,6 +238,11 @@ div#dialogwindow {
     box-shadow: #ccc 0 0 20px inset;
     border-radius: 15px;
     z-index: 30;
+    max-height: 100%;
+    overflow:auto;
+}
+div#dialogcontent {
+    overflow:auto;
 }
 div#dialogcontent.withbuttons {
     margin-bottom: 15px;

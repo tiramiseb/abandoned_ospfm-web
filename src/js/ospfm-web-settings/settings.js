@@ -27,6 +27,7 @@ var SettingsScreen = new Class(Screen, {
     url:'/settings',
     element:function() {
         var personal_information_form,
+            password_form,
             widgets_move_button,
             widgets_apply_button,
             widgets_screen_buttons,
@@ -49,11 +50,30 @@ var SettingsScreen = new Class(Screen, {
                                             'id': 'languagesetting',
                                             'name': 'language'
                                         }),
+            currentpasswordinput   = new Input({
+                                            'type': 'password',
+                                            'name': 'currentpassword',
+                                            'id': 'currentpasswordsetting'
+                                        }),
+            passwordinput          = new Input({
+                                            'type': 'password',
+                                            'name': 'password',
+                                            'id': 'passwordsetting'
+                                        }),
+            passwordconfirminput   = new Input({
+                                            'type': 'password',
+                                            'name': 'passwordconfirm',
+                                            'id': 'passwordconfirmsetting'
+                                        }),
+            redo_wizard_button     = new Button('red', 'cancel',
+                                                _('Reinitialize everything'))
+                                            .onClick(wizardconfirm),
             emails_form            = new Form(),
-            unused_widgets         = new Element('ul', {'id':'unusedwidgets'});
+            unused_widgets         = new Element('ul', {'id':'unusedwidgets'}),
+            currentlocale          = preferences.get('ospfm-web-locale');
         this.title = new Element('h1', {'html': _('Settings')});
         this.tabs = new Tabs();
-        this.container = new Element('div')
+        this.container = new Element('div', {'id':'settingsscreen'})
                              .setStyle('overflow', 'auto')
                              .insert(this.tabs);
         this.buttons = new Element('div', {
@@ -74,7 +94,7 @@ var SettingsScreen = new Class(Screen, {
                                 }).insert(
                                     l10n_locales[loc]
                                 );
-                    if (loc == preferences.get('ospfm-web-locale')) {
+                    if (loc == currentlocale) {
                         option._.defaultSelected = true;
                     };
                     localesinput.insert(option);
@@ -140,9 +160,62 @@ var SettingsScreen = new Class(Screen, {
                 'last_name': values.lastname,
                 'preferred_currency': values.currency
             });
-            if (language != locale.full || init.first_run) {
+            if (language != locale.full) {
                 preferences.set('ospfm-web-locale', language);
             }
+        });
+        password_form = new Form().insert(
+            new Element('table', {'class':'personalinfo'}).insert([
+                new Element('tr').insert([
+                        new Element('td').insert(
+                            new Element('label',{'html':_('Current password')})
+                                .set('for', 'currentpasswordsetting')
+                        ),
+                        new Element('td').insert(currentpasswordinput)
+                ]),
+                new Element('tr').insert([
+                        new Element('td').insert(
+                            new Element('label',{'html':_('New password')})
+                                .set('for', 'passwordsetting')
+                        ),
+                        new Element('td').insert(passwordinput)
+                ]),
+                new Element('tr').insert([
+                        new Element('td').insert(
+                            new Element('label',{'html':_('Confirm password')})
+                                .set('for', 'passwordconfirmsetting')
+                        ),
+                        new Element('td').insert(passwordconfirminput)
+                ]),
+                new Element('tr').insert(
+                    new Element('td', {
+                        'class': 'submit', 'colspan': '2'
+                    }).insert(
+                        new Button('green', 'apply',
+                                   _('Change password'), 'submit')
+                    )
+                )
+            ])
+        ).onSubmit(function(event) {
+            var values = event.currentTarget.values(),
+                password = values.password,
+                currentpassword = values.currentpassword;
+            event.preventDefault();
+            if (password != values.passwordconfirm) {
+                popup(_('Please enter the same password in "New password" and "Confirm password"'), true);
+            } else if (currentpassword == '') {
+                popup(_('The current password cannot be empty'));
+            } else if (password == '') {
+                popup(_('The new password cannot be empty'));
+            } else {
+                user_me.update({
+                    'password': password,
+                    'currentpassword': currentpassword
+                }, function() {
+                    authentication.password = password;
+                });
+
+            };
         });
 
         // Email addresses
@@ -410,7 +483,15 @@ var SettingsScreen = new Class(Screen, {
                 new Tabs().addTab(
                     _('General information'),
                     'general',
-                    personal_information_form,
+                    new Element('div').insert([
+                        new Element('h2', {'html':_('Preferences')}),
+                        personal_information_form,
+                        new Element('h2', {'html':_('Password')}),
+                        password_form,
+                        new Element('h2', {'html':_('Reinitialize')}),
+                        new Element('p', {'html':_('You can reinitialize your data and re-run the initial wizard by clicking on this button:')}),
+                        redo_wizard_button
+                    ]),
                     true
                 ).addTab(
                     _('Email addresses'),
@@ -469,7 +550,7 @@ var SettingsScreen = new Class(Screen, {
                 this.title,
                 new Element('div', {
                     'class':'onlysmall',
-                    'html':_('Please use a larger screen to change settings')
+                    'html':_('Please use a wider screen in order to change settings')
                 }),
                 this.container.addClass('notsmall'),
                 this.buttons

@@ -88,8 +88,6 @@ Button = new Class(Element, {
 
 ////////// Centered dialog window
 
-// TODO: Take all space on small screens (phones)
-
 // Initializes the dialog stuff
 $(window).onResize(center_dialog);
 init.on('go', function() {
@@ -122,7 +120,7 @@ $('dialogbuttons').insert(
 /**
  * closes the dialog window
  */
-function close_dialog() {
+close_dialog = function () {
     $('dialog').hide();
 }
 
@@ -182,7 +180,7 @@ $('tooltip').onMouseover(function() {
  * @param String or Element popup content
  * @param Boolean true if it is an error message
  */
-function popup(content, error) {
+popup = function(content, error) {
     var delay,
         pp = $('popup');
     if (content) {
