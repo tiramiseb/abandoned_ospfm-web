@@ -924,11 +924,14 @@ AmountField = new Class(Field, {
         obj.on('changed', this.update_elements);
     },
     update_elements: function() {
-        this.currency = this.object.data.currency;
         var i,
             all_elements = this.all_elements,
+            // This splice is used to copy the string
+            // (new string, not reference)
             old_elements = all_elements.splice(0, all_elements.length);
-        // Why this splice !? Need to remember...
+        if (this.object.data.currency) {
+            this.currency = this.object.data.currency;
+        };
         for (i=0; i<old_elements.length; i++) {
             if (old_elements[i].parent()) {
                 old_elements[i].replace(this.displaycontent());
