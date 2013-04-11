@@ -209,14 +209,14 @@ function loc_number(num, currency, nohtml) {
  */
 function loc_nameandnick(first, last, nick) {
     var nameandnick,
-        nickname = l10n_name.nickname.replace('{N}', nick);
+        nickname = l10n_name.nickname.replace('N', nick);
     if (first == last && last == nick) {
         return '<span class="fullname">'+nickname+'</span><span class="nickonly">'+nick+'</span>';
     } else {
         nameandnick = l10n_name.nameandnick
-                            .replace('{F}', first)
-                            .replace('{L}', last)
-                            .replace('{N}', nick);
+                            .replace('F', first)
+                            .replace('L', last)
+                            .replace('N', nick);
         return '<span class="fullname">'+nameandnick+'</span><span class="nickonly">'+nick+'</span>';
     }
 }
@@ -231,9 +231,9 @@ function loc_nameandnick(first, last, nick) {
  */
 function loc_fullcurrency(name, isocode, symbol) {
     return l10n_currency.completename
-           .replace('{N}', l10n_currencies[isocode] || name)
-           .replace('{S}', symbol)
-           .replace('{C}', isocode);
+           .replace('N', l10n_currencies[isocode] || name)
+           .replace('S', symbol)
+           .replace('C', isocode);
 }
 
 /**

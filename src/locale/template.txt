@@ -1,3 +1,5 @@
+All values are in JSON.
+
 locales
 =======
 
@@ -7,8 +9,8 @@ in all localization files.
 Example::
 
     l10n_locales = {
-        'en-US':'English (United States)',
-        'fr-FR':'French (France)'
+        "en-US":"English (United States)",
+        "fr-FR":"French (France)"
     }
 
 numbers
@@ -39,8 +41,8 @@ names
 * shortname: pattern for displaying a user's short name
 * nickname: pattern for displaying a user's nickname
 
-In these patterns, '{F}' is the first name, '{L}' is the last name (surname),
-and '{N}' is the nickname.
+In these patterns, 'F' is the first name, 'L' is the last name (surname),
+and 'N' is the nickname.
 
 dates
 =====
@@ -57,14 +59,6 @@ In the representation of a date :
 * '%d' is the 2-digits day in the month
 * '%e' is the 1-digit or 2-digits day in the month
 
-typography
-==========
-
-``l10n_typo`` stores info on tyopgraphy-specific stuff :
-
-* start_quote: string at the start of a quote
-* end_quote: string at the end of a quote
-
 currencies
 ==========
 
@@ -72,5 +66,5 @@ currencies
 
 * completename: pattenr for displaying a currency name, symbol and isocode
 
-In these patterns, '{N}' is the currency's name, '{C}' is its isocode, and
-'{S}' is its symbol.
+In these patterns, 'N' is the currency's name, 'C' is its isocode, and
+'S' is its symbol.
