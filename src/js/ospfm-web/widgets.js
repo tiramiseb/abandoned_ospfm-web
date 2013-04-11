@@ -336,7 +336,7 @@ widgets.register('currencies', new Class(Widget, {
             curs = own_currencies.list();
         if (curs.length) {
             table = [];
-            curs.forEach(function(currrency) {
+            curs.forEach(function(currency) {
                 table.push(
                     new Element('div', {
                         'class': 'line'
