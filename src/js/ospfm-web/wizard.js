@@ -200,7 +200,7 @@ wizard = function(firstrun) {
                                 'html':_('Your account has been (re)initialized successfully.')
                             }),
                             new Element('p', {
-                                'html':_('everCount will be reloaded to reinitialize the interface language.')
+                                'html':_('everCount will be reloaded to reinitialize the interface.')
                             }),
                             new Element('div',{'class':'bottombuttons'}).insert(
                                 new Button('green', 'apply', _('OK'))
@@ -218,9 +218,14 @@ wizard = function(firstrun) {
                             new Element('p', {
                                 'html':_('Your account has been (re)initialized successfully.')
                             }),
+                            new Element('p', {
+                                'html':_('everCount will be reloaded to reinitialize the interface.')
+                            }),
                             new Element('div',{'class':'bottombuttons'}).insert(
                                 new Button('green', 'apply', _('OK'))
-                                    .onClick(close_dialog)
+                                    .onClick(function() {
+                                        location.reload()
+                                    })
                             )
                         ], false)
                     }
