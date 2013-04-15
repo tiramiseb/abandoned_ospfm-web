@@ -118,8 +118,7 @@ def entries(name, currentvalues, defaultvalues):
         already_defined = currentvalues[name]
     else:
         already_defined = {}
-    # TODO Rename l10n_elements to l10n_strings everywhere
-    if name == 'l10n_elements':
+    if name == 'l10n_strings':
         entries = stringentries(name, already_defined, defaultvalues)
     else:
         entries = standardentries(name, already_defined, defaultvalues)
@@ -204,7 +203,7 @@ def update_translation_file(filename, targetdir, strings, locales):
         target.write(entries('l10n_name', currentvalues, NAME))
         target.write(entries('l10n_date', currentvalues, DATE))
         target.write(entries('l10n_currency', currentvalues, CURRENCY))
-        target.write(entries('l10n_elements', currentvalues, strings))
+        target.write(entries('l10n_strings', currentvalues, strings))
         target.write(entries('l10n_currencies', currentvalues,
                              [ (cur, None) for cur in CURRENCIES ]))
     shutil.copyfile(

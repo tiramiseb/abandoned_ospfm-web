@@ -82,8 +82,8 @@ Xhr.load('/browserlocale', {
  * @return String translated text
  */
 _ = function (string) {
-    if (window.l10n_elements) {
-        return l10n_elements[string] || string;
+    if (window.l10n_strings) {
+        return l10n_strings[string] || string;
     } else {
         return string;
     };

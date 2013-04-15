@@ -46,7 +46,7 @@ l10n_date = {
 l10n_currency = {
     "completename": "C : N (S)"
 }
-l10n_elements = {
+l10n_strings = {
 
     // src/js/ospfm-web/categories.js:173
     // src/js/ospfm-web/categories.js:184
