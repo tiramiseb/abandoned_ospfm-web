@@ -22,6 +22,7 @@ img#applogo {
     position: absolute;
     padding-bottom: 5px;
     border-bottom: #999 1px solid;
+    cursor: pointer;
     @media (min-width:1025px) {
         width: 200px;
         top: 10px;
