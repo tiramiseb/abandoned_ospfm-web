@@ -364,7 +364,13 @@ var SettingsScreen = new Class(Screen, {
     var address = emailinput.getValue();
     if (address) {
         if (address.indexOf('@') == -1) {
-            dialog(_('Invalid email address'));
+            dialog([
+                new Element('p', {'html':_('Invalid email address')}),
+                new Element('div', {'class':'bottombuttons'}).insert([
+                    new Button('blue', 'close', _('Close'))
+                        .onClick(function() { close_dialog() })
+                ])
+            ]);
         } else {
             addrow.insert(
                 new Element('div', {'class':'editrow'}).insert([

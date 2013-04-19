@@ -205,7 +205,7 @@ CategorySelector = new Class(Input, {
                             }.bind(this)
                         )
                     ])
-                ], false)
+                ])
             }
         };
         this.autocompleter.onDone(changed.bind(this));

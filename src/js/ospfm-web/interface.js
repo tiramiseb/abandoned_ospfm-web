@@ -90,9 +90,6 @@ Button = new Class(Element, {
 
 // Initializes the dialog stuff
 $(window).onResize(center_dialog);
-init.on('go', function() {
-    $('dialogclosebutton').first('span.buttontext').update(_('Close'));
-});
 /**
  * displays the dialog window
  *
@@ -102,21 +99,9 @@ init.on('go', function() {
 // Defined this way in order to make it a global function
 dialog = function (content, displaybutton) {
     $('dialogcontent').update(content);
-    if (displaybutton === undefined ? true : displaybutton) {
-        $('dialogbuttons').show();
-        $('dialogcontent').addClass('withbuttons');
-    } else {
-        $('dialogbuttons').hide();
-        $('dialogcontent').removeClass('withbuttons');
-    };
     $('dialog').show();
     center_dialog();
 };
-$('dialogbuttons').insert(
-    new Button('blue', 'close', 'Close')
-            .set('id', 'dialogclosebutton')
-            .onClick(close_dialog)
-);
 /**
  * closes the dialog window
  */

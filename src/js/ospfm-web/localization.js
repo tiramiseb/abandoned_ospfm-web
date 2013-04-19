@@ -36,7 +36,7 @@ preferences.on('initialized', function() {
                 onFailure: function() {
                     dialog(new Element('p', {
                         'html': _("Sorry, loading your preferred language failed. Please check your language setting.")
-                    }), false);
+                    }));
                     init.fire('go');
                 }
             });

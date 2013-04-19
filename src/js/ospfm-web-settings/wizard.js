@@ -38,7 +38,6 @@ function wizardconfirm() {
                 applybutton,
                 cancelbutton
             ])
-        ],
-        false
+        ]
     )
 };

@@ -81,7 +81,7 @@ Authentication = new Class({
         errormessage = errormessage || "";
         this.errormessage.clean();
         this.errormessage.insert(errormessage);
-        dialog(this.authdialog, false);
+        dialog(this.authdialog);
     },
     authenticate: function(func, args) {
         // XXX Maybe allow storing multiple functions, I don't know yet if multiple requests can occur before authorization, especially when username and password are known.
@@ -96,7 +96,7 @@ Authentication = new Class({
                     'username': this.username,
                     'password': this.password
                 }
-            }).onComplete(this.auth_response)
+            }).onComplete(this.auth_response);
         } else {
             this.showdialog();
         };
@@ -112,7 +112,7 @@ Authentication = new Class({
                 dialog(new Element('span').insert([
                     new Element('img', {'width':'16', 'height':'16', 'src':static_url+'image/loading.gif'}),
                     new Element('span', {'html': ' '+_('Loading...')})
-                ]), false);
+                ]));
             };
             this.key = resp.response.key;
             this.func.apply(this, this.args);

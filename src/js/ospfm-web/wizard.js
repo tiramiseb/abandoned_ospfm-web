@@ -209,7 +209,7 @@ wizard = function(firstrun) {
                                                         newlocale);
                                     })
                             )
-                        ], false)
+                        ])
                     } else {
                         dialog([
                             new Element('h1', {
@@ -227,11 +227,10 @@ wizard = function(firstrun) {
                                         location.reload()
                                     })
                             )
-                        ], false)
+                        ])
                     }
                 });
             })
-        ),
-        false
+        )
     )
 };

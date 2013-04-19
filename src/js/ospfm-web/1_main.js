@@ -50,7 +50,7 @@ init.failed = function() {
         'html':_('Sorry, a problem occured. Please try again later...')
     });
     init.count = -100;
-    dialog(errormessage, false);
+    dialog(errormessage);
 }
 
 init.on('browserlocaleloaded', function() {

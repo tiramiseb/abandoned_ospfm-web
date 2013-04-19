@@ -123,7 +123,11 @@ ContactNameField = new Class(Field, {
                         popup(_('Search criterion cannot be emtpy'), true);
                     };
                 }.bind(this)),
-                resultslist
+                resultslist,
+                new Element('div', {'class':'bottombuttons'}).insert([
+                        new Button('blue', 'close', _('Close'))
+                            .onClick(function() { close_dialog() })
+                    ])
             ])
         }.bind(this));
         return content;
