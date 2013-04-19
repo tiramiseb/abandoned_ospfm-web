@@ -25,8 +25,8 @@ transactionscreen = new Class(Screen, {
                                 .tooltip(_('Add a transaction')),
             searchbutton = new Button('blue', 'search').tooltip(_('Search')),
             searchbox = new SearchBox().insertTo($$('body')[0]);
-        this.translist = new Element('div', {'id': 'transactionslist'});
-
+        this.translist = new Element('div', {'id': 'transactionslist'})
+                                .on('scroll', this.scrolled);
         addbutton.onClick(function() {
             this.translist.insert(new TransactionRow(), 'top');
             this.translist._.scrollTop = 0;
@@ -55,7 +55,6 @@ transactionscreen = new Class(Screen, {
     load:function(url, hash) {
         $('transactionslist').clean();
         this.list_transactions(hash);
-        this.translist.on('scroll', this.scrolled);
         // Slight delay to let the API load the transactions list
         this.resize.delay(100);
     },
@@ -65,42 +64,51 @@ transactionscreen = new Class(Screen, {
         );
     },
     scrolled:function (event) {
-        var last,
-            filter,
-            elem = this.translist._;
-        // If scrolled to less than 75px from the bottom, load next data
-        if (elem.scrollTop + elem.clientHeight > elem.scrollHeight - 50) {
-            last = this.translist.children('div.transaction').pop();
-            filter = location.hash.replace(/^#/, '');
-            if (filter) {
-                filter += '&after='+last.data.id
+        if (!this.scrolling) {
+            this.scrolling = true;
+            var last,
+                filter,
+                elem = this.translist._;
+            // If scrolled to less than 75px from the bottom, load next data
+            if (elem.scrollTop + elem.clientHeight > elem.scrollHeight - 75) {
+                last = this.translist.children('div.transaction').pop();
+                filter = location.hash.replace(/^#/, '');
+                if (filter) {
+                    filter += '&after='+last.data.id
+                } else {
+                    filter = 'after='+last.data.id
+                };
+                this.list_transactions(filter)
             } else {
-                filter = 'after='+last.data.id
+                this.scrolling = false;
             };
-            this.list_transactions(filter)
-        }
+        };
     },
     list_transactions:function(filter) {
         var url = 'transactions/filter?limit=50';
         if (filter) {
             url += '&'+filter;
         }
-        api_read(url, function(data) {
-            if (data.length) {
-                data.forEach(function(item) {
+        if (!this.translist.first('div.alldisplayed')) {
+            api_read(url, function(data) {
+                if (data.length) {
+                    data.forEach(function(item) {
+                        this.translist.insert(
+                            new TransactionRow(item)
+                        )
+                    }.bind(this));
+                } else {
                     this.translist.insert(
-                        new TransactionRow(item)
+                        new Element('div', {'class': 'alldisplayed'}).insert(
+                            _('All transactions have been displayed!')
+                        )
                     )
-                }.bind(this));
-            } else if (!this.translist.first('div.alldisplayed')) {
-                this.translist.insert(
-                    new Element('div', {'class': 'alldisplayed'}).insert(
-                        _('All transactions have been displayed!')
-                    )
-
-                )
-            }
-        }.bind(this));
+                }
+                this.scrolling = false;
+            }.bind(this));
+        } else {
+            this.scrolling = false;
+        };
     }
 });
 
