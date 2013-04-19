@@ -98,7 +98,7 @@ l10n_strings = {
     // src/js/ospfm-web-settings/settings.js:149
     // src/js/ospfm-web-settings/settings.js:406
     // src/js/ospfm-web-settings/settings.js:460
-    // src/js/ospfm-web/widgets.js:281
+    // src/js/ospfm-web/widgets.js:308
     // src/js/ospfm-web/2_ospfm_objects.js:713
 //    "Apply":
 //        "",
@@ -116,7 +116,7 @@ l10n_strings = {
 //    "Basic elements":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:368
+    // src/js/ospfm-web/widgets.js:398
 //    "Calculator":
 //        "",
 
@@ -128,7 +128,7 @@ l10n_strings = {
 //        "",
 
     // src/js/ospfm-web-settings/settings.js:526
-    // src/js/ospfm-web/widgets.js:135
+    // src/js/ospfm-web/widgets.js:136
 //    "Categories":
 //        "",
 
@@ -158,7 +158,7 @@ l10n_strings = {
 //        "",
 
     // src/js/ospfm-web-settings/settings.js:505
-    // src/js/ospfm-web/widgets.js:297
+    // src/js/ospfm-web/widgets.js:327
 //    "Contacts":
 //        "",
 
@@ -196,7 +196,7 @@ l10n_strings = {
 //        "",
 
     // src/js/ospfm-web-settings/settings.js:535
-    // src/js/ospfm-web/widgets.js:328
+    // src/js/ospfm-web/widgets.js:358
 //    "Currencies":
 //        "",
 
@@ -266,6 +266,10 @@ l10n_strings = {
 //    "Disable notifications to this address":
 //        "",
 
+    // src/js/ospfm-web/widgets.js:298
+//    "Display category this deep...":
+//        "",
+
     // src/js/ospfm-web-settings/wizard.js:31
 //    "Do you really want to reinitialize your everCount data?":
 //        "",
@@ -278,7 +282,7 @@ l10n_strings = {
 //    "Do you want to create the following category?":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:449
+    // src/js/ospfm-web/widgets.js:479
 //    "ERROR: ":
 //        "",
 
@@ -538,7 +542,7 @@ l10n_strings = {
 //    "Password":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:271
+    // src/js/ospfm-web/widgets.js:287
 //    "Period for which to display the balance":
 //        "",
 
@@ -745,15 +749,15 @@ l10n_strings = {
 //    "You have no account":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:320
+    // src/js/ospfm-web/widgets.js:350
 //    "You have no contact":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:246
+    // src/js/ospfm-web/widgets.js:250
 //    "You have not defined any category":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:359
+    // src/js/ospfm-web/widgets.js:389
 //    "You have not defined any personalized currency":
 //        "",
 
@@ -773,34 +777,46 @@ l10n_strings = {
 //    "Your preferred currency:":
 //        "",
 
+    // src/js/ospfm-web/widgets.js:280
+//    "all categories":
+//        "",
+
     // src/js/ospfm-web/wizard.js:202
     // src/js/ospfm-web/wizard.js:221
 //    "everCount will be reloaded to reinitialize the interface.":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:206
-    // src/js/ospfm-web/widgets.js:264
+    // src/js/ospfm-web/widgets.js:210
+    // src/js/ospfm-web/widgets.js:268
 //    "last 30 days":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:194
-    // src/js/ospfm-web/widgets.js:262
+    // src/js/ospfm-web/widgets.js:198
+    // src/js/ospfm-web/widgets.js:266
 //    "last 7 days":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:170
-    // src/js/ospfm-web/widgets.js:258
+    // src/js/ospfm-web/widgets.js:174
+    // src/js/ospfm-web/widgets.js:262
 //    "this month":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:158
-    // src/js/ospfm-web/widgets.js:256
+    // src/js/ospfm-web/widgets.js:162
+    // src/js/ospfm-web/widgets.js:260
 //    "this week":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:182
-    // src/js/ospfm-web/widgets.js:260
+    // src/js/ospfm-web/widgets.js:186
+    // src/js/ospfm-web/widgets.js:264
 //    "this year":
+//        "",
+
+    // src/js/ospfm-web/widgets.js:278
+//    "top-level and their children":
+//        "",
+
+    // src/js/ospfm-web/widgets.js:276
+//    "top-level only":
 //        ""
 }
 l10n_currencies = {

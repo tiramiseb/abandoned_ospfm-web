@@ -35,7 +35,7 @@ Widget = new Class(Element, {
         if (this.config) {
             title.insert(
                 new Icon('config').addClass('widgetsetup').onClick(function() {
-                    dialog(this.config(), false)
+                    dialog(this.config())
                 }.bind(this)),
                 'top'
             );
@@ -67,7 +67,6 @@ widgets = {
         return new this.w[name]();
     },
 };
-
 widgets.register('accounts', new Class(Widget, {
     id: 'accounts',
     icon: 'account',
@@ -92,16 +91,15 @@ widgets.register('accounts', new Class(Widget, {
                 }
                 table.push(
                     new Element('div', {
-                            'class': 'line'
+                            'class': 'line link'
                         }).insert([
                         accountbalance,
                         new Element('span', {
-                                'html': ''+account,
-                                'class': 'link'
-                            }).onClick(function() {
-                                screens.load('/', 'account='+account.data.id);
+                                'html': ''+account
                             })
-                        ])
+                        ]).onClick(function() {
+                            screens.load('/', 'account='+account.data.id);
+                        })
                 );
                 if (!account.observes(this.redraw)) {
                     account.on('changed', this.redraw);
@@ -110,18 +108,17 @@ widgets.register('accounts', new Class(Widget, {
             }, this);
             table.push(
                 new Element('div', {
-                    'class':'total line'
+                    'class':'total line link'
                 }).insert([
                     new Element('span', {'class': 'balance editcell'}).insert(
                         totalbalance.display()
                     ),
                     new Element('span', {
-                        'class': 'link',
                         'html': _('Total')
-                    }).onClick(function() {
+                    })
+                ]).onClick(function() {
                         screens.load('/');
                     })
-                ])
             )
             return table;
         } else {
@@ -129,7 +126,6 @@ widgets.register('accounts', new Class(Widget, {
         };
     }
 }));
-
 widgets.register('categories', new Class(Widget, {
     id: 'categories',
     icon: 'category',
@@ -138,6 +134,9 @@ widgets.register('categories', new Class(Widget, {
         this.period = preferences.get(
                             'ospfm-web-categorywidget-period'
                         ) || 'month';
+        this.deepness = preferences.get(
+                            'ospfm-web-categorywidget-deepness'
+                        ) || '0';
         this.$super();
         categories.on('added', this.redraw);
         categories.on('added in subcategory', this.redraw);
@@ -148,7 +147,7 @@ widgets.register('categories', new Class(Widget, {
         var fill_categories_table = (function(cats) {
             cats.forEach(function(category) {
                 table.push(
-                    new Element('div', {'class': 'line'}).insert([
+                    new Element('div', {'class': 'line link'}).insert([
                         category.fields[this.period].display()
                             .tooltip(
                                 new Element('table').insert([
@@ -214,14 +213,12 @@ widgets.register('categories', new Class(Widget, {
                                     ])
                                 ])
                             ),
-                        category.shortRepr().addClass('link').onClick(
-                            function() {
-                               screens.load('/', 'category='+category.data.id);
-                            }
-                        )
-                    ])
+                        category.shortRepr()
+                    ]).onClick(function() {
+                       screens.load('/', 'category='+category.data.id);
+                    })
                 );
-                if (category.data.children) {
+                if (category.data.children && category.deepness < this.deepness) {
                     fill_categories_table(
                         category.data.children.list()
                     );
@@ -263,7 +260,19 @@ widgets.register('categories', new Class(Widget, {
                                     .insert(_('last 7 days')),
                                 new Element('option', {'value':'30days'})
                                     .insert(_('last 30 days')),
-                            ]).setValue(this.period);
+                            ]).setValue(this.period),
+            deepness = new Input({
+                                'type': 'select',
+                                'id': 'categorywidgetdeepness',
+                                'name': 'deepness'
+                            }).insert([
+                                new Element('option', {'value':'0'})
+                                    .insert(_('top-level only')),
+                                new Element('option', {'value':'1'})
+                                    .insert(_('top-level and their children')),
+                                new Element('option', {'value':'50'})
+                                    .insert(_('all categories'))
+                            ]).setValue(this.deepness);
         return new Form().insert([
             new Element('table').insert([
                 new Element('tr').insert([
@@ -276,16 +285,30 @@ widgets.register('categories', new Class(Widget, {
                     new Element('td').insert(
                         periodselect
                     )
+                ]),
+                new Element('tr').insert([
+                    new Element('td').insert(
+                        new Element('label', {
+                           'html':_('Display category this deep...'),
+                           'for': 'categorywidgetdeepness'
+                        })
+                    ),
+                    new Element('td').insert(
+                        deepness
+                    )
                 ])
             ]),
             new Element('div', {'class': 'bottombuttons'}).insert(
                 new Button('green', 'apply', _('Apply'), 'submit')
             )
         ]).onSubmit(function(event) {
-            var period = event.currentTarget.values().displayperiod;
+            var period = event.currentTarget.values().displayperiod,
+                deepness = event.currentTarget.values().deepness;
             event.preventDefault();
             this.period = period;
+            this.deepness = deepness;
             preferences.set('ospfm-web-categorywidget-period', period)
+            preferences.set('ospfm-web-categorywidget-deepness', deepness)
             this.redraw();
             close_dialog();
         }.bind(this));
