@@ -21,9 +21,7 @@
     font-family: 'icons';
     src:url('../font/icons.eot');
     src:url('../font/icons.eot?#iefix') format('embedded-opentype'),
-        url('../font/icons.woff') format('woff'),
-        url('../font/icons.ttf') format('truetype'),
-        url('../font/icons.svg#icons') format('svg');
+        url('../font/icons.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -87,6 +85,6 @@ input, select {
 
 ////////// Global definitions
 
-.link {
+.link, .link * {
     cursor: pointer;
 }
