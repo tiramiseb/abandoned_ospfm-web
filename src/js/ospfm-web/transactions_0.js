@@ -69,10 +69,13 @@ TransactionRow = new Class(Element, {
         };
         return false;
     },
+    // TODO: display category full name (including parent name)
     display_row: function() {
         var accountstooltip,
             categoriestooltip,
             i, j,
+            transferamount,
+            transfercurrency,
             accounts    = new Element('div', {'class': 'accounts opaque'}),
             amount      = new Element('div', {'class': 'amount opaque'}),
             categories  = new Element('div', {'class': 'categories opaque'}),
@@ -169,9 +172,18 @@ TransactionRow = new Class(Element, {
             account_div(data.accounts[j]);
             accounts.tooltip(accountstooltip);
         }
+        // Total amount
         if (data.amount) {
             amount.insert(loc_number(data.amount, data.currency));
-        }
+        } else if (this.type == 'transfer') {
+            data.accounts.forEach(function(account) {
+                if (account.amount > 0) {
+                    transferamount = account.amount;
+                    transfercurrency = account.currency;
+                }
+            });
+            amount.insert(loc_number(transferamount, transfercurrency));
+        };
 
         if (this.type) {
             this.insert(editbutton)
@@ -270,6 +282,7 @@ TransactionRow = new Class(Element, {
         } else {
             // Edit row for a new transaction
             description.set('placeholder', _('Description'));
+            // TODO: Default values depending on the search filter (account, category)
             details = transaction_edit_details.pick(type.getValue(), {})
             date.setValue(loc_date(new Date().toISOString().slice(0,10)))
             cancelbutton.onClick(function() {
