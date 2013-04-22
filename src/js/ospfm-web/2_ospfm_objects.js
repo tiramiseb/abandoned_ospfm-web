@@ -206,6 +206,7 @@ Collection = new Class(Observer, {
             position = objects.length;
             objects.push(object);
         };
+        object.collection = this;
         this.pointers[object.getkey()] = object;
         // If the collection is recursive, make the objects know it
         if (recursive) {
@@ -215,6 +216,7 @@ Collection = new Class(Observer, {
                 newcollection = new Collection(
                    null, false, this.sortkey, this.ascending, this.nocase, true
                 );
+                newcollection.parent = object;
                 newcollection.maketemplate(this.template.constructor);
                 if (object.data.children) {
                     newcollection.autofill(object.data.children);

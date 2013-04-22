@@ -69,28 +69,27 @@ TransactionRow = new Class(Element, {
         };
         return false;
     },
-    // TODO: display category full name (including parent name)
     display_row: function() {
         var accountstooltip,
             categoriestooltip,
             i, j,
             transferamount,
             transfercurrency,
-            accounts    = new Element('div', {'class': 'accounts opaque'}),
-            amount      = new Element('div', {'class': 'amount opaque'}),
-            categories  = new Element('div', {'class': 'categories opaque'}),
-            data        = this.data,
-            date        = new Element('div', {'class': 'date opaque'}).insert(
+            accounts      = new Element('div', {'class': 'accounts opaque'}),
+            amount        = new Element('div', {'class': 'amount opaque'}),
+            categoriesdiv = new Element('div', {'class': 'categories opaque'}),
+            data          = this.data,
+            date          = new Element('div', {'class': 'date opaque'}).insert(
                                 loc_date(data.date)
                             ),
-            description = new Element('div', {'class': 'description'}).insert(
+            description   = new Element('div', {'class': 'description'}).insert(
                                 data.description
                             ),
-            editbutton  = new Button('green', 'edit')
+            editbutton    = new Button('green', 'edit')
                                 .addClass('edit')
                                 .tooltip(_('Edit'))
                                 .onClick(this.edit_row),
-            type        = new Element('div', {'class': 'type'});
+            type          = new Element('div', {'class': 'type'});
         this.clean();
         this.removeClass('edit');
 
@@ -116,11 +115,11 @@ TransactionRow = new Class(Element, {
         }
 
         function category_div(category) {
-            categories.insert(category.name);
+            categoriesdiv.insert(category.name);
             categoriestooltip.insert([
                 new Element('tr').insert([
                     new Element('td', {'class': 'label'}).insert(
-                        category.name
+                        categories.get(category.id).fullRepr()
                     ),
                     new Element('td', {'class': 'amount'}).insert(
                         loc_number(category.category_amount, category.currency)
@@ -155,10 +154,10 @@ TransactionRow = new Class(Element, {
             j = data.categories.length - 1;
             for (i=0; i<j; i++) {
                 category_div(data.categories[i]);
-                categories.insert(', ');
+                categoriesdiv.insert(', ');
             };
             category_div(data.categories[j]);
-            categories.tooltip(categoriestooltip);
+            categoriesdiv.tooltip(categoriestooltip);
         }
 
         // Accounts list
@@ -194,7 +193,7 @@ TransactionRow = new Class(Element, {
             type,
             amount,
             date,
-            categories,
+            categoriesdiv,
             accounts
         ])
     },

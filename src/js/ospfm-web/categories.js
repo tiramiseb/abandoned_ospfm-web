@@ -67,6 +67,14 @@ Category = new Class(OspfmObject, {
         };
         return element;
     },
+    fullRepr:function() {
+        var element = new Element('span', {'html': this.data.name});
+        if (this.collection.parent) {
+            element.insert(new Icon('subcoll'), 'top');
+            element.insert(this.collection.parent.fullRepr(), 'top');
+        }
+        return element;
+    },
     createsuccess:function() { return _('Created category'); },
     createfailed:function() { return _('Error creating category'); },
     updatesuccess:function() { return _('Updated category'); },
