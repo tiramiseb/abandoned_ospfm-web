@@ -282,8 +282,25 @@ TransactionRow = new Class(Element, {
         } else {
             // Edit row for a new transaction
             description.set('placeholder', _('Description'));
-            // TODO: Default values depending on the search filter (account, category)
-            details = transaction_edit_details.pick(type.getValue(), {})
+            location.hash.replace(/^#/,'').split('&')
+                                                    .forEach(function(filter) {
+                var category;
+                if ( filter.indexOf('account=') == 0 ) {
+                    this.data.accounts = [
+                        accounts.get(filter.split('=')[1]).data
+                    ];
+                } else if ( filter.indexOf('category=') == 0 ) {
+                    category = categories.get(filter.split('=')[1]).data
+                    this.data.categories = [{
+                        id: category.id,
+                        name: category.name,
+                        currency: category.currency,
+                        category_amount: 0,
+                        transaction_amount: 0
+                    }];
+                }
+            }.bind(this));
+            details = transaction_edit_details.pick(type.getValue(),this.data);
             date.setValue(loc_date(new Date().toISOString().slice(0,10)))
             cancelbutton.onClick(function() {
                 this.remove();
