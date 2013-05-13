@@ -28,7 +28,7 @@ Authentication = new Class({
     prebind: ['auth_response'],
     initialize:function() {
         this.errormessage = new Element('div', {'class': 'error'});
-        this.authdialog = new Element('div', {'id': 'authentication'}).insert([
+        this.authdialog = new Element('div', {'id': 'authenticationcontainer'}).insert([
             new Element('h1', {'html': _('Login')}),
             this.errormessage,
             new Element('form', {
