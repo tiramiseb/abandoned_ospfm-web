@@ -208,16 +208,30 @@ function loc_number(num, currency, nohtml) {
  * @return String formatted name
  */
 function loc_nameandnick(first, last, nick) {
-    var nameandnick,
-        nickname = l10n_name.nickname.replace('N', nick);
+    if (first == last && (last == "" || last == nick)) {
+        return l10n_name.nickname.replace('N', nick);
+    } else {
+        return l10n_name.nameandnick
+                    .replace('F', first)
+                    .replace('L', last)
+                    .replace('N', nick);
+    }
+}
+
+function loc_topbarname(userobj) {
+    var first = userobj.data.first_name,
+        last = userobj.data.last_name,
+        nick = userobj.data.username,
+        nickname = l10n_name.nickname.replace('N', nick),
+        nameandnick;
     if (first == last && last == nick) {
-        return '<span class="fullname">'+nickname+'</span><span class="nickonly">'+nick+'</span>';
+        return '<span class="fullname">'+nickname+'</span><span class="nickonly">'+nickname+'</span>';
     } else {
         nameandnick = l10n_name.nameandnick
                             .replace('F', first)
                             .replace('L', last)
                             .replace('N', nick);
-        return '<span class="fullname">'+nameandnick+'</span><span class="nickonly">'+nick+'</span>';
+        return '<span class="fullname">'+nameandnick+'</span><span class="nickonly">'+nickname+'</span>';
     }
 }
 

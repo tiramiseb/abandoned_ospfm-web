@@ -46,7 +46,7 @@ init.on('end', function() {
                                 'id': 'displayusername'
                             });
     user_me.on('changed name', function() {
-        displayusername.update(''+user_me);
+        displayusername.update(''+loc_topbarname(user_me));
     });
     $('userinfo').insert(displayusername, 'top');
 });
