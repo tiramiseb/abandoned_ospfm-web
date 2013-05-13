@@ -77,10 +77,13 @@ ContactNameField = new Class(Field, {
                     new Input({'name':'criterion'}),
                     new Button('green', 'search', _('Search'), 'submit')
                 ]).onSubmit(function(event) {
-                    var criterion = event.currentTarget.values().criterion;
+                    var criterion = event.currentTarget.values().criterion,
+                        parameters;
                     event.preventDefault();
                     if (criterion) {
+                        parameters = { key: authentication.key };
                         Xhr.load(api_url+'users/search/'+criterion, {
+    params: parameters,
     // Indentation is not respected because of the deepness of this stuff...
     onSuccess: function(request) {
         var results = [];
