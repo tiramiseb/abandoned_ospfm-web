@@ -78,6 +78,7 @@ $(document).onReady(function(){
             // api.js
         api_rates,
             // authentication.js
+        demoaccounts,
         Authentication,
             // categories.js
         CategoryCurrencyField,

@@ -24,10 +24,21 @@
  * @param Array arguments to the function to execute
  */
 
+demoaccounts = ['demo_fr', 'demo_en']
+
 Authentication = new Class({
-    prebind: ['auth_response'],
+    prebind: ['authenticate', 'auth_response_auto', 'auth_response'],
     initialize:function() {
         this.errormessage = new Element('div', {'class': 'error'});
+        this.authusername = new Input({
+                                'id': 'authusername',
+                                'name': 'username'
+                            });
+        this.authpassword = new Input({
+                                'id': 'authpassword',
+                                'name': 'password',
+                                'type': 'password'
+                            });
         this.authdialog = new Element('div', {'id': 'authenticationcontainer'}).insert([
             new Element('h1', {'html': _('Login')}),
             this.errormessage,
@@ -45,10 +56,7 @@ Authentication = new Class({
                             })
                         ),
                         new Element('td').insert(
-                            new Element('input', {
-                                'id': 'authusername',
-                                'name': 'username'
-                            })
+                            this.authusername
                         )
                     ]),
                     new Element('tr').insert([
@@ -59,11 +67,7 @@ Authentication = new Class({
                             })
                         ),
                         new Element('td').insert(
-                            new Element('input', {
-                                'id': 'authpassword',
-                                'name': 'password',
-                                'type': 'password'
-                            })
+                            this.authpassword
                         )
                     ]),
                     new Element('tr').insert(
@@ -79,12 +83,25 @@ Authentication = new Class({
     },
     showdialog: function(errormessage) {
         errormessage = errormessage || "";
+        if (this.username) {
+            this.authusername.value(this.username);
+        };
+        if (this.password) {
+            this.authpassword.value(this.password);
+        }
         this.errormessage.clean();
         this.errormessage.insert(errormessage);
         dialog(this.authdialog);
     },
     authenticate: function(func, args) {
         // XXX Maybe allow storing multiple functions, I don't know yet if multiple requests can occur before authorization, especially when username and password are known.
+        var url_id = purl().param('id');
+        if (!this.username && url_id) {
+            this.username = url_id;
+            if (demoaccounts.indexOf(url_id) != -1) {
+                this.password = 'demo';
+            };
+        };
         this.func = func;
         this.args = args;
         if (this.username && this.password) {
@@ -96,19 +113,22 @@ Authentication = new Class({
                     'username': this.username,
                     'password': this.password
                 }
-            }).onComplete(this.auth_response);
+            }).onComplete(this.auth_response_auto);
         } else {
             this.showdialog();
         };
     },
-    auth_response: function(response) {
+    auth_response_auto: function(response) {
+        this.auth_response(response, true);
+    },
+    auth_response: function(response, was_auto) {
         var resp = response.responseJSON;
         if (resp.status == 401) {
             this.showdialog(_('Invalid username or password...'));
         } else {
-            if ($('dialog').visible() && this.authdialog.visible()) {
-                this.username = $('authusername').value();
-                this.password = $('authpassword').value();
+            if (!was_auto) {
+                this.username = this.authusername.value();
+                this.password = this.authusername.value();
                 dialog(new Element('span').insert([
                     new Element('img', {'width':'16', 'height':'16', 'src':static_url+'image/loading.gif'}),
                     new Element('span', {'html': ' '+_('Loading...')})
