@@ -32,7 +32,6 @@ ContactNameField = new Class(Field, {
         if (this.object.data.username) {
             content = this.display();
             content.insert(
-                //~new Element('input', {
                 new Input({
                     'type': 'hidden',
                     'name': 'username',

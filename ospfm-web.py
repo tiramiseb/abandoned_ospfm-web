@@ -48,7 +48,8 @@ def index(something=None):
     return render_template('index.html', app_name=config.APP_NAME,
                            api_url=config.API_URL,
                            help_url=config.HELP_URL,
-                           static_url=config.STATIC_URL)
+                           static_url=config.STATIC_URL,
+                           demo_accounts=config.DEMO_ACCOUNTS)
 
 @app.route('/browserlocale')
 def browserlocale():

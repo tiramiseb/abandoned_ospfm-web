@@ -161,7 +161,23 @@ var SettingsScreen = new Class(Screen, {
                 'preferred_currency': values.currency
             });
             if (language != locale.full) {
-                preferences.set('ospfm-web-locale', language);
+                if (authentication.demo) {
+                    dialog([
+                        new Element('p', {
+                            'html':
+                          _('Demo accounts languages cannot be changed')
+                        }),
+                        new Element('div', {'class':'bottombuttons'}).insert([
+                            new Button('green', 'accept', _('OK')).onClick(
+                                function() {
+                                    close_dialog();
+                                }
+                            )
+                        ])
+                    ]);
+                } else {
+                    preferences.set('ospfm-web-locale', language);
+                }
             }
         });
         password_form = new Form().insert(
@@ -201,20 +217,24 @@ var SettingsScreen = new Class(Screen, {
                 password = values.password,
                 currentpassword = values.currentpassword;
             event.preventDefault();
-            if (password != values.passwordconfirm) {
-                popup(_('Please enter the same password in "New password" and "Confirm password"'), true);
-            } else if (currentpassword == '') {
-                popup(_('The current password cannot be empty'));
-            } else if (password == '') {
-                popup(_('The new password cannot be empty'));
+            if (authentication.demo) {
+                popup(_('Demo accounts passwords cannot be changed'), true);
             } else {
-                user_me.update({
-                    'password': password,
-                    'currentpassword': currentpassword
-                }, function() {
-                    authentication.password = password;
-                });
+                if (password != values.passwordconfirm) {
+                    popup(_('Please enter the same password in "New password" and "Confirm password"'), true);
+                } else if (currentpassword == '') {
+                    popup(_('The current password cannot be empty'));
+                } else if (password == '') {
+                    popup(_('The new password cannot be empty'));
+                } else {
+                    user_me.update({
+                        'password': password,
+                        'currentpassword': currentpassword
+                    }, function() {
+                        authentication.password = password;
+                    });
 
+                };
             };
         });
 
@@ -360,6 +380,12 @@ var SettingsScreen = new Class(Screen, {
                 ),
                 new Element('span', {'class': 'buttonscell'}).insert(
                     new Button('blue', 'add', _('Add')).onClick(function() {
+                        if (authentication.demo) {
+                            popup(
+                         _('Email addresses cannot be added to demo accounts'),
+                         true
+                            );
+                        } else {
     // Indentation is not respected because of the deepness of this stuff...
     var address = emailinput.getValue();
     if (address) {
@@ -406,6 +432,7 @@ var SettingsScreen = new Class(Screen, {
         };
     };
     emailinput.setValue('');
+                        }
                     })
                 )
             ]);

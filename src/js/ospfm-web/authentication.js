@@ -24,8 +24,6 @@
  * @param Array arguments to the function to execute
  */
 
-demoaccounts = ['demo_fr', 'demo_en']
-
 Authentication = new Class({
     prebind: ['authenticate', 'auth_response_auto', 'auth_response'],
     initialize:function() {
@@ -96,9 +94,10 @@ Authentication = new Class({
     authenticate: function(func, args) {
         // XXX Maybe allow storing multiple functions, I don't know yet if multiple requests can occur before authorization, especially when username and password are known.
         var url_id = purl().param('id');
-        if (!this.username && url_id) {
+        if (url_id) {
             this.username = url_id;
             if (demoaccounts.indexOf(url_id) != -1) {
+                this.demo = true;
                 this.password = 'demo';
             };
         };

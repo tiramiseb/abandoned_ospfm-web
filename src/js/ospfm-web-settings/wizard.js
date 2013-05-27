@@ -21,23 +21,27 @@ function wizardconfirm() {
     var applybutton  = new Button('red', 'apply',
                                   _('Yes, erase and reinitialize my data')),
         cancelbutton = new Button('green', 'cancel', _('No, go back'));
-    cancelbutton.onClick(close_dialog);
-    applybutton.onClick(function() {
-        wizard();
-    });
-    dialog(
-        [
-            new Element('h1', {'html':_('Really reinitialize?')}),
-            new Element('p', {
-                'html':_('Do you really want to reinitialize your everCount data?')
-            }),
-            new Element('p', {
-                'html':_('Everything will be erased : accounts, categories, transactions... You will not be able to recover anything of these.')
-            }),
-            new Element('div', {'class':'bottombuttons'}).insert([
-                applybutton,
-                cancelbutton
-            ])
-        ]
-    )
+    if (authentication.demo) {
+        popup(_('Demo accounts cannot be reinitialized'), true)
+    } else {
+        cancelbutton.onClick(close_dialog);
+        applybutton.onClick(function() {
+            wizard();
+        });
+        dialog(
+            [
+                new Element('h1', {'html':_('Really reinitialize?')}),
+                new Element('p', {
+                    'html':_('Do you really want to reinitialize your everCount data?')
+                }),
+                new Element('p', {
+                    'html':_('Everything will be erased : accounts, categories, transactions... You will not be able to recover anything of these.')
+                }),
+                new Element('div', {'class':'bottombuttons'}).insert([
+                    applybutton,
+                    cancelbutton
+                ])
+            ]
+        )
+    }
 };

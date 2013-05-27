@@ -89,7 +89,7 @@ screens = {
      * loads the screen corresponding to the current URL
      */
     'loadcurrent': function() {
-        url = purl();
+        var url = purl();
         this.load(url.attr('path'), url.attr('fragment'), true);
     },
     /**

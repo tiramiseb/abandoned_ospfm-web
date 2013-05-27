@@ -28,3 +28,5 @@ HELP_URL = '/'
 STATIC_URL = 'http://localhost:5000/static/'
 
 APP_NAME = 'OSPFM-web, dev'
+
+DEMO_ACCOUNTS = ('demo',)
