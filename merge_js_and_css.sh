@@ -19,7 +19,7 @@
 
 if [ "$1" = 'debug' ]
 then
-
+cat src/js/purl.js > static/js/purl.js
 cat src/js/ospfm-web/*.js > static/js/ospfm-web.js
 cat src/js/ospfm-web-settings/*.js > static/js/ospfm-web-settings.js
 for i in src/locale/*.js
@@ -30,6 +30,8 @@ sass --style expanded src/css/main.scss static/css/ospfm-web.css
 
 else
 
+echo "====> Minifying purl.js"
+cat src/js/purl.js | java -jar tools/yuicompressor-2.4.7.jar --type js -o static/js/purl.js
 echo "====> Minifying ospfm-web.js"
 cat src/js/ospfm-web/*.js | java -jar tools/yuicompressor-2.4.7.jar --type js -o static/js/ospfm-web.js
 echo "====> Minifying ospfm-web-settings.js"

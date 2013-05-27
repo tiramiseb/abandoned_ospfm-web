@@ -86,6 +86,13 @@ screens = {
         };
     },
     /**
+     * loads the screen corresponding to the current URL
+     */
+    'loadcurrent': function() {
+        url = purl();
+        this.load(url.attr('path'), url.attr('fragment'), true);
+    },
+    /**
      * loads the previous screen or '/' if there is no previous screen
      */
     'back': function() {
@@ -119,14 +126,14 @@ function resize_maincontent_and_sidebar() {
 
 init.on('end', function() {
     // Load the screen
-    screens.load(location.pathname, location.hash, true);
+    screens.loadcurrent();
     $(window).on('popstate', function() {
         if (screens.currentpath != location.pathname) {
-            screens.load(location.pathname, location.hash, true);
+            screens.loadcurrent();
         };
     });
     $(window).on('hashchange', function() {
-        screens.load(location.pathname, location.hash, true);
+        screens.loadcurrent();
     });
     // Resize the content
     resize_maincontent_and_sidebar();
