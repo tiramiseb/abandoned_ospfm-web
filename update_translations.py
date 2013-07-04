@@ -85,7 +85,7 @@ def get_strings(filename):
     strings = {}
     with open(filename, 'r') as f:
         for linenb, line in enumerate(f.readlines()):
-            for string in re.findall("_\('([^\)]*)'\)", line):
+            for string in re.findall("_\('([^\']*)'\)", line):
                 if string in strings:
                     strings[string].append('%s:%d' % (filename, linenb))
                 else:

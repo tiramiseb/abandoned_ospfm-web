@@ -65,6 +65,7 @@ var SettingsScreen = new Class(Screen, {
                                             'name': 'passwordconfirm',
                                             'id': 'passwordconfirmsetting'
                                         }),
+                                            // XXX New font
             redo_wizard_button     = new Button('red', 'cancel',
                                                 _('Reinitialize everything'))
                                             .onClick(wizardconfirm),
@@ -79,6 +80,7 @@ var SettingsScreen = new Class(Screen, {
         this.buttons = new Element('div', {
                                 'class': 'bottombuttons'
                             }).insert(
+                                // XXX New font
                                 new Button('blue', 'close', _('Close'))
                                     .onClick(screens.back)
                             );
@@ -147,6 +149,7 @@ var SettingsScreen = new Class(Screen, {
                     new Element('td', {
                         'class': 'submit', 'colspan': '2'
                     }).insert(
+                        // XXX New font
                         new Button('green', 'apply', _('Apply'), 'submit')
                     )
                 )
@@ -168,6 +171,7 @@ var SettingsScreen = new Class(Screen, {
                           _('Demo accounts languages cannot be changed')
                         }),
                         new Element('div', {'class':'bottombuttons'}).insert([
+                            // XXX New font
                             new Button('green', 'accept', _('OK')).onClick(
                                 function() {
                                     close_dialog();
@@ -207,6 +211,7 @@ var SettingsScreen = new Class(Screen, {
                     new Element('td', {
                         'class': 'submit', 'colspan': '2'
                     }).insert(
+                        // XXX New font
                         new Button('green', 'apply',
                                    _('Change password'), 'submit')
                     )
@@ -266,6 +271,7 @@ var SettingsScreen = new Class(Screen, {
                     stopnotif.splice(position, 1);
                 };
                 btn.replace(
+                    // XXX New font
                     new Button('green', 'mail')
                         .tooltip(_('Disable notifications to this address'))
                         .onClick(disable_notifications)
@@ -284,6 +290,7 @@ var SettingsScreen = new Class(Screen, {
                     notif.splice(position, 1);
                 };
                 btn.replace(
+                    // XXX New font
                     new Button('red', 'mail')
                         .tooltip(_('Enable notifications to this address'))
                         .onClick(enable_notifications)
@@ -299,6 +306,7 @@ var SettingsScreen = new Class(Screen, {
                 buttonscell = new Element('span', {
                     'class':'buttonscell'
                 }).insert(
+                    // XXX New font
                     new Button('red', 'del')
                     .tooltip(_('Delete'))
                     .onClick(function(event) {
@@ -329,12 +337,14 @@ var SettingsScreen = new Class(Screen, {
                 );
                 if (email.confirmed) {
                     confirmcell.insert(
+                        // XXX New font
                         new Icon('valid')
                            .addClass('valid')
                            .tooltip(_('This email address has been confirmed'))
                     )
                 } else {
                     confirmcell.insert(
+                        // XXX New font
                         new Icon('invalid')
                             .addClass('error')
                             .tooltip(_('You should confirm this email address by<br/>answering to the email that has been sent to you'))
@@ -343,6 +353,7 @@ var SettingsScreen = new Class(Screen, {
                 if (email.confirmed) {
                     if (email.notification) {
                         buttonscell.insert(
+                            // XXX New font
                             new Button('green', 'mail')
                                .tooltip(_('Disable notifications to this address'))
                                .onClick(disable_notifications),
@@ -350,6 +361,7 @@ var SettingsScreen = new Class(Screen, {
                         );
                     } else {
                         buttonscell.insert(
+                            // XXX New font
                             new Button('red', 'mail')
                                 .tooltip(_('Enable notifications to this address'))
                                 .onClick(enable_notifications),
@@ -358,6 +370,7 @@ var SettingsScreen = new Class(Screen, {
                     };
                 } else {
                     buttonscell.insert(
+                        // XXX New font
                         new Button('green', 'mail').disable()
                             .tooltip(_('Notifications cannot be enabled<br>on an unconfirmed address')),
                         'top'
@@ -379,6 +392,7 @@ var SettingsScreen = new Class(Screen, {
                     emailinput
                 ),
                 new Element('span', {'class': 'buttonscell'}).insert(
+                    // XXX New font
                     new Button('blue', 'add', _('Add')).onClick(function() {
                         if (authentication.demo) {
                             popup(
@@ -393,6 +407,7 @@ var SettingsScreen = new Class(Screen, {
             dialog([
                 new Element('p', {'html':_('Invalid email address')}),
                 new Element('div', {'class':'bottombuttons'}).insert([
+                    // XXX New font
                     new Button('blue', 'close', _('Close'))
                         .onClick(function() { close_dialog() })
                 ])
@@ -401,6 +416,7 @@ var SettingsScreen = new Class(Screen, {
             addrow.insert(
                 new Element('div', {'class':'editrow'}).insert([
                     new Element('span', {'class': 'editcell'}).insert(
+                        // XXX New font
                         new Icon('invalid')
                             .addClass('blue')
                             .tooltip(_('A confirmation email will be sent<br/>after applying modifications'))
@@ -408,8 +424,10 @@ var SettingsScreen = new Class(Screen, {
                     new Element('span', {'class': 'editcell emailaddress'})
                         .insert(emailinput.getValue()),
                     new Element('span', {'class': 'buttonscell'}).insert([
+                        // XXX New font
                         new Button('green', 'mail').disable()
                             .tooltip(_('Notifications cannot be enabled<br>on an unconfirmed address')),
+                        // XXX New font
                         new Button('red', 'del')
                             .tooltip(_('Delete'))
                             .onClick(function(event) {
@@ -437,7 +455,9 @@ var SettingsScreen = new Class(Screen, {
                 )
             ]);
             formrow = new Element('div', {'class': 'addrow'}).insert([
+                // XXX New font
                 new Button('green', 'apply', _('Apply'), 'submit'),
+                // XXX New font
                 new Button('blue', 'cancel', _('Cancel'), 'reset'),
             ]);
             return table.insert([addrow, formrow]);
@@ -484,6 +504,7 @@ var SettingsScreen = new Class(Screen, {
                 unused_widgets.insert(widgets.get(widget));
             });
         }).delay(10);
+        // XXX New font
         widgets_move_button = new Button('blue', 'move', _('Move widgets'))
         .onClick(function() {
             widgets_screen_buttons.update(
@@ -491,6 +512,7 @@ var SettingsScreen = new Class(Screen, {
             )
             start_move_widgets()
         });
+        // XXX New font
         widgets_apply_button = new Button('green', 'apply', _('Apply'))
         .onClick(function() {
             widgets_screen_buttons.update(
@@ -616,6 +638,7 @@ function start_move_widgets() {
     // Add handle
     $$('span.widgeticon').each(function(element) {
         element.parent().insert(
+            // XXX New font
             new Icon('move').addClass('widgethandle'),
             'before'
         )
