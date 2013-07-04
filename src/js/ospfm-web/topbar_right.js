@@ -22,7 +22,7 @@
 init.on('go', function() {
     // init.start and init.success are not needed here
     $('userinfo').insert([
-        new Button('green', 'settings')
+        new Button('green', 'cog')
             .onClick(function() {
                 screens.load('/settings');
             })
@@ -32,7 +32,7 @@ init.on('go', function() {
                 window.open(help_url, '_blank');
             })
             .tooltip(_('Help')),
-        new Button('red', 'logout')
+        new Button('red', 'exit')
             .onClick(function() {
                 authentication.logout();
             })

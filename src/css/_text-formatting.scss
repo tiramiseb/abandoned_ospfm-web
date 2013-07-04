@@ -16,6 +16,10 @@
 //    You should have received a copy of the GNU Affero General Public License
 //    along with OSPFM-web.  If not, see <http://www.gnu.org/licenses/>.
 
+span, strong {
+    vertical-align: baseline;
+}
+/*
 p {
     margin: 0 0.5em 0.5em 2em;
     text-align: justify;
@@ -29,40 +33,16 @@ li {
     list-style-type: square;
 }
 
-.error {
-    color: #f00;
-    font-weight: bold;
-}
+
+// Only in settings screen, for email addresses
 .valid {
     color: #090;
     font-weight: bold;
 }
-.total {
-    font-weight: bold;
-}
+// Email addresses and move handle, in settings screen
 .blue {
     color: #0080ff;
 }
-
-span.cursymbol {
-    opacity: 0.5;
-    filter: alpha(opacity=50);
-    vertical-align: baseline;
-}
-span.negative {color:#f00}
-
-em {
-    font-style: italic;
-}
-
-strong {
-    vertical-align: baseline;
-}
-
-
-ul.rui-autocompleter strong {
-    color: #f00;
-}
-
+*/
 
 

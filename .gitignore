@@ -1,7 +1,10 @@
+.sass-cache
 *.pyc
 configuration.py
-static/css/ospfm-web.css
+static/css/*.css
+static/font/*
+static/image/*
+!static/image/loading.gif
 static/js/ospfm-web*.js
 static/js/purl.js
 static/locale/*.js
-.sass-cache

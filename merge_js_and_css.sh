@@ -19,6 +19,7 @@
 
 if [ "$1" = 'debug' ]
 then
+
 cat src/js/purl.js > static/js/purl.js
 cat src/js/ospfm-web/*.js > static/js/ospfm-web.js
 cat src/js/ospfm-web-settings/*.js > static/js/ospfm-web-settings.js
@@ -27,6 +28,7 @@ do
 cp $i static/locale/
 done
 sass --style expanded src/css/main.scss static/css/ospfm-web.css
+sass --style expanded src/css/default-theme.scss static/css/default-theme.css
 
 else
 
@@ -43,5 +45,6 @@ cat $i | java -jar tools/yuicompressor-2.4.7.jar --type js -o static/locale/$(ba
 done
 echo "====> Creating ospfm-web.css from main.scss"
 sass --style compressed src/css/main.scss static/css/ospfm-web.css
+sass --style compressed src/css/default-theme.scss static/css/default-theme.css
 
 fi

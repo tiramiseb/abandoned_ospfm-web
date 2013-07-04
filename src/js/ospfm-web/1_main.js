@@ -45,17 +45,12 @@ init.success = function() {
     };
 }
 init.failed = function() {
-    var errormessage = new Element('span', {
-        'class':'error',
-        'html':_('Sorry, a problem occured. Please try again later...')
-    });
     init.count = -100;
-    dialog(errormessage);
+    dialog(new Element('span', {
+                'class':'error',
+                'html':_('Sorry, a problem occured. Please try again later...')
+            }), false);
 }
-
-init.on('browserlocaleloaded', function() {
-    $('loadingdialogtext').update(_('Loading...'));
-});
 
 init.on('go', function() {
     $('spinner').update(_('Loading...'));

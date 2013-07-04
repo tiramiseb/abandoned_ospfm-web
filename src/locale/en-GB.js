@@ -18,8 +18,8 @@
  */
 l10n_locales = {
     "en-GB": "English (United Kingdom)",
-    "en-US": "English (United States)",
-    "fr-FR": "French (France)"
+    "fr-FR": "French (France)",
+    "en-US": "English (United States)"
 }
 l10n_numbers = {
     "decimal": ".",
@@ -34,44 +34,38 @@ l10n_numbers = {
     "negpct": "-N%"
 }
 l10n_name = {
-    "nameandnick": "F L (N)",
-    "fullname": "F L",
-    "shortname": "F",
-    "nickname": "(N)"
+    "nameandnick": "%F %L (%N)",
+    "fullname": "%F %L",
+    "shortname": "%F",
+    "nickname": "(%N)"
 }
 l10n_date = {
     "first_day_of_week": "monday",
     "shortformat": "%d/%m/%Y"
 }
 l10n_currency = {
-    "completename": "C: N (S)"
+    "completename": "%C: %N (%S)"
 }
 l10n_strings = {
 
-    // src/js/ospfm-web/categories.js:173
-    // src/js/ospfm-web/categories.js:184
+    // src/js/ospfm-web/categories.js:181
+    // src/js/ospfm-web/categories.js:192
 //    "\"%CATEGORYNAME%\"":
 //        "",
 
-    // src/js/ospfm-web/categories.js:165
+    // src/js/ospfm-web/categories.js:173
 //    "\"%CATEGORYSHORTNAME%\" in \"%PARENTFULLNAME%\"":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:373
-//    "A confirmation email will be sent<br/>after applying modifications":
-//        "",
-
-    // src/js/ospfm-web/transactionscreen.js:121
+    // src/js/ospfm-web/transactionscreen.js:143
 //    "Account":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:519
-    // src/js/ospfm-web/widgets.js:73
+    // src/js/ospfm-web/widgets.js:72
 //    "Accounts":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:361
-    // src/js/ospfm-web/2_ospfm_objects.js:721
+    // src/js/ospfm-web/2_ospfm_objects.js:723
 //    "Add":
 //        "",
 
@@ -83,87 +77,72 @@ l10n_strings = {
 //    "Add a transaction":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:102
+    // src/js/ospfm-web/contacts.js:105
 //    "Add this contact":
 //        "",
 
-    // src/js/ospfm-web/transactionscreen.js:97
+    // src/js/ospfm-web/transactionscreen.js:115
 //    "All transactions have been displayed!":
 //        "",
 
-    // src/js/ospfm-web/transactions_0.js:385
+    // src/js/ospfm-web/transactions_0.js:414
 //    "Amount":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:149
-    // src/js/ospfm-web-settings/settings.js:406
-    // src/js/ospfm-web-settings/settings.js:460
-    // src/js/ospfm-web/widgets.js:308
-    // src/js/ospfm-web/2_ospfm_objects.js:713
+    // src/js/ospfm-web/widgets.js:302
+    // src/js/ospfm-web/2_ospfm_objects.js:715
 //    "Apply":
 //        "",
 
-    // src/js/ospfm-web/accounts.js:63
+    // src/js/ospfm-web/settings.js:35
+//    "Back":
+//        "",
+
     // src/js/ospfm-web/categories.js:46
     // src/js/ospfm-web/categories.js:48
     // src/js/ospfm-web/categories.js:50
     // src/js/ospfm-web/categories.js:52
     // src/js/ospfm-web/categories.js:54
+    // src/js/ospfm-web/accounts.js:63
 //    "Balance":
 //        "",
 
-    // src/js/ospfm-web/wizard.js:119
+    // src/js/ospfm-web/wizard.js:121
 //    "Basic elements":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:398
+    // src/js/ospfm-web/widgets.js:392
 //    "Calculator":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:407
-    // src/js/ospfm-web/transactionscreen.js:112
-    // src/js/ospfm-web/transactions_0.js:203
     // src/js/ospfm-web/wizard.js:20
+    // src/js/ospfm-web/transactionscreen.js:134
+    // src/js/ospfm-web/transactions_0.js:214
 //    "Cancel":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:526
-    // src/js/ospfm-web/widgets.js:136
+    // src/js/ospfm-web/widgets.js:131
 //    "Categories":
 //        "",
 
-    // src/js/ospfm-web/transactionscreen.js:123
+    // src/js/ospfm-web/transactionscreen.js:147
 //    "Category":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:194
-//    "Change password":
-//        "",
-
-    // src/js/ospfm-web-settings/settings.js:472
-//    "Click on \"Move widgets\" to configure the widgets you want to be displayed, on the left or on top of the screen.":
-//        "",
-
-    // src/js/ospfm-web-settings/settings.js:81
-    // src/js/ospfm-web/interface.js:93
+    // src/js/ospfm-web/contacts.js:132
 //    "Close":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:139
+    // src/js/ospfm-web/contacts.js:148
 //    "Comment":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:184
-//    "Confirm password":
-//        "",
-
-    // src/js/ospfm-web-settings/settings.js:505
-    // src/js/ospfm-web/widgets.js:327
+    // src/js/ospfm-web/widgets.js:321
 //    "Contacts":
 //        "",
 
-    // src/js/ospfm-web/transactions_0.js:277
-    // src/js/ospfm-web/transactions_0.js:278
+    // src/js/ospfm-web/transactions_0.js:306
+    // src/js/ospfm-web/transactions_0.js:307
 //    "Create":
 //        "",
 
@@ -171,11 +150,11 @@ l10n_strings = {
 //    "Created account":
 //        "",
 
-    // src/js/ospfm-web/categories.js:69
+    // src/js/ospfm-web/categories.js:77
 //    "Created category":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:153
+    // src/js/ospfm-web/contacts.js:162
 //    "Created contact":
 //        "",
 
@@ -183,45 +162,38 @@ l10n_strings = {
 //    "Created currency":
 //        "",
 
-    // src/js/ospfm-web/transactions_0.js:326
+    // src/js/ospfm-web/transactions_0.js:355
 //    "Created transaction":
 //        "",
 
-    // src/js/ospfm-web/2_ospfm_objects.js:444
+    // src/js/ospfm-web/2_ospfm_objects.js:446
 //    "Creation failed":
 //        "",
 
-    // src/js/ospfm-web/2_ospfm_objects.js:435
+    // src/js/ospfm-web/2_ospfm_objects.js:437
 //    "Creation successful":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:535
-    // src/js/ospfm-web/widgets.js:358
+    // src/js/ospfm-web/widgets.js:352
 //    "Currencies":
 //        "",
 
-    // src/js/ospfm-web/accounts.js:61
     // src/js/ospfm-web/categories.js:44
+    // src/js/ospfm-web/accounts.js:61
 //    "Currency":
-//        "",
-
-    // src/js/ospfm-web-settings/settings.js:170
-//    "Current password":
 //        "",
 
     // src/js/ospfm-web/wizard.js:28
 //    "Data creation wizard":
 //        "",
 
-    // src/js/ospfm-web/transactionscreen.js:125
-    // src/js/ospfm-web/transactions_0.js:212
+    // src/js/ospfm-web/transactionscreen.js:150
+    // src/js/ospfm-web/transactions_0.js:223
 //    "Date":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:282
-    // src/js/ospfm-web-settings/settings.js:381
-    // src/js/ospfm-web/transactions_0.js:206
-    // src/js/ospfm-web/2_ospfm_objects.js:656
+    // src/js/ospfm-web/2_ospfm_objects.js:658
+    // src/js/ospfm-web/transactions_0.js:217
 //    "Delete":
 //        "",
 
@@ -229,11 +201,11 @@ l10n_strings = {
 //    "Deleted account":
 //        "",
 
-    // src/js/ospfm-web/categories.js:73
+    // src/js/ospfm-web/categories.js:81
 //    "Deleted category":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:158
+    // src/js/ospfm-web/contacts.js:167
 //    "Deleted contact":
 //        "",
 
@@ -241,82 +213,68 @@ l10n_strings = {
 //    "Deleted currency":
 //        "",
 
-    // src/js/ospfm-web/transactions_0.js:343
+    // src/js/ospfm-web/transactions_0.js:372
 //    "Deleted transaction":
 //        "",
 
-    // src/js/ospfm-web/2_ospfm_objects.js:545
+    // src/js/ospfm-web/2_ospfm_objects.js:547
 //    "Deletion failed":
 //        "",
 
-    // src/js/ospfm-web/2_ospfm_objects.js:536
+    // src/js/ospfm-web/2_ospfm_objects.js:538
 //    "Deletion successful":
 //        "",
 
-    // src/js/ospfm-web/wizard.js:155
+    // src/js/ospfm-web-settings/wizard.js:24
+//    "Demo accounts cannot be reinitialized":
+//        "",
+
+    // src/js/ospfm-web/wizard.js:153
 //    "Demo elements":
 //        "",
 
-    // src/js/ospfm-web/transactions_0.js:271
+    // src/js/ospfm-web/transactions_0.js:282
 //    "Description":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:249
-    // src/js/ospfm-web-settings/settings.js:326
-//    "Disable notifications to this address":
-//        "",
-
-    // src/js/ospfm-web/widgets.js:298
+    // src/js/ospfm-web/widgets.js:292
 //    "Display category this deep...":
 //        "",
 
-    // src/js/ospfm-web-settings/wizard.js:31
+    // src/js/ospfm-web-settings/wizard.js:34
 //    "Do you really want to reinitialize your everCount data?":
 //        "",
 
-    // src/js/ospfm-web/categories.js:154
+    // src/js/ospfm-web/categories.js:162
 //    "Do you want to create the following categories?":
 //        "",
 
-    // src/js/ospfm-web/categories.js:157
+    // src/js/ospfm-web/categories.js:165
 //    "Do you want to create the following category?":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:479
+    // src/js/ospfm-web/widgets.js:470
 //    "ERROR: ":
 //        "",
 
-    // src/js/ospfm-web/transactions_0.js:87
-    // src/js/ospfm-web/2_ospfm_objects.js:650
+    // src/js/ospfm-web/2_ospfm_objects.js:652
+    // src/js/ospfm-web/transactions_0.js:89
 //    "Edit":
-//        "",
-
-    // src/js/ospfm-web-settings/settings.js:496
-//    "Email addresses":
-//        "",
-
-    // src/js/ospfm-web-settings/settings.js:500
-//    "Email addresses allow your friends and acquaintances to find you in order to create debts between you. They are also used to send notifications.":
 //        "",
 
     // src/js/ospfm-web/wizard.js:137
 //    "Empty data":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:267
-    // src/js/ospfm-web-settings/settings.js:333
-//    "Enable notifications to this address":
-//        "",
-
     // src/js/ospfm-web/accounts.js:72
 //    "Error creating account":
 //        "",
 
-    // src/js/ospfm-web/categories.js:70
+    // src/js/ospfm-web/categories.js:78
 //    "Error creating category":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:155
+    // src/js/ospfm-web/contacts.js:164
 //    "Error creating contact":
 //        "",
 
@@ -324,8 +282,8 @@ l10n_strings = {
 //    "Error creating currency":
 //        "",
 
-    // src/js/ospfm-web/transactions_0.js:329
-    // src/js/ospfm-web/transactions_0.js:336
+    // src/js/ospfm-web/transactions_0.js:358
+    // src/js/ospfm-web/transactions_0.js:365
 //    "Error creating transaction":
 //        "",
 
@@ -333,11 +291,11 @@ l10n_strings = {
 //    "Error deleting account":
 //        "",
 
-    // src/js/ospfm-web/categories.js:74
+    // src/js/ospfm-web/categories.js:82
 //    "Error deleting category":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:159
+    // src/js/ospfm-web/contacts.js:168
 //    "Error deleting contact":
 //        "",
 
@@ -345,7 +303,7 @@ l10n_strings = {
 //    "Error deleting currency":
 //        "",
 
-    // src/js/ospfm-web/transactions_0.js:346
+    // src/js/ospfm-web/transactions_0.js:375
 //    "Error deleting transaction":
 //        "",
 
@@ -353,11 +311,11 @@ l10n_strings = {
 //    "Error updating account":
 //        "",
 
-    // src/js/ospfm-web/categories.js:72
+    // src/js/ospfm-web/categories.js:80
 //    "Error updating category":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:157
+    // src/js/ospfm-web/contacts.js:166
 //    "Error updating contact":
 //        "",
 
@@ -369,16 +327,16 @@ l10n_strings = {
 //    "Error updating personal information":
 //        "",
 
-    // src/js/ospfm-web/transactions_0.js:318
-    // src/js/ospfm-web/transactions_0.js:334
+    // src/js/ospfm-web/transactions_0.js:347
+    // src/js/ospfm-web/transactions_0.js:363
 //    "Error updating transaction":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:118
+    // src/js/ospfm-web/contacts.js:122
 //    "Error while loading search results":
 //        "",
 
-    // src/js/ospfm-web-settings/wizard.js:34
+    // src/js/ospfm-web-settings/wizard.js:37
 //    "Everything will be erased : accounts, categories, transactions... You will not be able to recover anything of these.":
 //        "",
 
@@ -386,8 +344,8 @@ l10n_strings = {
 //    "Exchange rate":
 //        "",
 
-    // src/js/ospfm-web/transactions_0.js:136
-    // src/js/ospfm-web/transactions_0.js:225
+    // src/js/ospfm-web/transactions_0.js:138
+    // src/js/ospfm-web/transactions_0.js:236
 //    "Expense":
 //        "",
 
@@ -395,24 +353,16 @@ l10n_strings = {
 //    "Failed to get exchange rate, sorry":
 //        "",
 
-    // src/js/ospfm-web/2_screens.js:193
+    // src/js/ospfm-web/2_screens.js:200
 //    "Failed to load screen":
-//        "",
-
-    // src/js/ospfm-web-settings/settings.js:120
-//    "First name":
 //        "",
 
     // src/js/ospfm-web/transactions_transfer.js:80
 //    "From:":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:138
+    // src/js/ospfm-web/contacts.js:147
 //    "Full name":
-//        "",
-
-    // src/js/ospfm-web-settings/settings.js:483
-//    "General information":
 //        "",
 
     // src/js/ospfm-web/topbar_right.js:33
@@ -439,13 +389,12 @@ l10n_strings = {
 //    "In no category...":
 //        "",
 
-    // src/js/ospfm-web/transactions_0.js:138
-    // src/js/ospfm-web/transactions_0.js:229
+    // src/js/ospfm-web/transactions_0.js:140
+    // src/js/ospfm-web/transactions_0.js:240
 //    "Income":
 //        "",
 
-    // src/js/ospfm-web/wizard.js:196
-    // src/js/ospfm-web/wizard.js:215
+    // src/js/ospfm-web/wizard.js:206
 //    "Initialization successful":
 //        "",
 
@@ -453,69 +402,44 @@ l10n_strings = {
 //    "Initialization wizard":
 //        "",
 
-    // src/js/ospfm-web/wizard.js:166
+    // src/js/ospfm-web/wizard.js:165
 //    "Initialize everCount":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:111
-//    "Interface language":
-//        "",
-
-    // src/js/ospfm-web/wizard.js:87
+    // src/js/ospfm-web/wizard.js:90
 //    "Interface language:":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:366
-//    "Invalid email address":
-//        "",
-
-    // src/js/ospfm-web/authentication.js:106
+    // src/js/ospfm-web/authentication.js:126
 //    "Invalid username or password...":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:129
-//    "Last name":
-//        "",
-
-    // src/js/ospfm-web/authentication.js:113
-    // src/js/ospfm-web/1_main.js:56
-    // src/js/ospfm-web/1_main.js:60
+    // src/js/ospfm-web/authentication.js:133
+    // src/js/ospfm-web/1_main.js:55
 //    "Loading...":
 //        "",
 
-    // src/js/ospfm-web/authentication.js:31
-    // src/js/ospfm-web/authentication.js:72
+    // src/js/ospfm-web/authentication.js:40
+    // src/js/ospfm-web/authentication.js:77
 //    "Login":
 //        "",
 
-    // src/js/ospfm-web/transactions_0.js:267
-    // src/js/ospfm-web/transactions_0.js:268
+    // src/js/ospfm-web/transactions_0.js:278
+    // src/js/ospfm-web/transactions_0.js:279
 //    "Modify":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:453
-//    "Move widgets":
-//        "",
-
-    // src/js/ospfm-web/accounts.js:54
     // src/js/ospfm-web/categories.js:41
     // src/js/ospfm-web/currencies.js:28
+    // src/js/ospfm-web/accounts.js:54
 //    "Name":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:354
-//    "New email address":
-//        "",
-
-    // src/js/ospfm-web-settings/settings.js:177
-//    "New password":
-//        "",
-
-    // src/js/ospfm-web/contacts.js:114
+    // src/js/ospfm-web/contacts.js:118
 //    "No result found":
 //        "",
 
-    // src/js/ospfm-web/categories.js:200
+    // src/js/ospfm-web/categories.js:208
 //    "No thanks":
 //        "",
 
@@ -523,13 +447,7 @@ l10n_strings = {
 //    "No, go back":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:341
-    // src/js/ospfm-web-settings/settings.js:379
-//    "Notifications cannot be enabled<br>on an unconfirmed address":
-//        "",
-
-    // src/js/ospfm-web/wizard.js:205
-    // src/js/ospfm-web/wizard.js:224
+    // src/js/ospfm-web/wizard.js:216
 //    "OK":
 //        "",
 
@@ -537,76 +455,43 @@ l10n_strings = {
 //    "On account:":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:488
-    // src/js/ospfm-web/authentication.js:57
+    // src/js/ospfm-web/authentication.js:65
 //    "Password":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:287
+    // src/js/ospfm-web/widgets.js:281
 //    "Period for which to display the balance":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:539
-//    "Personal currencies allow you to manage other payment means: vouchers, etc.":
-//        "",
-
-    // src/js/ospfm-web-settings/settings.js:479
-//    "Personal information":
-//        "",
-
-    // src/js/ospfm-web/2_ospfm_objects.js:584
+    // src/js/ospfm-web/2_ospfm_objects.js:586
 //    "Place this category at root":
 //        "",
 
-    // src/js/ospfm-web/wizard.js:180
+    // src/js/ospfm-web/wizard.js:179
 //    "Please choose a wizard type":
-//        "",
-
-    // src/js/ospfm-web-settings/settings.js:204
-//    "Please enter the same password in \"New password\" and \"Confirm password\"":
 //        "",
 
     // src/js/ospfm-web/wizard.js:49
 //    "Please fill in the following fields in order to initialize your everCount data:":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:552
-//    "Please use a wider screen in order to change settings":
-//        "",
-
-    // src/js/ospfm-web-settings/settings.js:486
-//    "Preferences":
-//        "",
-
-    // src/js/ospfm-web-settings/settings.js:138
-//    "Preferred currency":
-//        "",
-
     // src/js/ospfm-web/topbar_right.js:38
 //    "Quit":
 //        "",
 
-    // src/js/ospfm-web-settings/wizard.js:29
+    // src/js/ospfm-web-settings/wizard.js:32
 //    "Really reinitialize?":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:490
-//    "Reinitialize":
-//        "",
-
-    // src/js/ospfm-web-settings/settings.js:68
-//    "Reinitialize everything":
-//        "",
-
-    // src/js/ospfm-web/transactions_0.js:510
+    // src/js/ospfm-web/transactions_0.js:539
 //    "Remove this category":
 //        "",
 
-    // src/js/ospfm-web/transactionscreen.js:25
-    // src/js/ospfm-web/transactionscreen.js:111
-    // src/js/ospfm-web/contacts.js:54
-    // src/js/ospfm-web/contacts.js:65
+    // src/js/ospfm-web/contacts.js:53
+    // src/js/ospfm-web/contacts.js:64
     // src/js/ospfm-web/contacts.js:77
+    // src/js/ospfm-web/transactionscreen.js:25
+    // src/js/ospfm-web/transactionscreen.js:133
 //    "Search":
 //        "",
 
@@ -614,18 +499,21 @@ l10n_strings = {
 //    "Search a contact":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:122
+    // src/js/ospfm-web/contacts.js:126
 //    "Search criterion cannot be emtpy":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:73
     // src/js/ospfm-web/topbar_right.js:28
 //    "Settings":
 //        "",
 
     // src/js/ospfm-web/api.js:50
-    // src/js/ospfm-web/1_main.js:49
+    // src/js/ospfm-web/1_main.js:50
 //    "Sorry, a problem occured. Please try again later...":
+//        "",
+
+    // src/js/ospfm-web/settings.js:34
+//    "Sorry, the settings screen is not available in the demo for the moment.":
 //        "",
 
     // src/js/ospfm-web/accounts.js:57
@@ -640,48 +528,36 @@ l10n_strings = {
 //    "The currency cannot be changed because<br/>there are transactions in this account.":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:206
-//    "The current password cannot be empty":
-//        "",
-
-    // src/js/ospfm-web-settings/settings.js:208
-//    "The new password cannot be empty":
-//        "",
-
-    // src/js/ospfm-web/categories.js:181
+    // src/js/ospfm-web/categories.js:189
 //    "This category does not exist:":
-//        "",
-
-    // src/js/ospfm-web-settings/settings.js:313
-//    "This email address has been confirmed":
 //        "",
 
     // src/js/ospfm-web/transactions_transfer.js:84
 //    "To:":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:119
+    // src/js/ospfm-web/widgets.js:116
 //    "Total":
 //        "",
 
-    // src/js/ospfm-web/transactions_0.js:140
-    // src/js/ospfm-web/transactions_0.js:233
+    // src/js/ospfm-web/transactions_0.js:142
+    // src/js/ospfm-web/transactions_0.js:244
 //    "Transfer between my accounts":
 //        "",
 
-    // src/js/ospfm-web/transactions_0.js:143
+    // src/js/ospfm-web/transactions_0.js:145
 //    "Unknown transaction type":
 //        "",
 
-    // src/js/ospfm-web/transactions_0.js:260
+    // src/js/ospfm-web/transactions_0.js:271
 //    "Unknown type":
 //        "",
 
-    // src/js/ospfm-web/2_ospfm_objects.js:500
+    // src/js/ospfm-web/2_ospfm_objects.js:502
 //    "Update failed":
 //        "",
 
-    // src/js/ospfm-web/2_ospfm_objects.js:491
+    // src/js/ospfm-web/2_ospfm_objects.js:493
 //    "Update successful":
 //        "",
 
@@ -689,11 +565,11 @@ l10n_strings = {
 //    "Updated account":
 //        "",
 
-    // src/js/ospfm-web/categories.js:71
+    // src/js/ospfm-web/categories.js:79
 //    "Updated category":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:156
+    // src/js/ospfm-web/contacts.js:165
 //    "Updated contact":
 //        "",
 
@@ -705,15 +581,15 @@ l10n_strings = {
 //    "Updated personal information":
 //        "",
 
-    // src/js/ospfm-web/transactions_0.js:315
+    // src/js/ospfm-web/transactions_0.js:344
 //    "Updated transaction":
 //        "",
 
-    // src/js/ospfm-web/authentication.js:43
+    // src/js/ospfm-web/authentication.js:53
 //    "Username":
 //        "",
 
-    // src/js/ospfm-web/wizard.js:123
+    // src/js/ospfm-web/wizard.js:125
 //    "When you choose this option, some basic elements will be created for you: a bank account, a wallet account, usual categories... This option is for people who want to use everCount rapidly, with some initial help.":
 //        "",
 
@@ -721,19 +597,15 @@ l10n_strings = {
 //    "When you choose to create an empty everCount account, you will have to create everything by yourself: accounts, categories, etc. This option is for people who already know how to use a financial application and who know exactly what they want to do.":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:509
-//    "Widgets":
-//        "",
-
-    // src/js/ospfm-web/wizard.js:159
+    // src/js/ospfm-web/wizard.js:157
 //    "With this option, multiple elements will be created, simulating an already-used everCount account: accouts, categories, transactions, etc. This option is for people who want to discover everCount and all its features.":
 //        "",
 
-    // src/js/ospfm-web/categories.js:155
+    // src/js/ospfm-web/categories.js:163
 //    "Yes, create the categories":
 //        "",
 
-    // src/js/ospfm-web/categories.js:158
+    // src/js/ospfm-web/categories.js:166
 //    "Yes, create the category":
 //        "",
 
@@ -741,81 +613,76 @@ l10n_strings = {
 //    "Yes, erase and reinitialize my data":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:491
-//    "You can reinitialize your data and re-run the initial wizard by clicking on this button:":
-//        "",
-
-    // src/js/ospfm-web/widgets.js:127
+    // src/js/ospfm-web/widgets.js:124
 //    "You have no account":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:350
+    // src/js/ospfm-web/widgets.js:344
 //    "You have no contact":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:250
+    // src/js/ospfm-web/widgets.js:243
 //    "You have not defined any category":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:389
+    // src/js/ospfm-web/widgets.js:383
 //    "You have not defined any personalized currency":
 //        "",
 
-    // src/js/ospfm-web-settings/settings.js:319
-//    "You should confirm this email address by<br/>answering to the email that has been sent to you":
+    // src/js/ospfm-web/wizard.js:209
+//    "Your account has been successfully (re)initialized.":
 //        "",
 
-    // src/js/ospfm-web/wizard.js:61
+    // src/js/ospfm-web/wizard.js:62
 //    "Your first name:":
 //        "",
 
-    // src/js/ospfm-web/wizard.js:74
+    // src/js/ospfm-web/wizard.js:76
 //    "Your last name:":
 //        "",
 
-    // src/js/ospfm-web/wizard.js:98
+    // src/js/ospfm-web/wizard.js:102
 //    "Your preferred currency:":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:280
+    // src/js/ospfm-web/widgets.js:273
 //    "all categories":
 //        "",
 
-    // src/js/ospfm-web/wizard.js:202
-    // src/js/ospfm-web/wizard.js:221
+    // src/js/ospfm-web/wizard.js:212
 //    "everCount will be reloaded to reinitialize the interface.":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:210
-    // src/js/ospfm-web/widgets.js:268
+    // src/js/ospfm-web/widgets.js:205
+    // src/js/ospfm-web/widgets.js:261
 //    "last 30 days":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:198
-    // src/js/ospfm-web/widgets.js:266
+    // src/js/ospfm-web/widgets.js:193
+    // src/js/ospfm-web/widgets.js:259
 //    "last 7 days":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:174
-    // src/js/ospfm-web/widgets.js:262
+    // src/js/ospfm-web/widgets.js:169
+    // src/js/ospfm-web/widgets.js:255
 //    "this month":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:162
-    // src/js/ospfm-web/widgets.js:260
+    // src/js/ospfm-web/widgets.js:157
+    // src/js/ospfm-web/widgets.js:253
 //    "this week":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:186
-    // src/js/ospfm-web/widgets.js:264
+    // src/js/ospfm-web/widgets.js:181
+    // src/js/ospfm-web/widgets.js:257
 //    "this year":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:278
+    // src/js/ospfm-web/widgets.js:271
 //    "top-level and their children":
 //        "",
 
-    // src/js/ospfm-web/widgets.js:276
+    // src/js/ospfm-web/widgets.js:269
 //    "top-level only":
 //        ""
 }

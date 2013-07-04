@@ -16,18 +16,8 @@
 //    You should have received a copy of the GNU Affero General Public License
 //    along with OSPFM-web.  If not, see <http://www.gnu.org/licenses/>.
 
-@import url('//fonts.googleapis.com/css?family=Oxygen:300,700');
-@font-face {
-    font-family: 'icons';
-    src:url('../font/icons.eot');
-    src:url('../font/icons.eot?#iefix') format('embedded-opentype'),
-        url('../font/icons.woff') format('woff'),
-        url('../font/icons.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
 
-
+// CSS Reset (thanks to Eric Meyer)
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -57,35 +47,24 @@ table {
     border-spacing: 0;
 }
 
-* { box-sizing: border-box; }
 
-html {
-    font-size: 62.5%;
+
+* {
+    -webkit-box-sizing: border-box; // Chrome -> 9.0
+                                    // Safari -> 5.0
+                                    // iOS -> 4.3
+                                    // Android -> 3.0
+                                    // Blackberry -> 7.0
+       -moz-box-sizing: border-box; // Firefox -> 23.0
+            box-sizing: border-box;
 }
 
-body {
-    background-image: url('../image/brushedalu.gif');
-    background-color: #e8e8e8;
-    color: #111;
-    font-size: 1.6em;
-    line-height: 1.5;
-}
 
-button {
-    font-size: 1em
-}
-
-body, input, select, button {
-    font-family: 'Oxygen', sans-serif;
-}
-
-input, select {
-    margin: 2px 0;
-    height: 1.5em;
-}
-
-////////// Global definitions
 
 .link, .link * {
     cursor: pointer;
+}
+
+div.rui-button.prev-month, div.rui-button.next-month {
+    height: auto !important;
 }

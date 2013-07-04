@@ -41,8 +41,8 @@ names
 * shortname: pattern for displaying a user's short name
 * nickname: pattern for displaying a user's nickname
 
-In these patterns, 'F' is the first name, 'L' is the last name (surname),
-and 'N' is the nickname.
+In these patterns, '%F' is the first name, '%L' is the last name (surname),
+and '%N' is the nickname.
 
 dates
 =====

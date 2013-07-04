@@ -209,12 +209,12 @@ function loc_number(num, currency, nohtml) {
  */
 function loc_nameandnick(first, last, nick) {
     if (first == last && (last == "" || last == nick)) {
-        return l10n_name.nickname.replace('N', nick);
+        return l10n_name.nickname.replace('%N', nick);
     } else {
         return l10n_name.nameandnick
-                    .replace('F', first)
-                    .replace('L', last)
-                    .replace('N', nick);
+                    .replace('%F', first)
+                    .replace('%L', last)
+                    .replace('%N', nick);
     }
 }
 
@@ -222,15 +222,15 @@ function loc_topbarname(userobj) {
     var first = userobj.data.first_name,
         last = userobj.data.last_name,
         nick = userobj.data.username,
-        nickname = l10n_name.nickname.replace('N', nick),
+        nickname = l10n_name.nickname.replace('%N', nick),
         nameandnick;
     if (first == last && last == nick) {
         return '<span class="fullname">'+nickname+'</span><span class="nickonly">'+nickname+'</span>';
     } else {
         nameandnick = l10n_name.nameandnick
-                            .replace('F', first)
-                            .replace('L', last)
-                            .replace('N', nick);
+                            .replace('%F', first)
+                            .replace('%L', last)
+                            .replace('%N', nick);
         return '<span class="fullname">'+nameandnick+'</span><span class="nickonly">'+nickname+'</span>';
     }
 }
@@ -245,9 +245,8 @@ function loc_topbarname(userobj) {
  */
 function loc_fullcurrency(name, isocode, symbol) {
     return l10n_currency.completename
-           .replace('N', l10n_currencies[isocode] || name)
-           .replace('S', symbol)
-           .replace('C', isocode);
+            .replace('%S', symbol).replace('%C', isocode)
+            .replace('%N', l10n_currencies[isocode] || name);
 }
 
 /**

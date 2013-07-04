@@ -97,7 +97,7 @@ transaction_edit_details.income = function(container, data) {
         categoriescontainer.insert(categoryinput);
     }
     categoriescontainer.insert(
-        new Button('blue', 'add', _('Add a category')).onClick(function() {
+        new Button('blue', 'plus', _('Add a category')).onClick(function() {
             var categoryinput = new CategoryInput(
                 'category', null, true, currency
             ).onChange(modifycategoriesamounts);

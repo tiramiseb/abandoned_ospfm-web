@@ -49,7 +49,8 @@ function api_failure(request, errorhandler, func, args) {
             new Element('span', {
                 'class':'error',
                 'html':_('Sorry, a problem occured. Please try again later...')
-            })
+            }),
+            false
         );
     };
 }

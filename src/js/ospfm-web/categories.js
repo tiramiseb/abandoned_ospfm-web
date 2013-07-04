@@ -63,14 +63,14 @@ Category = new Class(OspfmObject, {
         var element = new Element('span', {'html': this.data.name});
         if (this.deepness) {
             element.setStyle('margin-left', (10*this.deepness)+'px')
-                .insert(new Icon('subcoll'), 'top');
+                .insert(new Icon('next'), 'top');
         };
         return element;
     },
     fullRepr:function() {
         var element = new Element('span', {'html': this.data.name});
         if (this.collection.parent) {
-            element.insert(new Icon('subcoll'), 'top');
+            element.insert(new Icon('next'), 'top');
             element.insert(this.collection.parent.fullRepr(), 'top');
         }
         return element;
@@ -196,7 +196,7 @@ CategorySelector = new Class(Input, {
                     new Element('p', {'html': creationintro}),
                     categorieslist,
                     new Element('div', {'class':'bottombuttons'}).insert([
-                        new Button('green', 'accept', yesbuttontext).onClick(
+                        new Button('green', 'checkmark', yesbuttontext).onClick(
                             function() {
                                 var selectednewid;
                                 multi_category_creator.start(
@@ -206,14 +206,14 @@ CategorySelector = new Class(Input, {
                                 close_dialog();
                             }.bind(this)
                         ),
-                        new Button('red', 'cancel', _('No thanks')).onClick(
+                        new Button('red', 'undo', _('No thanks')).onClick(
                             function() {
                                 this.addClass('wrong');
                                 close_dialog();
                             }.bind(this)
                         )
                     ])
-                ])
+                ], false)
             }
         };
         this.autocompleter.onDone(changed.bind(this));

@@ -25,7 +25,7 @@
  */
 
 Authentication = new Class({
-    prebind: ['authenticate', 'auth_response_auto', 'auth_response'],
+    prebind: ['authenticate', 'auth_response'],
     initialize:function() {
         this.errormessage = new Element('div', {'class': 'error'});
         this.authusername = new Input({
@@ -49,6 +49,7 @@ Authentication = new Class({
                     new Element('tr').insert([
                         new Element('td').insert(
                             new Element('label', {
+                                'class':'oneline',
                                 'for': 'authusername',
                                 'html': _('Username')
                             })
@@ -60,6 +61,7 @@ Authentication = new Class({
                     new Element('tr').insert([
                         new Element('td').insert(
                             new Element('label', {
+                                'class':'oneline',
                                 'for': 'authpassword',
                                 'html': _('Password')
                             })
@@ -72,7 +74,8 @@ Authentication = new Class({
                         new Element('td', {
                             'class': 'submit', 'colspan': '2'
                         }).insert(
-                            new Button('green', 'apply', _('Login'), 'submit')
+                            new Button('green', 'checkmark',
+                                       _('Login'), 'submit')
                         )
                     )
                 ])
@@ -89,7 +92,7 @@ Authentication = new Class({
         }
         this.errormessage.clean();
         this.errormessage.insert(errormessage);
-        dialog(this.authdialog);
+        dialog(this.authdialog, false);
     },
     authenticate: function(func, args) {
         // XXX Maybe allow storing multiple functions, I don't know yet if multiple requests can occur before authorization, especially when username and password are known.
@@ -112,27 +115,24 @@ Authentication = new Class({
                     'username': this.username,
                     'password': this.password
                 }
-            }).onComplete(this.auth_response_auto);
+            }).onComplete(this.auth_response);
         } else {
             this.showdialog();
         };
     },
-    auth_response_auto: function(response) {
-        this.auth_response(response, true);
-    },
-    auth_response: function(response, was_auto) {
+    auth_response: function(response, xhr, was_auto) {
+        close_dialog();
         var resp = response.responseJSON;
         if (resp.status == 401) {
             this.showdialog(_('Invalid username or password...'));
         } else {
-            if (!was_auto) {
-                this.username = this.authusername.value();
-                this.password = this.authusername.value();
-                dialog(new Element('span').insert([
-                    new Element('img', {'width':'16', 'height':'16', 'src':static_url+'image/loading.gif'}),
-                    new Element('span', {'html': ' '+_('Loading...')})
-                ]));
-            };
+            this.username = this.authusername.value();
+            this.password = this.authusername.value();
+            // Initial loading dialog
+            dialog(new Element('span', {'class':'loadingdialog'}).insert([
+                new Element('img', {'width':'16', 'height':'16', 'src':static_url+'image/loading.gif'}),
+                new Element('span', {'html': ' '+_('Loading...')})
+            ]), false);
             this.key = resp.response.key;
             this.func.apply(this, this.args);
         };

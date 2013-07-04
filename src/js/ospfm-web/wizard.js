@@ -18,7 +18,7 @@
  */
 
 wizard = function(firstrun) {
-    var cancelbutton  = new Button('blue', 'cancel', _('Cancel')),
+    var cancelbutton  = new Button('blue', 'undo', _('Cancel')),
         localesinput  = new Element('select', {'id': 'wizardlocale',
                                                'name': 'locale'}),
         currentlocale = preferences.get('ospfm-web-locale') || locale.full,
@@ -58,6 +58,7 @@ wizard = function(firstrun) {
                     new Element('tr').insert([
                         new Element('td').insert(
                             new Element('label', {
+                                'class':'oneline',
                                 'for':'wizardfirstname',
                                 'html':_('Your first name:')
                             })
@@ -71,6 +72,7 @@ wizard = function(firstrun) {
                     new Element('tr').insert([
                         new Element('td').insert(
                             new Element('label', {
+                                'class':'oneline',
                                 'for':'wizardlastname',
                                 'html':_('Your last name:')
                             })
@@ -84,6 +86,7 @@ wizard = function(firstrun) {
                     new Element('tr').insert([
                         new Element('td').insert(
                             new Element('label', {
+                                'class':'oneline',
                                 'for':'wizardlocale',
                                 'html':_('Interface language:')
                             })
@@ -95,6 +98,7 @@ wizard = function(firstrun) {
                     new Element('tr').insert([
                         new Element('td').insert(
                             new Element('label', {
+                                'class':'oneline',
                                 'for':'wizardcurrency',
                                 'html':_('Your preferred currency:')
                             })
@@ -109,11 +113,9 @@ wizard = function(firstrun) {
                         ),
                     ]),
                     new Element('tr').insert([
-                        new Element('td').insert(
+                        new Element('td', {'colspan': '2'}).insert([
                             new Input({'type': 'radio', 'value':'basic',
-                                       'id':'wizardbasic', 'name':'wizard'})
-                        ),
-                        new Element('td').insert(
+                                       'id':'wizardbasic', 'name':'wizard'}),
                             new Element('label',{'for':'wizardbasic'}).insert([
                                 new Element('p', {
                                     'class': 'wizardname',
@@ -124,14 +126,12 @@ wizard = function(firstrun) {
                                     'html':_('When you choose this option, some basic elements will be created for you: a bank account, a wallet account, usual categories... This option is for people who want to use everCount rapidly, with some initial help.')
                                 })
                             ])
-                        )
+                        ])
                     ]),
                     new Element('tr').insert([
-                        new Element('td').insert(
+                        new Element('td', {'colspan': '2'}).insert([
                             new Input({'type': 'radio', 'value':'empty',
-                                       'id':'wizardempty', 'name':'wizard'})
-                        ),
-                        new Element('td').insert(
+                                       'id':'wizardempty', 'name':'wizard'}),
                             new Element('label',{'for':'wizardempty'}).insert([
                                 new Element('p',{
                                     'class': 'wizardname',
@@ -142,14 +142,12 @@ wizard = function(firstrun) {
                                     'html':_('When you choose to create an empty everCount account, you will have to create everything by yourself: accounts, categories, etc. This option is for people who already know how to use a financial application and who know exactly what they want to do.')
                                 })
                             ])
-                        )
+                        ])
                     ]),
                     new Element('tr').insert([
-                        new Element('td').insert(
+                        new Element('td', {'colspan': '2'}).insert([
                             new Input({'type': 'radio', 'value':'demo',
-                                       'id':'wizarddemo', 'name':'wizard'})
-                        ),
-                        new Element('td').insert(
+                                       'id':'wizarddemo', 'name':'wizard'}),
                             new Element('label', {'for':'wizarddemo'}).insert([
                                 new Element('p', {
                                     'class': 'wizardname',
@@ -160,11 +158,12 @@ wizard = function(firstrun) {
                                     'html':_('With this option, multiple elements will be created, simulating an already-used everCount account: accouts, categories, transactions, etc. This option is for people who want to discover everCount and all its features.')
                                 })
                             ])
-                        )
+                        ])
                     ]),
                 ]),
                 new Element('div', {'class':'bottombuttons'}).insert([
-                    new Button('green','apply',_('Initialize everCount'),'submit'),
+                    new Button('green', 'checkmark',
+                               _('Initialize everCount'), 'submit'),
                     cancelbutton
                 ])
             ]).onSubmit(function(event) {
@@ -190,46 +189,37 @@ wizard = function(firstrun) {
                 'last_name': values.lastname,
                 'preferred_currency': currency
                 })
-                api_read('wizard', values.wizard+'/'+newlocale+'/'+currency, function() {
-                    if (firstrun || (newlocale != locale.full)) {
+                api_read('wizard', values.wizard+'/'+newlocale+'/'+currency,
+                    function() {
+                        var onclick;
+                        if (firstrun || (newlocale != locale.full)) {
+                            onclick = function() {
+                                preferences.set('ospfm-web-locale',
+                                                            newlocale);
+                            };
+                        } else {
+                            onclick = function() {
+                                location.reload();
+                            };
+                        };
                         dialog([
                             new Element('h1', {
                                 'html':_('Initialization successful')
                             }),
                             new Element('p', {
-                                'html':_('Your account has been (re)initialized successfully.')
+                                'html':_('Your account has been successfully (re)initialized.')
                             }),
                             new Element('p', {
                                 'html':_('everCount will be reloaded to reinitialize the interface.')
                             }),
-                            new Element('div',{'class':'bottombuttons'}).insert(
-                                new Button('green', 'apply', _('OK'))
-                                    .onClick(function() {
-                                        preferences.set('ospfm-web-locale',
-                                                        newlocale);
-                                    })
-                            )
-                        ])
-                    } else {
-                        dialog([
-                            new Element('h1', {
-                                'html':_('Initialization successful')
-                            }),
-                            new Element('p', {
-                                'html':_('Your account has been (re)initialized successfully.')
-                            }),
-                            new Element('p', {
-                                'html':_('everCount will be reloaded to reinitialize the interface.')
-                            }),
-                            new Element('div',{'class':'bottombuttons'}).insert(
-                                new Button('green', 'apply', _('OK'))
-                                    .onClick(function() {
-                                        location.reload()
-                                    })
-                            )
-                        ])
+                            new Element('div',{'class':'bottombuttons'})
+                                .insert(
+                                    new Button('green', 'checkmark', _('OK'))
+                                        .onClick(onclick)
+                                )
+                        ], false);
                     }
-                });
+                );
             })
         )
     )

@@ -48,13 +48,16 @@ Button = new Class(Element, {
      * @param String optional type of the button (default: 'button')
      *
      */
-    colors: { 'blue': 'b', 'green': 'g', 'red': 'r' },
     initialize:function(color, iconname, text, type) {
         this.color = color;
         var options = { 'class': color };
         this.$super('button', options);
-        this.insert(new Icon(iconname))
-            ._.setAttribute('type', type || 'button');
+        if (iconname) {
+            this.insert(new Icon(iconname))
+        } else {
+            this.addClass('noicon')
+        }
+        this._.setAttribute('type', type || 'button');
         if (text) {
             this._addtext(text);
         } else {
@@ -88,8 +91,28 @@ Button = new Class(Element, {
 
 ////////// Centered dialog window
 
-// Initializes the dialog stuff
-$(window).onResize(center_dialog);
+// Stop observing mousewheel in the lightbox so that we can scroll its content
+$(document).stopObserving('mousewheel');
+
+function dialog_enable_overflow() {
+    var content = $$('div.rui-lightbox-content').first(),
+        container = $$('div.rui-lightbox-scroller').first();
+    if (content && container) {
+        if (content._.offsetHeight > container._.offsetHeight) {
+            container.setStyle('overflow-y', 'scroll');
+            container.setWidth(content._.offsetWidth+20);
+        } else {
+            container.setStyle('overflow-y', 'hidden');
+            container.setWidth(content._.offsetWidth);
+        };
+        if (content._.offsetWidth > container._.offsetWidth) {
+            container.setStyle('overflow-x', 'scroll');
+        } else {
+            container.setStyle('overflow-x', 'hidden');
+        };
+    };
+}
+$(window).onResize(dialog_enable_overflow);
 /**
  * displays the dialog window
  *
@@ -97,30 +120,37 @@ $(window).onResize(center_dialog);
  * @param Boolean display the button bar
  */
 // Defined this way in order to make it a global function
-dialog = function (content, displaybutton) {
-    $('dialogcontent').update(content);
-    $('dialog').show();
-    center_dialog();
+dialog = function (content, closable, focuson) {
+    closable = closable === undefined ? true: closable;
+    if (closable) {
+        Lightbox.Options.hideOnEsc = true;
+        Lightbox.Options.hideOnOutClick = true;
+        Lightbox.Options.showCloseButton = true;
+    } else {
+        Lightbox.Options.hideOnEsc = false;
+        Lightbox.Options.hideOnOutClick = false;
+        Lightbox.Options.showCloseButton = false;
+    }
+    Lightbox.show(content);
+    dialog_enable_overflow.delay(1000);
+    // Put the focus on the first input or the first select, if there is one
+    function putfocus() {
+        var firstinput = $$('div.rui-lightbox-content')[0].first('input');
+        if (!firstinput) {
+            firstinput = $$('div.rui-lightbox-content')[0].first('select');
+        }
+        if (firstinput) {
+            firstinput.focus();
+        }
+    };
+    putfocus.delay(500);
 };
 /**
  * closes the dialog window
  */
 close_dialog = function () {
-    $('dialog').hide();
+    Lightbox.hide();
 }
-
-/**
- * centers the dialog window according to the browser window
- */
-function center_dialog() {
-    var windowsize = $(window).size(),
-        dialogsize = $('dialogwindow').size();
-    $('dialogwindow').setStyle({
-        left: (windowsize.x-dialogsize.x)/2+'px',
-        top: (windowsize.y-dialogsize.y)/2+'px',
-    });
-};
-center_dialog();
 
 ////////// Tooltips
 

@@ -23,18 +23,19 @@
     <meta name="viewport" content="width=device-width" />
     <script type="text/javascript">static_url='{{ static_url }}';api_url='{{ api_url }}';help_url='{{ help_url }}';app_name='{{ app_name }}';demoaccounts=[{% for account in demo_accounts %}'{{ account }}',{% endfor%}];</script>
     <link rel="stylesheet" type="text/css" href="{{ static_url }}css/ospfm-web.css" />
+    <link rel="stylesheet" type="text/css" href="{{ static_url }}css/theme.css" />
     <script type="text/javascript" src="{{ static_url }}js/right.js"></script>
-    <script type="text/javascript" src="{{ static_url }}js/right-sortable.js"></script>
-    <script type="text/javascript" src="{{ static_url }}js/right-dnd.js"></script>
-    <script type="text/javascript" src="{{ static_url }}js/right-calendar.js"></script>
     <script type="text/javascript" src="{{ static_url }}js/right-autocompleter.js"></script>
-    <script type="text/javascript" src="{{ static_url }}js/prefixfree.min.js"></script>
+    <script type="text/javascript" src="{{ static_url }}js/right-calendar.js"></script>
+    <script type="text/javascript" src="{{ static_url }}js/right-dnd.js"></script>
+    <script type="text/javascript" src="{{ static_url }}js/right-lightbox.js"></script>
+    <script type="text/javascript" src="{{ static_url }}js/right-sortable.js"></script>
     <script type="text/javascript" src="{{ static_url }}js/purl.js"></script>
     <script type="text/javascript" src="{{ static_url }}js/ospfm-web.js"></script>
     <title>{{ app_name }}</title>
 </head>
 <body>
-    <img id="applogo" src="{{ static_url }}image/evercountlogo-alpha.png" />
+    <div id="applogo"></div>
     <div id="userinfo"></div>
     <div id="widgets">
         <div id="sidebar">
@@ -42,16 +43,12 @@
         </div>
         <ul id="topwidgets"></ul>
     </div>
+    <noscript>
+        <p>Please enable JavaScript in your browser.</p>
+        <p><a href="http://www.enable-javascript.com/" target="_blank">Discover how!</a></p>
+    </noscript>
     <div id="maincontainer">
-        <div id="maincontent"></div>
-    </div>
-    <div id="dialog">
-        <div id="dialogshadow"></div>
-        <div id="dialogwindow">
-            <div id="dialogcontent">
-                <img width="16" height="16" src="{{ static_url }}image/loading.gif" />
-                <span id="loadingdialogtext">Loading...</span>
-            </div>
+        <div id="maincontent">
         </div>
     </div>
     <div id="popup" style="display:none"></div>

@@ -16,12 +16,8 @@
 //    You should have received a copy of the GNU Affero General Public License
 //    along with OSPFM-web.  If not, see <http://www.gnu.org/licenses/>.
 
-
-
-img#applogo {
+div#applogo {
     position: absolute;
-    padding-bottom: 5px;
-    border-bottom: #999 1px solid;
     cursor: pointer;
     @media (min-width:1025px) {
         width: 200px;
@@ -79,20 +75,12 @@ div#maincontainer {
 
 
 div#maincontent {
-    background: #fff;
-    box-shadow: #777 1px 1px 5px, #ccc 0 0 20px inset;
-    border:1px solid #aaa;
-    color: #111;
     overflow: auto;
-    padding: 15px;
 }
 
 
 
 span#displayusername {
-    margin-right: 5px;
-    color: #444;
-    text-shadow: #fff 0 1px 1px;
     @media (min-width:1025px) {
         span.nickonly {
             display: none;
@@ -116,14 +104,6 @@ div#widgets {
         left: 0px;
         top: 7px;
     }
-/*
-    @media (min-width: 321px) and (max-width: 768px) {
-        top: 7px;
-    }
-    @media (max-width: 320px) {
-        top: 40px;
-    }
-*/
 }
 
 
@@ -178,7 +158,6 @@ ul#sidewidgets {
 }
 
 
-
 @media (max-width: 480px) {
     .notsmall {
         display: none;
@@ -190,15 +169,3 @@ ul#sidewidgets {
     }
 }
 
-
-
-div.bottombuttons {
-    border-top: 1px solid #999;
-    padding-top: 5px;
-    text-align: center;
-    padding-bottom: 5px;
-}
-
-div#authenticationcontainer div.error {
-    text-align: center;
-}

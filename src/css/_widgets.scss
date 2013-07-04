@@ -45,26 +45,12 @@ ul#unusedwidgets li.widget {
     margin: 15px 10px 0 10px;
 }
 
-li.widget h1, ul#unusedwidgets li.widget h1 {
-    color: #444;
-    font-size: 110%;
-    text-align: right;
-    margin-bottom: 5px;
-    font-weight: bold;
-    text-shadow: #fff 0 1px 1px;
-    border: 0;
-}
-
 ul#topwidgets li.widget h1 {
     display: inline;
 }
 
 ul#unusedwidgets li.widget h1 {
     margin-right: 10px !important;
-}
-
-li.widget.forcedisplay h1 {
-    color: #0080ff;
 }
 
 li.widget h1 span {
@@ -77,29 +63,12 @@ ul#topwidgets li.widget h1 span.name {
 ul#topwidgets li.widget:hover h1 span.name {
     display: inline;
 }
-
 span.widgetsetup {
-    display: none;
     cursor: pointer;
-    color: #f00;
-    text-shadow: #f00 0 0 10px, #f00 0 0 10px;
 }
-
-ul#topwidgets li.widget:hover span.widgetsetup {
-    display: inline;
-}
-
 li.widget div.content {
-    font-size: 90% !important;
-    background: #fff;
-    box-shadow: #777 1px 1px 5px, #999 0 0 5px inset;
-    border:1px solid #aaa;
-    padding: 5px;
-    color: #111;
-    text-shadow: #999 0 1px 1px;
     z-index: 10;
 }
-
 ul#topwidgets li.widget div.content {
     position: absolute;
     width: 188px;
@@ -196,12 +165,7 @@ li.widget div.line span.editcell {
     padding-left: 10px;
 }
 
-li.widget div.line:hover, li.widget div.line:hover span.editcell {
-    background: #eea;
-}
-
-li#widget-calculator input[type=button],
-li#widget-calculator input[type=submit] {
+li#widget-calculator button {
     width: 20%;
     margin: 0;
     height: 30px;
@@ -212,6 +176,17 @@ li#widget-calculator input[type=submit] {
         left: 1px solid #fff;
         right: 1px solid #666;
         bottom: 1px solid #666;
+    }
+}
+li#widget-calculator button.calcsubmit {
+    width: 40%;
+}
+li#widget-calculator button:active {
+    border: {
+        top: 1px solid #666;
+        left: 1px solid #666;
+        right: 1px solid #fff;
+        bottom: 1px solid #fff;
     }
 }
 
@@ -255,3 +230,4 @@ ul#topwidgets li.placeholderwidget {
 ul.rui-sortable span.widgetsetup {
     display: none !important;
 }
+

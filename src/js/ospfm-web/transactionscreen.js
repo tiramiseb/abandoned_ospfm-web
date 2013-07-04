@@ -21,7 +21,7 @@ transactionscreen = new Class(Screen, {
     prebind: ['resize', 'scrolled'],
     url:'/',
     element:function() {
-        var addbutton = new Button('green', 'add')
+        var addbutton = new Button('green', 'plus')
                                 .tooltip(_('Add a transaction')),
             searchbutton = new Button('blue', 'search').tooltip(_('Search')),
             searchbox = new SearchBox().insertTo($$('body')[0]);
@@ -59,8 +59,21 @@ transactionscreen = new Class(Screen, {
         this.resize.delay(100);
     },
     resize:function() {
-        this.translist.setHeight(
-            $('maincontent').size().y - this.transfilter.size().y - 42
+        var maincontent = $('maincontent'),
+            tf = this.transfilter,
+            tl = this.translist;
+        tl.setHeight(
+            maincontent.size().y - tf.size().y -
+            maincontent.getStyle('padding-top').toInt() -
+            maincontent.getStyle('padding-bottom').toInt() -
+            tf.getStyle('margin-top').toInt() -
+            tf.getStyle('margin-bottom').toInt() -
+            tf.getStyle('border-top-width').toInt() -
+            tf.getStyle('border-bottom-width').toInt() -
+            tl.getStyle('margin-top').toInt() -
+            tl.getStyle('margin-bottom').toInt() -
+            tl.getStyle('border-top-width').toInt() -
+            tl.getStyle('border-bottom-width').toInt()
         );
     },
     scrolled:function (event) {
@@ -115,10 +128,11 @@ transactionscreen = new Class(Screen, {
 SearchBox = new Class(Element, {
     prebind:['show_or_hide', 'do_search'],
     initialize:function() {
-        var datefrom     = new Input({'class':'date', 'name':'datefrom'}),
+        var datefrom     = new Input({'class':'date', 'name':'datefrom',
+                                      'id': 'searchdate'}),
             dateto       = new Input({'class':'date', 'name':'dateto'}),
             searchbutton = new Button('green', 'search', _('Search'),'submit'),
-            cancelbutton = new Button('blue', 'cancel', _('Cancel'), 'reset');
+            cancelbutton = new Button('blue', 'undo', _('Cancel'), 'reset');
         this.$super('div', {'class': 'searchbox'})
         this.onClick(function(event) {
             // Do not propagate a click here to the document
@@ -127,11 +141,15 @@ SearchBox = new Class(Element, {
         });
         this.hide();
         this.form = new Form().insert([
-            new Element('label', {'html': _('Account')}),
-            accounts.selectonly(null, 'account', null, null, true),
-            new Element('label', {'html': _('Category')}),
-            new CategorySelector('category'),
-            new Element('label', {'class': 'label','html':_('Date')}),
+            new Element('label', {'html': _('Account'),
+                                  'for': 'searchaccount'}),
+            accounts.selectonly(null, 'account', null, null, true)
+                            .set('id', 'searchaccount'),
+            new Element('label', {'html': _('Category'),
+                                  'for': 'searchcategory'}),
+            new CategorySelector('category').set('id', 'searchcategory'),
+            new Element('label', {'class': 'label','html':_('Date'),
+                                  'for': 'searchdate'}),
             datefrom,
             new Element('span', {'class': 'betweendates', 'html': '-'}),
             dateto,

@@ -1,0 +1,149 @@
+//
+//    Copyright 2012-2013 Sebastien Maccagnoni-Munch
+//
+//    This file is part of OSPFM-web.
+//
+//    OSPFM-web is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU Affero General Public License as published
+//    by the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    OSPFM-web is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU Affero General Public License for more details.
+//
+//    You should have received a copy of the GNU Affero General Public License
+//    along with OSPFM-web.  If not, see <http://www.gnu.org/licenses/>.
+
+// Structure
+div#applogo {
+    text-align: center;
+    background-color: #ddf;
+}
+div#applogo:before {
+    content: 'OSPFM-web';
+}
+div#maincontent {
+    border:1px solid #000;
+}
+
+// Widgets
+span#calc-backspace:before {
+    content:'O';
+}
+li.widget.forcedisplay h1 {
+    color: #f00;
+}
+li.widget div.content {
+    border:1px solid #000;
+    background: #fff;
+}
+
+
+
+.error {
+    color: #f00;
+    font-weight: bold;
+}
+
+
+// Interface
+.icon-backspace:before {
+    content:'⌫ ';
+}
+.icon-book:before {
+    content:'❑ ';
+}
+.icon-calculate:before {
+    content:'+ ';
+}
+.icon-cancel:before {
+    content:'X ';
+}
+.icon-checkmark:before {
+    content:'✓ ';
+}
+.icon-cog:before {
+    content:'☢ ';
+}
+.icon-coins:before {
+    content:'⛁ ';
+}
+.icon-exit:before {
+    content:'✋ ';
+}
+.icon-help:before {
+    content:'? ';
+}
+.icon-list:before {
+    content:'⇶ ';
+}
+.icon-menu:before {
+    content:'⇵ ';
+}
+.icon-move:before {
+    content:'⇵ ';
+}
+.icon-pencil:before {
+    content:'✍ ';
+}
+.icon-plus:before {
+    content:'+ ';
+}
+.icon-search:before {
+    content:'? ';
+}
+.icon-undo:before {
+    content:'↺ ';
+}
+.icon-users:before {
+    content:'☺ ';
+}
+.icon-wrench:before {
+    content:'⎇ ';
+}
+button.green {
+    background: #9f9;
+}
+button.blue {
+    background: #99f;
+}
+button.red {
+    background: #f99;
+}
+div#tooltip {
+    background: #000;
+    color: #fff;
+}
+
+div#popup, div#spinner {
+    border: 1px solid #000;
+    background: #fff;
+    top: 10px;
+    left: 100px;
+}
+div#popup.errorpopup {
+    background: #f00;
+}
+
+ul.rui-autocompleter strong {
+    color: #f00;
+}
+
+
+// Transactions list
+div.searchbox {
+    top: 10px;
+    left: 10px;
+    background: #fff;
+    border: 1px solid #000;
+}
+
+div#transactionslist {
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    div.transaction {
+        border-bottom: 1px solid #999;
+    }
+}

@@ -17,10 +17,33 @@
  *    along with OSPFM-web.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
 init.on('go', function() {
     init.start(function() {
         screens.add(
             new RemoteScreen('/settings', 'ospfm-web-settings')
+        );
+        init.success();
+    });
+});
+*/
+
+var tempsettingscreen = new Class(Screen, {
+    url:'/settings',
+    element:function() {
+        return new Element('div').insert([
+            new Element('p', {'html':_('Sorry, the settings screen is not available in the demo for the moment.')}),
+            new Button('blue', 'undo', _('Back')).onClick(function() {
+                screens.load('/')
+            })
+        ])
+    }
+})
+
+init.on('go', function() {
+    init.start(function() {
+        screens.add(
+            new tempsettingscreen()
         );
         init.success();
     });

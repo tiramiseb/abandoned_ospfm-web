@@ -34,7 +34,7 @@ Widget = new Class(Element, {
         title.insert(this.icon, 'top');
         if (this.config) {
             title.insert(
-                new Icon('config').addClass('widgetsetup').onClick(function() {
+                new Icon('wrench').addClass('widgetsetup').onClick(function() {
                     dialog(this.config())
                 }.bind(this)),
                 'top'
@@ -69,7 +69,7 @@ widgets = {
 };
 widgets.register('accounts', new Class(Widget, {
     id: 'accounts',
-    icon: 'account',
+    icon: 'book',
     title: function(){return _('Accounts')},
     initialize: function() {
         this.$super();
@@ -128,7 +128,7 @@ widgets.register('accounts', new Class(Widget, {
 }));
 widgets.register('categories', new Class(Widget, {
     id: 'categories',
-    icon: 'category',
+    icon: 'list',
     title: function(){return _('Categories')},
     initialize: function() {
         this.period = preferences.get(
@@ -274,6 +274,7 @@ widgets.register('categories', new Class(Widget, {
                                     .insert(_('all categories'))
                             ]).setValue(this.deepness);
         return new Form().insert([
+            // TODO Use something more sexy and flexible than a table
             new Element('table').insert([
                 new Element('tr').insert([
                     new Element('td').insert(
@@ -299,7 +300,7 @@ widgets.register('categories', new Class(Widget, {
                 ])
             ]),
             new Element('div', {'class': 'bottombuttons'}).insert(
-                new Button('green', 'apply', _('Apply'), 'submit')
+                new Button('green', 'checkmark', _('Apply'), 'submit')
             )
         ]).onSubmit(function(event) {
             var period = event.currentTarget.values().displayperiod,
@@ -317,7 +318,7 @@ widgets.register('categories', new Class(Widget, {
 
 widgets.register('contacts', new Class(Widget, {
     id: 'contacts',
-    icon: 'people',
+    icon: 'users',
     title: function(){return _('Contacts')},
     initialize: function() {
         this.$super();
@@ -388,7 +389,7 @@ widgets.register('currencies', new Class(Widget, {
 widgets.register('calculator', new Class(Widget, {
     prebind: ['checkinput'],
     id: 'calculator',
-    icon: 'calculator',
+    icon: 'calculate',
     title: function() {return _('Calculator')},
     checkinput: function() {
         this.inp.setValue(
@@ -409,53 +410,50 @@ widgets.register('calculator', new Class(Widget, {
         this.inp = calcinput;
         function adddigit(event) {
             calcinput.setValue(
-                calcinput.getValue() + event.currentTarget.getValue()
+                calcinput.getValue() + event.currentTarget.first('span.buttontext').text()
             ).focus();
         };
         calcform.insert([
             calcinput,
-            new Input({'type': 'button', 'value': '7'})
+            new Button('', '', '7')
                 .onClick(adddigit),
-            new Input({'type': 'button', 'value': '8'})
+            new Button('', '', '8')
                 .onClick(adddigit),
-            new Input({'type': 'button', 'value': '9'})
+            new Button('', '', '9')
                 .onClick(adddigit),
-            new Input({'type': 'button', 'value': '('})
+            new Button('', '', '(')
                 .onClick(adddigit),
-            new Input({'type': 'button', 'value': ')'})
+            new Button('', '', ')')
                 .onClick(adddigit),
-            new Input({'type': 'button', 'value': '4'})
+            new Button('', '', '4')
                 .onClick(adddigit),
-            new Input({'type': 'button', 'value': '5'})
+            new Button('', '', '5')
                 .onClick(adddigit),
-            new Input({'type': 'button', 'value': '6'})
+            new Button('', '', '6')
                 .onClick(adddigit),
-            new Input({'type': 'button', 'value': '×'})
+            new Button('', '', '×')
                 .onClick(adddigit),
-            new Input({'type': 'button', 'value': '÷'})
+            new Button('', '', '÷')
                 .onClick(adddigit),
-            new Input({'type': 'button', 'value': '1'})
+            new Button('', '', '1')
                 .onClick(adddigit),
-            new Input({'type': 'button', 'value': '2'})
+            new Button('', '', '2')
                 .onClick(adddigit),
-            new Input({'type': 'button', 'value': '3'})
+            new Button('', '', '3')
                 .onClick(adddigit),
-            new Input({'type': 'button', 'value': '+'})
+            new Button('', '', '+')
                 .onClick(adddigit),
-            new Input({'type': 'button', 'value': '-'})
+            new Button('', '', '-')
                 .onClick(adddigit),
-            // content character equivalent to Icon('erase')
-            new Input({'type': 'button', 'value': 'x'})
-                .setStyle('font-family', 'icons')
+            new Button('', 'backspace')
                 .onClick(function() {
                     calcinput.setValue('');
                 }),
-            new Input({'type': 'button', 'value': '0'})
+            new Button('', '', '0')
                 .onClick(adddigit),
-            new Input({'type': 'button', 'value': l10n_numbers.decimal})
+            new Button('', '', l10n_numbers.decimal)
                 .onClick(adddigit),
-            new Input({'type': 'submit', 'value': '='})
-                .setStyle('width', '40%')
+            new Button('', '', '=', 'submit').set('class', 'calcsubmit')
         ]).onSubmit(function(event) {
             event.preventDefault();
             var result,

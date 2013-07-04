@@ -17,6 +17,10 @@ It is mainly developed and tested with Chromium.
 The  "Python" (``.py``)  files help  running a  development instance,  with the
 Flask micro-framework. Flask is not mandatory.
 
+In the "static/css" directory, a "theme.css"  file should be manually included,
+either by creating  it from scratch, by  linking to "src/css/default-theme.css"
+or by linking to a file somewhere else.
+
 License
 =======
 
