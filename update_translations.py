@@ -21,6 +21,7 @@
 
 SOURCEDIR='src/js'
 TRANSLATIONDIR='src/locale'
+OSPFMSOURCEDIR='../ospfm/ospfm'
 
 NUMBERS = (
     ('decimal', '.'),
@@ -77,6 +78,20 @@ def get_all_strings():
                         strings[string[0]].extend(string[1])
                     else:
                         strings[string[0]] = string[1]
+    for dirdata in os.walk(OSPFMSOURCEDIR):
+        for filename in dirdata[2]:
+            if filename.endswith('.py'):
+                for string in get_ospfm_api_error_strings(
+                                    os.path.join(dirdata[0], filename)
+                                ):
+                    if string in strings:
+                        strings[string].append(
+                            'OSPFM error message in {}'.format(filename)
+                        )
+                    else:
+                        strings[string] = [
+                            'OSPFM error message in {}'.format(filename)
+                        ]
     return strings
 
 
@@ -91,6 +106,18 @@ def get_strings(filename):
                 else:
                     strings[string] = ['%s:%d' % (filename, linenb)]
     return strings
+
+
+
+def get_ospfm_api_error_strings(filename):
+    content = open(filename, 'r').read()
+    content = re.sub('\( *\n *', '(', content, flags=re.MULTILINE)
+    return re.findall("self.badrequest\('([^\'\)]*)'\)", content) + \
+           re.findall('self.badrequest\("([^\"\)]*)"\)', content) + \
+           re.findall("self.forbidden\('([^\'\)]*)'\)", content) + \
+           re.findall('self.forbidden\("([^\"\)]*)"\)', content) + \
+           re.findall("self.notfound\('([^\'\)]*)'\)", content) + \
+           re.findall('self.notfound\("([^\"\)]*)"\)', content)
 
 
 
