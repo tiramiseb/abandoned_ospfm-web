@@ -112,12 +112,12 @@ def get_strings(filename):
 def get_ospfm_api_error_strings(filename):
     content = open(filename, 'r').read()
     content = re.sub('\( *\n *', '(', content, flags=re.MULTILINE)
-    return re.findall("self.badrequest\('([^\'\)]*)'\)", content) + \
-           re.findall('self.badrequest\("([^\"\)]*)"\)', content) + \
-           re.findall("self.forbidden\('([^\'\)]*)'\)", content) + \
-           re.findall('self.forbidden\("([^\"\)]*)"\)', content) + \
-           re.findall("self.notfound\('([^\'\)]*)'\)", content) + \
-           re.findall('self.notfound\("([^\"\)]*)"\)', content)
+    return re.findall("self.badrequest\('([^\']*)'\)", content) + \
+           re.findall('self.badrequest\("([^\"]*)"\)', content) + \
+           re.findall("self.forbidden\('([^\']*)'\)", content) + \
+           re.findall('self.forbidden\("([^\"]*)"\)', content) + \
+           re.findall("self.notfound\('([^\']*)'\)", content) + \
+           re.findall('self.notfound\("([^\"]*)"\)', content)
 
 
 
