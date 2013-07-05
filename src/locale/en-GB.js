@@ -527,6 +527,10 @@ l10n_strings = {
 //    "Password":
 //        "",
 
+    // OSPFM error message in user.py
+//    "Password should be at least 8 characters long":
+//        "",
+
     // src/js/ospfm-web/widgets.js:281
 //    "Period for which to display the balance":
 //        "",

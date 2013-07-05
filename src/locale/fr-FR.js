@@ -527,6 +527,10 @@ l10n_strings = {
     "Password":
         "Mot de passe",
 
+    // OSPFM error message in user.py
+    "Password should be at least 8 characters long":
+        "Le mot de passe doit contenir au moins 8 caractères",
+
     // src/js/ospfm-web/widgets.js:281
     "Period for which to display the balance":
         "Période pour laquelle afficher le solde",
