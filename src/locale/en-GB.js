@@ -57,6 +57,18 @@ l10n_strings = {
 //    "\"%CATEGORYSHORTNAME%\" in \"%PARENTFULLNAME%\"":
 //        "",
 
+    // OSPFM error message in currency.py
+//    "A currency with this symbol already exists":
+//        "",
+
+    // OSPFM error message in user.py
+//    "A user cannot be created with the API":
+//        "",
+
+    // OSPFM error message in user.py
+//    "A user cannot be deleted with the API":
+//        "",
+
     // src/js/ospfm-web/transactionscreen.js:143
 //    "Account":
 //        "",
@@ -77,7 +89,7 @@ l10n_strings = {
 //    "Add a transaction":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:105
+    // src/js/ospfm-web/contacts.js:104
 //    "Add this contact":
 //        "",
 
@@ -121,6 +133,10 @@ l10n_strings = {
 //    "Cancel":
 //        "",
 
+    // OSPFM error message in user.py
+//    "Cannot add contacts to demo accounts":
+//        "",
+
     // src/js/ospfm-web/widgets.js:131
 //    "Categories":
 //        "",
@@ -129,11 +145,11 @@ l10n_strings = {
 //    "Category":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:132
+    // src/js/ospfm-web/contacts.js:129
 //    "Close":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:148
+    // src/js/ospfm-web/contacts.js:145
 //    "Comment":
 //        "",
 
@@ -154,7 +170,7 @@ l10n_strings = {
 //    "Created category":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:162
+    // src/js/ospfm-web/contacts.js:159
 //    "Created contact":
 //        "",
 
@@ -187,6 +203,10 @@ l10n_strings = {
 //    "Data creation wizard":
 //        "",
 
+    // OSPFM error message in objects.py
+//    "Database error":
+//        "",
+
     // src/js/ospfm-web/transactionscreen.js:150
     // src/js/ospfm-web/transactions_0.js:223
 //    "Date":
@@ -205,7 +225,7 @@ l10n_strings = {
 //    "Deleted category":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:167
+    // src/js/ospfm-web/contacts.js:164
 //    "Deleted contact":
 //        "",
 
@@ -225,10 +245,6 @@ l10n_strings = {
 //    "Deletion successful":
 //        "",
 
-    // src/js/ospfm-web-settings/wizard.js:24
-//    "Demo accounts cannot be reinitialized":
-//        "",
-
     // src/js/ospfm-web/wizard.js:153
 //    "Demo elements":
 //        "",
@@ -239,10 +255,6 @@ l10n_strings = {
 
     // src/js/ospfm-web/widgets.js:292
 //    "Display category this deep...":
-//        "",
-
-    // src/js/ospfm-web-settings/wizard.js:34
-//    "Do you really want to reinitialize your everCount data?":
 //        "",
 
     // src/js/ospfm-web/categories.js:162
@@ -266,6 +278,10 @@ l10n_strings = {
 //    "Empty data":
 //        "",
 
+    // OSPFM error message in objects.py
+//    "Empty values are forbidden":
+//        "",
+
     // src/js/ospfm-web/accounts.js:72
 //    "Error creating account":
 //        "",
@@ -274,7 +290,7 @@ l10n_strings = {
 //    "Error creating category":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:164
+    // src/js/ospfm-web/contacts.js:161
 //    "Error creating contact":
 //        "",
 
@@ -295,7 +311,7 @@ l10n_strings = {
 //    "Error deleting category":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:168
+    // src/js/ospfm-web/contacts.js:165
 //    "Error deleting contact":
 //        "",
 
@@ -315,7 +331,7 @@ l10n_strings = {
 //    "Error updating category":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:166
+    // src/js/ospfm-web/contacts.js:163
 //    "Error updating contact":
 //        "",
 
@@ -332,12 +348,8 @@ l10n_strings = {
 //    "Error updating transaction":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:122
+    // src/js/ospfm-web/contacts.js:120
 //    "Error while loading search results":
-//        "",
-
-    // src/js/ospfm-web-settings/wizard.js:37
-//    "Everything will be erased : accounts, categories, transactions... You will not be able to recover anything of these.":
 //        "",
 
     // src/js/ospfm-web/currencies.js:30
@@ -361,8 +373,16 @@ l10n_strings = {
 //    "From:":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:147
+    // src/js/ospfm-web/contacts.js:144
 //    "Full name":
+//        "",
+
+    // OSPFM error message in currency.py
+//    "Globally defined currencies cannot be deleted":
+//        "",
+
+    // OSPFM error message in currency.py
+//    "Globally defined currencies cannot be modified":
 //        "",
 
     // src/js/ospfm-web/topbar_right.js:33
@@ -414,6 +434,14 @@ l10n_strings = {
 //    "Invalid username or password...":
 //        "",
 
+    // OSPFM error message in transaction.py
+//    "Listing all transactions is forbidden":
+//        "",
+
+    // OSPFM error message in user.py
+//    "Listing all users is forbidden":
+//        "",
+
     // src/js/ospfm-web/authentication.js:133
     // src/js/ospfm-web/1_main.js:55
 //    "Loading...":
@@ -435,7 +463,7 @@ l10n_strings = {
 //    "Name":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:118
+    // src/js/ospfm-web/contacts.js:116
 //    "No result found":
 //        "",
 
@@ -443,8 +471,48 @@ l10n_strings = {
 //    "No thanks":
 //        "",
 
-    // src/js/ospfm-web-settings/wizard.js:22
-//    "No, go back":
+    // OSPFM error message in account.py
+//    "Nonexistent account cannot be deleted (or you do not own it)":
+//        "",
+
+    // OSPFM error message in account.py
+//    "Nonexistent account cannot be modified (or you do not own it)":
+//        "",
+
+    // OSPFM error message in category.py
+//    "Nonexistent category cannot be deleted (or you do not own it)":
+//        "",
+
+    // OSPFM error message in category.py
+//    "Nonexistent category cannot be modified (or you do not own it)":
+//        "",
+
+    // OSPFM error message in user.py
+//    "Nonexistent contact cannot be deleted":
+//        "",
+
+    // OSPFM error message in user.py
+//    "Nonexistent contact cannot be modified":
+//        "",
+
+    // OSPFM error message in currency.py
+//    "Nonexistent currency cannot be deleted":
+//        "",
+
+    // OSPFM error message in currency.py
+//    "Nonexistent currency cannot be modified":
+//        "",
+
+    // OSPFM error message in preference.py
+//    "Nonexistent preference cannot be deleted":
+//        "",
+
+    // OSPFM error message in transaction.py
+//    "Nonexistent transaction cannot be deleted (or you do not own it)":
+//        "",
+
+    // OSPFM error message in transaction.py
+//    "Nonexistent transaction cannot be modified (or you do not own it)":
 //        "",
 
     // src/js/ospfm-web/wizard.js:216
@@ -475,12 +543,36 @@ l10n_strings = {
 //    "Please fill in the following fields in order to initialize your everCount data:":
 //        "",
 
+    // OSPFM error message in category.py
+//    "Please provide category name and currency":
+//        "",
+
+    // OSPFM error message in account.py
+//    "Please provide the account name, currency and start balance":
+//        "",
+
+    // OSPFM error message in user.py
+//    "Please provide the contact username":
+//        "",
+
+    // OSPFM error message in user.py
+//    "Please provide the correct current password":
+//        "",
+
+    // OSPFM error message in transaction.py
+//    "Please provide transaction description, currency, amount and date":
+//        "",
+
+    // OSPFM error message in preference.py
+//    "Please update the preference: if it does not exist, it will be created":
+//        "",
+
     // src/js/ospfm-web/topbar_right.js:38
 //    "Quit":
 //        "",
 
-    // src/js/ospfm-web-settings/wizard.js:32
-//    "Really reinitialize?":
+    // OSPFM error message in currency.py
+//    "Rate cannot be calculated":
 //        "",
 
     // src/js/ospfm-web/transactions_0.js:539
@@ -489,17 +581,17 @@ l10n_strings = {
 
     // src/js/ospfm-web/contacts.js:53
     // src/js/ospfm-web/contacts.js:64
-    // src/js/ospfm-web/contacts.js:77
+    // src/js/ospfm-web/contacts.js:76
     // src/js/ospfm-web/transactionscreen.js:25
     // src/js/ospfm-web/transactionscreen.js:133
 //    "Search":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:71
+    // src/js/ospfm-web/contacts.js:70
 //    "Search a contact":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:126
+    // src/js/ospfm-web/contacts.js:124
 //    "Search criterion cannot be emtpy":
 //        "",
 
@@ -528,8 +620,61 @@ l10n_strings = {
 //    "The currency cannot be changed because<br/>there are transactions in this account.":
 //        "",
 
+    // OSPFM error message in user.py
+//    "The only user you can modify is yourself":
+//        "",
+
+    // OSPFM error message in category.py
+//    "The parent is already a child of this category":
+//        "",
+
+    // OSPFM error message in account.py
+//    "This account does not exist or you do not own it":
+//        "",
+
+    // OSPFM error message in category.py
+//    "This category does not exist or you do not own it":
+//        "",
+
     // src/js/ospfm-web/categories.js:189
 //    "This category does not exist:":
+//        "",
+
+    // OSPFM error message in user.py
+//    "This contact already exists":
+//        "",
+
+    // OSPFM error message in user.py
+//    "This contact does not exist":
+//        "",
+
+    // OSPFM error message in currency.py
+    // OSPFM error message in category.py
+    // OSPFM error message in account.py
+    // OSPFM error message in transaction.py
+//    "This currency does not exist":
+//        "",
+
+    // OSPFM error message in currency.py
+//    "This currency is still in use":
+//        "",
+
+    // OSPFM error message in transaction.py
+//    "This date cannot be understood":
+//        "",
+
+    // OSPFM error message in category.py
+    // OSPFM error message in category.py
+//    "This parent category does not exist":
+//        "",
+
+    // OSPFM error message in transaction.py
+//    "This transaction does not exist or you do not own it":
+//        "",
+
+    // OSPFM error message in user.py
+    // OSPFM error message in user.py
+//    "This user does not exist":
 //        "",
 
     // src/js/ospfm-web/transactions_transfer.js:84
@@ -569,7 +714,7 @@ l10n_strings = {
 //    "Updated category":
 //        "",
 
-    // src/js/ospfm-web/contacts.js:165
+    // src/js/ospfm-web/contacts.js:162
 //    "Updated contact":
 //        "",
 
@@ -607,10 +752,6 @@ l10n_strings = {
 
     // src/js/ospfm-web/categories.js:166
 //    "Yes, create the category":
-//        "",
-
-    // src/js/ospfm-web-settings/wizard.js:21
-//    "Yes, erase and reinitialize my data":
 //        "",
 
     // src/js/ospfm-web/widgets.js:124
