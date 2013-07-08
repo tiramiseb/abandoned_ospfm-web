@@ -64,10 +64,11 @@ function api_failure(request, errorhandler, func, args) {
  * @param Function error handler
  */
 function api_create(category, parameters, handler, errorhandler) {
+    parameters = parameters || {};
     var createargs = arguments;
     if (authentication.key) {
         parameters.key = authentication.key;
-    }
+    };
     Xhr.load(api_url+category, {
         method: 'post',
         params: parameters,
@@ -95,7 +96,7 @@ function api_read() {
         readargs = arguments,
         parameters = {};
     if (authentication.key) {
-        parameters.key = authentication.key
+        parameters.key = authentication.key;
     };
     if (isString(readargs[1])) {
         uri = api_url+readargs[0]+'/'+readargs[1];
@@ -127,6 +128,7 @@ function api_read() {
  * @param Function error handler
  */
 function api_update(category, objectid, parameters, handler, errorhandler) {
+    parameters = parameters || {};
     var updateargs = arguments;
     if (authentication.key) {
         parameters.key = authentication.key;
@@ -156,7 +158,7 @@ function api_delete(category, objectid, handler, errorhandler) {
     var deleteargs = arguments,
         parameters = {};
     if (authentication.key) {
-        parameters.key = authentication.key
+        parameters.key = authentication.key;
     };
     Xhr.load(api_url+category+'/'+objectid, {
         method: 'delete',
