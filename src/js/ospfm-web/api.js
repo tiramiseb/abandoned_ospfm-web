@@ -38,11 +38,12 @@ function api_success(request, handler) {
  * @param Array args to the calling function
  */
 function api_failure(request, errorhandler, func, args) {
-    if (request.responseJSON) {
-        if (request.responseJSON.status == 401) {
+    var responseJSON = request.responseJSON;
+    if (responseJSON) {
+        if (responseJSON.status == 401) {
             authentication.authenticate(func, args);
         } else {
-            popup(errorhandler(request.responseJSON), true);
+            popup(errorhandler(responseJSON), true);
         };
     } else {
         dialog(
