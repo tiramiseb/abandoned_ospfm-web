@@ -334,38 +334,30 @@ TransactionRow = new Class(Element, {
                         type,
                         values
                     );
-        if (data) {
-            data.description = values.description;
-            data.date = parse_loc_date(values.date);
-            if (this.data.id) {
-                api_update('transactions', this.data.id, data, function(data) {
-                    this.data = data;
-                    this.type = this.guess_type();
-                    this.display_row();
-                    return(_('Updated transaction'));
-                }.bind(this),
-                function() {
-                    return(_('Error updating transaction'));
-                });
-            } else {
-                api_create('transactions', data, function(data) {
-                    this.data = data;
-                    this.set('id', 'transaction' + data.id);
-                    this.type = this.guess_type();
-                    this.display_row();
-                    return(_('Created transaction'));
-                }.bind(this),
-                function() {
-                    return(_('Error creating transaction'));
-                });
-            };
+        data.description = values.description;
+        data.date = parse_loc_date(values.date);
+        if (this.data.id) {
+            api_update('transactions', this.data.id, data, function(data) {
+                this.data = data;
+                this.type = this.guess_type();
+                this.display_row();
+                return(_('Updated transaction'));
+            }.bind(this),
+            function() {
+                return(_('Error updating transaction'));
+            });
         } else {
-            if (this.data.id) {
-                popup(_('Error updating transaction'), true);
-            } else {
-                popup(_('Error creating transaction'), true);
-            }
-        }
+            api_create('transactions', data, function(data) {
+                this.data = data;
+                this.set('id', 'transaction' + data.id);
+                this.type = this.guess_type();
+                this.display_row();
+                return(_('Created transaction'));
+            }.bind(this),
+            function() {
+                return(_('Error creating transaction'));
+            });
+        };
     },
     delete_transaction:function() {
         api_delete('transactions', this.data.id, function() {
