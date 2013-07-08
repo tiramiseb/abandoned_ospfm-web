@@ -26,8 +26,14 @@
  * @param Function success handler
  */
 function api_success(request, handler) {
-    do_additional(request.responseJSON.additional);
-    popup(handler(request.responseJSON.response));
+    var responseJSON = request.responseJSON;
+    do_additional(responseJSON.additional);
+    if (responseJSON.details) {
+        handler(responseJSON.response);
+        popup(_(responseJSON.details));
+    } else {
+        popup(handler(responseJSON.response));
+    };
 }
 /**
  * deals with API failure
@@ -43,7 +49,12 @@ function api_failure(request, errorhandler, func, args) {
         if (responseJSON.status == 401) {
             authentication.authenticate(func, args);
         } else {
-            popup(errorhandler(responseJSON), true);
+            if (responseJSON.details) {
+                errorhandler(responseJSON);
+                popup(_(responseJSON.details), true);
+            } else {
+                popup(errorhandler(responseJSON), true);
+            };
         };
     } else {
         dialog(

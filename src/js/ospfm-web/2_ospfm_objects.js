@@ -433,6 +433,8 @@ OspfmObject = new Class(Observer, {
      * OVERRIDE THIS IN OBJECTS, DO NOT CALL $super
      *
      * @param Object new data
+     * @return String default message to display,
+     *                if no message has been returned by the OSPFM server
      */
     createsuccess:function() {
         return _('Creation successful');
@@ -442,6 +444,8 @@ OspfmObject = new Class(Observer, {
      * OVERRIDE THIS IN OBJECTS, DO NOT CALL $super
      *
      * @param Object new data
+     * @return String default message to display,
+     *                if no message has been returned by the OSPFM server
      */
     createfailed:function() {
         return _('Creation failed');
@@ -489,6 +493,8 @@ OspfmObject = new Class(Observer, {
      * OVERRIDE THIS IN OBJECTS, DO NOT CALL $super
      *
      * @param Object new data
+     * @return String default message to display,
+     *                if no message has been returned by the OSPFM server
      */
     updatesuccess:function() {
         return _('Update successful');
@@ -498,6 +504,8 @@ OspfmObject = new Class(Observer, {
      * OVERRIDE THIS IN OBJECTS, DO NOT CALL $super
      *
      * @param Object new data
+     * @return String default message to display,
+     *                if no message has been returned by the OSPFM server
      */
     updatefailed:function() {
         return _('Update failed');
@@ -534,6 +542,8 @@ OspfmObject = new Class(Observer, {
      * OVERRIDE THIS IN OBJECTS, DO NOT CALL $super
      *
      * @param Object new data
+     * @return String default message to display,
+     *                if no message has been returned by the OSPFM server
      */
     deletesuccess:function() {
         return _('Deletion successful');
@@ -543,6 +553,8 @@ OspfmObject = new Class(Observer, {
      * OVERRIDE THIS IN OBJECTS, DO NOT CALL $super
      *
      * @param Object new data
+     * @return String default message to display,
+     *                if no message has been returned by the OSPFM server
      */
     deletefailed:function() {
         return _('Deletion failed');
