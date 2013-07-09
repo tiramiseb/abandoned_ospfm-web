@@ -125,7 +125,11 @@ Authentication = new Class({
         var resp = response.responseJSON;
         if (resp.status == 401) {
             // TODO : Read the message from the API, if 3 prev attempts failed
-            this.showdialog(_('Invalid username or password...'));
+            if (resp.details) {
+                this.showdialog(_(resp.details));
+            } else {
+                this.showdialog(_('Wrong username or password'));
+            };
         } else {
             this.username = this.authusername.value();
             this.password = this.authusername.value();
