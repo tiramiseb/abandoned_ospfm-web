@@ -21,3 +21,6 @@ search      Self-explanatory
 help        Self-explanatory
 exit        Self-explanatory
 backspace   Self-explanatory
+password    Self-explanatory
+widget      Used to represent widgets globally
+prefs       Own preferences
