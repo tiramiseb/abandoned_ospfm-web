@@ -33,6 +33,10 @@ Icon = new Class(Element, {
     }
 });
 
+icon = function(name) {
+    return new Icon(name)._.outerHTML
+}
+
 ////////// Buttons
 
 /**
@@ -224,115 +228,6 @@ $('popup').onClick(function(){
 $('spinner').onClick(function(){
     this.hide('fade');
 });
-
-////////// Tabs
-/**
- * simple tabs
- */
-Tabs = new Class(Element, {
-    initialize:function() {
-        this.$super('div', {'class':'tabs'});
-        this.tabs = new Element('ul');
-        this.content = new Element('div').setStyle('position', 'relative');
-        this.insert([this.tabs, this.content]);
-    },
-    /**
-     * gets the hash part for this tab
-     *
-     * @param Element optional selected tab
-     * @return String the hash for this tab
-     */
-    getactiveid: function() {
-        return this.tabs.first('li.activetab').tabid;
-    },
-    /**
-     * sets the location hash
-     *
-     * @param Element selected tab
-     */
-    sethash: function(selected_tab) {
-        var fullhash = [ selected_tab.tabid ];
-        this.parents('div.tabs').forEach(function(parent) {
-            fullhash.push(parent.getactiveid());
-        });
-        fullhash.reverse();
-        selected_tab.elem.find('div.tabs').forEach(function(child) {
-            fullhash.push(child.getactiveid());
-        });
-        location.hash = fullhash.join('/');
-    },
-    /**
-     * simulate a click on a tab depending on the hash
-     *
-     * @param String hash
-     */
-    loadfromhash: function(hash) {
-        var id;
-        hash = isArray(hash) ? hash : hash.split('/');
-        id = hash.shift();
-        // Identify the tab and simulate a click
-        this.tabs.children().some(function(tab) {
-            var selected_tab,
-                subtabs;
-            if (id == tab.tabid) {
-                selected_tab = tab;
-                this.display(selected_tab);
-                subtabs = selected_tab.elem.first('div.tabs');
-                if (subtabs) {
-                    subtabs.loadfromhash(hash)
-                };
-                return true;
-            };
-        }, this);
-    },
-    /**
-     * display a tab content
-     *
-     * @param Element the tab
-     */
-    display: function(tab) {
-        tab.addClass('activetab')
-            .siblings().each('removeClass', 'activetab');
-        tab.elem.setStyle({
-            'left': '0',
-            'top': '0'
-        })
-        .siblings().each('setStyle', {
-            'left': '-10000px',
-            'top': '-10000px'
-        });
-    },
-    /**
-     * add a tab and a related content
-     *
-     * @param String text on the link in the tabs
-     * @param String tab unique identifier
-     * @param Element content
-     * @param Boolean optional is this tab the default
-     */
-    addTab: function(linktext, tabid, element, is_default) {
-        element.setStyle({
-            'position': 'absolute',
-            'left': '-10000px',
-            'top': '-10000px',
-            'width': '100%'
-        });
-        this.content.insert(element);
-        var link = new Element('li', {'html': linktext})
-                    .onClick(function(event) {
-                        this.display(link);
-                        this.sethash(link);
-                    }.bind(this));
-        link.elem = element;
-        link.tabid = tabid;
-        this.tabs.insert(link);
-        if (is_default) {
-            this.display(link);
-        };
-        return this;
-    }
-});
-
 
 ////////// Various global stuff
 $('applogo').onClick(function() {

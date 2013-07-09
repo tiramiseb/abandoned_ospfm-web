@@ -41,11 +41,11 @@ var
     own_currencies,
         // interface.js
     Icon,
+    icon,
     Button,
     dialog,
     close_dialog,
     popup,
-    Tabs,
         // localization.js
     _,
     locale,
