@@ -52,22 +52,25 @@ li.widget div.content {
 .icon-backspace:before {
     content:'⌫ ';
 }
-.icon-book:before {
+.icon-account:before {
     content:'❑ ';
 }
-.icon-calculate:before {
+.icon-calculator:before {
     content:'+ ';
 }
-.icon-cancel:before {
+.icon-catsep:before {
+    content:'> ';
+}
+.icon-delete:before {
     content:'X ';
 }
-.icon-checkmark:before {
+.icon-ok:before {
     content:'✓ ';
 }
-.icon-cog:before {
-    content:'☢ ';
+.icon-settings:before {
+    content:'⚙ ';
 }
-.icon-coins:before {
+.icon-currency:before {
     content:'⛁ ';
 }
 .icon-exit:before {
@@ -76,32 +79,41 @@ li.widget div.content {
 .icon-help:before {
     content:'? ';
 }
-.icon-list:before {
+.icon-category:before {
     content:'⇶ ';
 }
-.icon-menu:before {
+.icon-vertdrag:before {
     content:'⇵ ';
 }
 .icon-move:before {
     content:'⇵ ';
 }
-.icon-pencil:before {
+.icon-edit:before {
     content:'✍ ';
 }
-.icon-plus:before {
+.icon-add:before {
     content:'+ ';
 }
 .icon-search:before {
     content:'? ';
 }
-.icon-undo:before {
+.icon-cancel:before {
     content:'↺ ';
 }
-.icon-users:before {
+.icon-contact:before {
     content:'☺ ';
 }
-.icon-wrench:before {
+.icon-params:before {
     content:'⎇ ';
+}
+.icon-password:before {
+    content:'⚷ ';
+}
+.icon-prefs:before {
+    content:'♥ ';
+}
+.icon-widget:before {
+    content:'☜ ';
 }
 button.green {
     background: #9f9;
