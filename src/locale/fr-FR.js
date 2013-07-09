@@ -744,11 +744,11 @@ l10n_strings = {
 
     // src/js/ospfm-web/wizard.js:141
     "When you choose to create an empty everCount account, you will have to create everything by yourself: accounts, categories, etc. This option is for people who already know how to use a financial application and who know exactly what they want to do.":
-        "Quand vous choisissez de créer un compte everCount vide, vous devrez tout créer vous-mêmes: les comptes, les catégories, etc. Cette option est adaptée aux personnes qui savent déjà comment utiliser une application financière et qui savent exactement ce qu'elles veulent faire.",
+        "Quand vous choisissez de créer un compte everCount vide, vous devrez tout créer vous-mêmes&nbsp;: les comptes, les catégories, etc. Cette option est adaptée aux personnes qui savent déjà comment utiliser une application financière et qui savent exactement ce qu'elles veulent faire.",
 
     // src/js/ospfm-web/wizard.js:157
     "With this option, multiple elements will be created, simulating an already-used everCount account: accouts, categories, transactions, etc. This option is for people who want to discover everCount and all its features.":
-        "Avec cette option, de nombreux éléments seront créés, simulant un compte everCount en cours d'utilisation: comptes, catégories, transactions, etc. Cette option est adaptée aux personnes qui veulent découvrir everCount et toutes ses fonctionnalités.",
+        "Avec cette option, de nombreux éléments seront créés, simulant un compte everCount en cours d'utilisation&nbsp;: comptes, catégories, transactions, etc. Cette option est adaptée aux personnes qui veulent découvrir everCount et toutes ses fonctionnalités.",
 
     // src/js/ospfm-web/categories.js:163
     "Yes, create the categories":
@@ -780,15 +780,15 @@ l10n_strings = {
 
     // src/js/ospfm-web/wizard.js:62
     "Your first name:":
-        "Votre prénom",
+        "Votre prénom&nbsp;:",
 
     // src/js/ospfm-web/wizard.js:76
     "Your last name:":
-        "Votre nom de famille",
+        "Votre nom de famille&nbsp;:",
 
     // src/js/ospfm-web/wizard.js:102
     "Your preferred currency:":
-        "Votre monnaie préférée",
+        "Votre monnaie préférée&nbsp;:",
 
     // src/js/ospfm-web/widgets.js:273
     "all categories":
