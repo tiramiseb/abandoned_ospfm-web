@@ -1,0 +1,23 @@
+Icons list
+==========
+
+This document lists all icons used in OSPFM-web with the "Icon" class.
+
+account     Represents an account or accounts list
+calculator  Represents the calculator widget
+delete      Means something will be deleted/removed
+ok          Means something is valid or will be confirmed
+settings    Represents the settings screen
+currency    Represents a currency or currencies list
+category    Represents a category or categories list
+vertdrag    Used for vertically draggable listed stuff
+catsep      Category name separator (between parent and own names)
+edit        Means something will be edited
+add         Means somethins will be added
+cancel      Means the last modifications will be canceled and not saved
+contact     Represents a contact or contacts list
+params      Used to access to a parameters screen, mainly in widgets
+search      Self-explanatory
+help        Self-explanatory
+exit        Self-explanatory
+backspace   Self-explanatory

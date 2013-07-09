@@ -21,7 +21,7 @@ transactionscreen = new Class(Screen, {
     prebind: ['resize', 'scrolled'],
     url:'/',
     element:function() {
-        var addbutton = new Button('green', 'plus')
+        var addbutton = new Button('green', 'add')
                                 .tooltip(_('Add a transaction')),
             searchbutton = new Button('blue', 'search').tooltip(_('Search')),
             searchbox = new SearchBox().insertTo($$('body')[0]);
@@ -132,7 +132,7 @@ SearchBox = new Class(Element, {
                                       'id': 'searchdate'}),
             dateto       = new Input({'class':'date', 'name':'dateto'}),
             searchbutton = new Button('green', 'search', _('Search'),'submit'),
-            cancelbutton = new Button('blue', 'undo', _('Cancel'), 'reset');
+            cancelbutton = new Button('blue', 'cancel', _('Cancel'), 'reset');
         this.$super('div', {'class': 'searchbox'})
         this.onClick(function(event) {
             // Do not propagate a click here to the document

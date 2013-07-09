@@ -18,7 +18,7 @@
  */
 
 wizard = function(firstrun) {
-    var cancelbutton  = new Button('blue', 'undo', _('Cancel')),
+    var cancelbutton  = new Button('blue', 'cancel', _('Cancel')),
         localesinput  = new Element('select', {'id': 'wizardlocale',
                                                'name': 'locale'}),
         currentlocale = preferences.get('ospfm-web-locale') || locale.full,
@@ -162,7 +162,7 @@ wizard = function(firstrun) {
                     ]),
                 ]),
                 new Element('div', {'class':'bottombuttons'}).insert([
-                    new Button('green', 'checkmark',
+                    new Button('green', 'ok',
                                _('Initialize everCount'), 'submit'),
                     cancelbutton
                 ])
@@ -214,7 +214,7 @@ wizard = function(firstrun) {
                             }),
                             new Element('div',{'class':'bottombuttons'})
                                 .insert(
-                                    new Button('green', 'checkmark', _('OK'))
+                                    new Button('green', 'ok', _('OK'))
                                         .onClick(onclick)
                                 )
                         ], false);

@@ -34,7 +34,7 @@ Widget = new Class(Element, {
         title.insert(this.icon, 'top');
         if (this.config) {
             title.insert(
-                new Icon('wrench').addClass('widgetsetup').onClick(function() {
+                new Icon('params').addClass('widgetsetup').onClick(function() {
                     dialog(this.config())
                 }.bind(this)),
                 'top'
@@ -69,7 +69,7 @@ widgets = {
 };
 widgets.register('accounts', new Class(Widget, {
     id: 'accounts',
-    icon: 'book',
+    icon: 'account',
     title: function(){return _('Accounts')},
     initialize: function() {
         this.$super();
@@ -128,7 +128,7 @@ widgets.register('accounts', new Class(Widget, {
 }));
 widgets.register('categories', new Class(Widget, {
     id: 'categories',
-    icon: 'list',
+    icon: 'category',
     title: function(){return _('Categories')},
     initialize: function() {
         this.period = preferences.get(
@@ -300,7 +300,7 @@ widgets.register('categories', new Class(Widget, {
                 ])
             ]),
             new Element('div', {'class': 'bottombuttons'}).insert(
-                new Button('green', 'checkmark', _('Apply'), 'submit')
+                new Button('green', 'ok', _('Apply'), 'submit')
             )
         ]).onSubmit(function(event) {
             var period = event.currentTarget.values().displayperiod,
@@ -318,7 +318,7 @@ widgets.register('categories', new Class(Widget, {
 
 widgets.register('contacts', new Class(Widget, {
     id: 'contacts',
-    icon: 'users',
+    icon: 'contact',
     title: function(){return _('Contacts')},
     initialize: function() {
         this.$super();
@@ -349,7 +349,7 @@ widgets.register('contacts', new Class(Widget, {
 
 widgets.register('currencies', new Class(Widget, {
     id: 'currencies',
-    icon: 'coins',
+    icon: 'currency',
     title: function(){return _('Currencies')},
     initialize: function() {
         this.$super();
@@ -389,7 +389,7 @@ widgets.register('currencies', new Class(Widget, {
 widgets.register('calculator', new Class(Widget, {
     prebind: ['checkinput'],
     id: 'calculator',
-    icon: 'calculate',
+    icon: 'calculator',
     title: function() {return _('Calculator')},
     checkinput: function() {
         this.inp.setValue(

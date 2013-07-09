@@ -22,7 +22,7 @@
 init.on('go', function() {
     // init.start and init.success are not needed here
     $('userinfo').insert([
-        new Button('green', 'cog')
+        new Button('green', 'settings')
             .onClick(function() {
                 screens.load('/settings');
             })

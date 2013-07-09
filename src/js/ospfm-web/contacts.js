@@ -101,7 +101,7 @@ ContactNameField = new Class(Field, {
                                     result.username
                                 );
                 resultslist.insert(new Element('div').insert([
-                    new Button('green', 'checkmark')
+                    new Button('green', 'ok')
                         .tooltip(_('Add this contact'))
                         .set('nameinfo', [result.username, fullname])
                         .onClick(function(event) {
@@ -127,7 +127,7 @@ ContactNameField = new Class(Field, {
                 }.bind(this)),
                 resultslist,
                 new Element('div', {'class':'bottombuttons'}).insert([
-                        new Button('blue', 'cancel', _('Close'))
+                        new Button('blue', 'delete', _('Close'))
                             .onClick(function() { close_dialog() })
                     ])
             ])

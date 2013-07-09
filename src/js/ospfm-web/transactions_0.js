@@ -85,7 +85,7 @@ TransactionRow = new Class(Element, {
             description   = new Element('div', {'class': 'description'}).insert(
                                 data.description
                             ),
-            editbutton    = new Button('green', 'pencil')
+            editbutton    = new Button('green', 'edit')
                                 .addClass('edit')
                                 .tooltip(_('Edit'))
                                 .onClick(this.edit_row),
@@ -107,7 +107,7 @@ TransactionRow = new Class(Element, {
             if (account.verified) {
                 tooltiprow.insert(
                     new Element('td').insert(
-                        new Icon('checkmark')
+                        new Icon('ok')
                     )
                 );
             }
@@ -200,20 +200,20 @@ TransactionRow = new Class(Element, {
     edit_row: function() {
         var details,
             first_day,
-            applybutton  = new Button('green', 'checkmark')
+            applybutton  = new Button('green', 'ok')
                                 .addClass('apply')
                                 .onClick(function() {
                                     this.save_transaction()
                                 }.bind(this)),
-            applybuttonright  = new Button('green', 'checkmark')
+            applybuttonright  = new Button('green', 'ok')
                                 .addClass('apply_right')
                                 .onClick(function() {
                                     this.save_transaction()
                                 }.bind(this)),
-            cancelbutton = new Button('blue', 'undo')
+            cancelbutton = new Button('blue', 'cancel')
                                 .addClass('cancel')
                                 .tooltip(_('Cancel')),
-            deletebutton = new Button('red', 'cancel')
+            deletebutton = new Button('red', 'delete')
                                 .addClass('delete')
                                 .tooltip(_('Delete')).onClick(function() {
                                     this.delete_transaction()
@@ -529,7 +529,7 @@ CategoryInput = new Class(ComplexInput, {
             }
         }.bind(this));
 
-        this.delbutton = new Button('red', 'cancel', _('Remove this category'))
+        this.delbutton = new Button('red', 'delete', _('Remove this category'))
             .onClick(function() {
                 this.remove();
             }.bind(this));

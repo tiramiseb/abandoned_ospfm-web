@@ -579,7 +579,7 @@ OspfmObject = new Class(Observer, {
             rowcontainer   = new Element('div', {'class': 'rowcontainer'})
                                 .insert(objectrow);
         if (recursive) {
-            handle = new Icon('menu')
+            handle = new Icon('vertdrag')
                         .addClass('recursivehandle blue');
             rowcontainer.makeDraggable({
                 'handle': handle,
@@ -648,7 +648,7 @@ OspfmObject = new Class(Observer, {
             if (deepness && index == 0) {
                 field.first()
                     .setStyle('padding-left', (5+20*(deepness-1))+'px')
-                    .insert(new Icon('next'), 'top');
+                    .insert(new Icon('catsep'), 'top');
             };
             objectrow.insert(field);
         }, this);
@@ -656,7 +656,7 @@ OspfmObject = new Class(Observer, {
         buttonscell = new Element('span', {
             'class': 'buttonscell'
         }).insert([
-            new Button('blue', 'pencil')
+            new Button('blue', 'edit')
                 .onClick(function(event) {
                     objectrow.replace(this.editrow(displayfields));
                     this.stopObserving(updaterow);
@@ -664,7 +664,7 @@ OspfmObject = new Class(Observer, {
                 }.bind(this))
                 .tooltip(_('Edit'))
             ,
-            new Button('red', 'cancel')
+            new Button('red', 'delete')
                 .onClick(function() {
                     this.del();
                 }.bind(this))
@@ -708,7 +708,7 @@ OspfmObject = new Class(Observer, {
         // If recursive, create handle
         if (this.recursive) {
             form.insert(
-                new Icon('menu').addClass('inactivehandle')
+                new Icon('vertdrag').addClass('inactivehandle')
             )
         }
         // Create all fields
@@ -718,14 +718,14 @@ OspfmObject = new Class(Observer, {
             if (this.deepness && index == 0) {
                 field.first()
                     .setStyle('padding-left', (5+20*(this.deepness-1))+'px')
-                    .insert(new Icon('next'), 'top')
+                    .insert(new Icon('catsep'), 'top')
             };
             form.insert(field);
         }, this);
         // Create buttons
         if (hasdata) {
             buttonscell.insert([
-                new Button('green', 'checkmark', _('Apply'), 'submit')
+                new Button('green', 'ok', _('Apply'), 'submit')
             ])
             form.onSubmit(function(event) {
                 event.preventDefault();
@@ -733,7 +733,7 @@ OspfmObject = new Class(Observer, {
             }.bind(this));
         } else {
             buttonscell.insert(
-                new Button('green', 'plus', _('Add'), 'submit')
+                new Button('green', 'add', _('Add'), 'submit')
             );
             form.onSubmit(function(event) {
                 event.preventDefault();

@@ -74,7 +74,7 @@ Authentication = new Class({
                         new Element('td', {
                             'class': 'submit', 'colspan': '2'
                         }).insert(
-                            new Button('green', 'checkmark',
+                            new Button('green', 'ok',
                                        _('Login'), 'submit')
                         )
                     )
@@ -124,6 +124,7 @@ Authentication = new Class({
         close_dialog();
         var resp = response.responseJSON;
         if (resp.status == 401) {
+            // TODO : Read the message from the API, if 3 prev attempts failed
             this.showdialog(_('Invalid username or password...'));
         } else {
             this.username = this.authusername.value();
