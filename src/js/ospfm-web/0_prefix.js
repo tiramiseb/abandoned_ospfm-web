@@ -19,26 +19,50 @@
 "use strict";
 
 var
+        // 1_additional.js
+    additional,
         // 1_main.js
     init,
+        // 2_ospfm_objects.js
+    Collection,
+    OspfmObject,
+    Field,
+    StringField,
+    AmountField,
+    ObjectField,
         // 2_preferences.js
+    Preference,
     preferences,
         // 2_screens.js
+    RemoteScreen,
     screens,
     Screen,
         // accounts.js
+    Account,
+    AccountCurrencyField,
     accounts,
     totalbalance,
+        // api.js
+    api_rates,
         // authentication.js
+    Authentication,
     authentication,
         // categories.js
     categories,
+    Category,
+    CategoryCurrencyField,
+    multi_category_creator,
+    CategorySelector,
+    CategoriesCollection
         // contacts.js
     contacts,
+    ContactNameField,
+    Contact,
         // currencies.js
     all_currencies,
     global_currencies,
     own_currencies,
+    Currency,
         // interface.js
     Icon,
     icon,
@@ -46,63 +70,25 @@ var
     dialog,
     close_dialog,
     popup,
+    popuptimeout,
         // localization.js
     _,
     locale,
+        // transactions.js
+    TransactionRow,
+    transaction_edit_details,
+    transaction_save_details,
+    ComplexInput,
+    AccountInput,
+    CategoryInput,
+        // transactionscreen.js
+    transactionscreen,
+    SearchBox,
         // user.js
+    User,
     user_me,
         // widgets.js
+    Widget
     widgets,
         // wizard.js
     wizard;
-
-// Put everything in a single function, to be able to minify more names
-$(document).onReady(function(){
-    var
-            // 1_additional.js
-        additional,
-            // 2_ospfm_objects.js
-        Collection,
-        OspfmObject,
-        Field,
-        StringField,
-        AmountField,
-        ObjectField,
-            // 2_preferences.js
-        Preference,
-            // 2_screens.js
-        RemoteScreen,
-            // accounts.js
-        AccountCurrencyField,
-        Account,
-            // api.js
-        api_rates,
-            // authentication.js
-        Authentication,
-            // categories.js
-        CategoryCurrencyField,
-        Category,
-        multi_category_creator,
-        CategorySelector,
-            // contacts.js
-        ContactNameField,
-        Contact,
-            // currencies.js
-        Currency,
-            // interface.js
-        icons,
-        popuptimeout,
-            // transactions.js
-        TransactionRow,
-        transaction_edit_details,
-        transaction_save_details,
-        ComplexInput,
-        AccountInput,
-        CategoryInput,
-            // transactionscreen.js
-        transactionscreen,
-        SearchBox,
-            // user.js
-        User,
-            // widgets.js
-        Widget;
