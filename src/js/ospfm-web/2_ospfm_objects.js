@@ -253,9 +253,6 @@ Collection = new Class(Observer, {
         }).bind(this);
         object.on('deleted', remove_object_from_collection);
         this.fire('added', object, position);
-        if (this != categories) {
-            categories.fire('added in subcategory', object);
-        };
     },
     set_deepness: function(deepness) {
         this.deepness = deepness;

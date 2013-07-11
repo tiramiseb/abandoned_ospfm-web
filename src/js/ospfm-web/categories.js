@@ -316,4 +316,13 @@ additional.categoriesbalance = function(data) {
     });
 };
 
-categories = new Collection(Category, true, 'name', true, true, true);
+CategoriesCollection = new Class(Collection, {
+    'add':function(object) {
+        this.$super(object);
+        if (this != categories) {
+            categories.fire('added in subcategory', object);
+        };
+    }
+});
+
+categories = new CategoriesCollection(Category, true, 'name', true, true, true);
