@@ -53,7 +53,7 @@ var
     CategoryCurrencyField,
     multi_category_creator,
     CategorySelector,
-    CategoriesCollection
+    CategoriesCollection,
         // contacts.js
     contacts,
     ContactNameField,
@@ -88,7 +88,7 @@ var
     User,
     user_me,
         // widgets.js
-    Widget
+    Widget,
     widgets,
         // wizard.js
     wizard;
