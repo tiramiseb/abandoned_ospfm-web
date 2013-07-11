@@ -187,9 +187,7 @@ Element.include({
         return this;
     }
 });
-$('tooltip').onMouseover(function() {
-    this.moveTo(-10000, 0);
-});
+
 
 ////////// Small popup message
 
@@ -222,16 +220,21 @@ popup = function(content, error) {
         }, delay);
     };
 }
-$('popup').onClick(function(){
-    this.hide('fade');
-});
-$('spinner').onClick(function(){
-    this.hide('fade');
-});
 
-////////// Various global stuff
-$('applogo').onClick(function() {
-    screens.load('/');
+////////// Initializations
+$(document).onReady(function() {
+    $('tooltip').onMouseover(function() {
+        this.moveTo(-10000, 0);
+    });
+    $('popup').onClick(function(){
+        this.hide('fade');
+    });
+    $('spinner').onClick(function(){
+        this.hide('fade');
+    });
+    $('applogo').onClick(function() {
+        screens.load('/');
+    });
 });
 
 Calendar.Options.hideOnPick = true;
