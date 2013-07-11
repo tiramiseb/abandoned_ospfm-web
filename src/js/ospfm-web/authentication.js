@@ -124,7 +124,6 @@ Authentication = new Class({
         close_dialog();
         var resp = response.responseJSON;
         if (resp.status == 401) {
-            // TODO : Read the message from the API, if 3 prev attempts failed
             if (resp.details) {
                 this.showdialog(_(resp.details));
             } else {
