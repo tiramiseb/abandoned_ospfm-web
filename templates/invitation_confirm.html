@@ -1,0 +1,25 @@
+<p class="nowrap">
+    <span class="translatable">The following message will be sent.</span>
+    <span class="translatable">Recipient:</span> {{ address }}
+</p>
+<pre class="invitationmessage">
+{{ message }}
+</pre>
+<form id="confirminvite" action="/invite" method="POST">
+    <input type="hidden" name="name" value="{{ name }}">
+    <input type="hidden" name="address" value="{{ address }}">
+    <input type="hidden" name="sentby" value="{{ sentby }}">
+    <input type="hidden" name="language" value="{{ language }}">
+    <input type="hidden" name="confirmed" value="yes">
+    <button class="confirm nowrap blue" type="submit">
+        <span class="icon-ok" aria-hidden="true"></span>
+        <span class="buttontext translatable">Yes, send this message!</span>
+    </button>
+</form>
+<script>
+    $('confirminvite').remotize({
+        onComplete:function(event) {
+            dialog(event.responseText);
+        }
+    })
+</script>

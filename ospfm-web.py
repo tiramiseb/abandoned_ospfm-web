@@ -20,7 +20,7 @@
 ###############################################################################
 # Imports
 
-import os, subprocess
+import codecs, os, subprocess
 
 from flask import abort, Flask, jsonify, render_template, request
 
@@ -68,6 +68,47 @@ def browserlocale():
 @app.route('/locales')
 def locales():
     return jsonify({'locales':langs})
+
+@app.route('/shortlocales')
+def shortlocales():
+    return jsonify({'locales':shortlangs.keys()})
+
+@app.route('/invite', methods=['POST'])
+def invitation():
+    if not (request.form.has_key('name') and \
+            request.form.has_key('address') and \
+            request.form.has_key('language') and \
+            request.form.has_key('sentby')):
+        return render_template('invitation_error.html',
+                               errmessage=u"Please provide all needed data.")
+
+    address = request.form['address']
+    language = request.form['language']
+    name = request.form['name']
+    sentby = request.form['sentby']
+
+    if name == '' or address == '':
+        return render_template('invitation_error.html',
+             errmessage=u"Please provide this person's name and email address")
+    if not '@' in address:
+        return render_template('invitation_error.html',
+               errmessage=u'This is not an email address:',
+               complement=address)
+    if language not in shortlangs.keys():
+        return render_template('invitation_error.html',
+               errmessage=u'There is no message in this language:',
+               complement=language)
+
+    with codecs.open('templates/invitation_message_{}.txt'.format(language),
+                                              encoding='utf-8') as messagefile:
+        message = messagefile.read().format(name=name, sentby=sentby)
+    if request.form.get('confirmed', False) == 'yes':
+        # TODO Send the message
+        pass
+    else:
+        return render_template('invitation_confirm.html',
+                               address=address, name=name, sentby=sentby,
+                               language=language, message=message)
 
 if config.DEVEL:
     @app.after_request

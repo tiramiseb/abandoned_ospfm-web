@@ -92,6 +92,11 @@ def get_all_strings():
                         strings[string] = [
                             'OSPFM error message in {}'.format(filename)
                         ]
+    for string in get_invitation_strings():
+        if string in strings:
+            strings[string].append('Invitation dialogs')
+        else:
+            strings[string] = ['Invitation dialogs']
     return strings
 
 
@@ -119,6 +124,12 @@ def get_ospfm_api_error_strings(filename):
            re.findall("self.notfound\('([^\']*)'\)", content) + \
            re.findall('self.notfound\("([^\"]*)"\)', content)
 
+def get_invitation_strings():
+    return [
+        i.strip() for i in \
+        file('templates/invitation_strings.txt', 'r').readlines() \
+        if i.strip() and not i.strip().startswith('#')
+    ]
 
 
 def update_all_translation_files(strings):
@@ -128,6 +139,9 @@ def update_all_translation_files(strings):
         if filename.endswith('.js'):
             files.append(filename)
             locales.append(filename[:-3])
+    with file(os.path.join(TRANSLATIONDIR, 'shortcuts.txt'), 'r') as shorts:
+        for shortcut in shorts.readlines():
+            locales.append(shortcut.split(':')[0])
     targetdir = tempfile.mkdtemp()
     for filename in files:
         update_translation_file(

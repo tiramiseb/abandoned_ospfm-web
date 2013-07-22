@@ -1,0 +1,11 @@
+# These are the strings used in the invitation dialogs.
+# One string per line, lines starting with "#" are ignored.
+
+Error
+Please provide all needed data.
+Please provide this person's name and email address
+Recipient:
+The following message will be sent.
+There is no message in this language:
+This is not an email address:
+Yes, send this message!

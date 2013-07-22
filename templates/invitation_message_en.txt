@@ -1,0 +1,11 @@
+Dear {name},
+
+We are sending you this message on behalf of {sentby}, who wants to introduce everCount to you.
+
+everCount is a personal money management application, aimed at real-life situations; its goal is to help you manage money in all situations you may encounter.
+
+Learn more at:
+http://www.evercount.net/
+
+Regards,
+the everCount team.

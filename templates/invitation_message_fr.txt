@@ -1,0 +1,11 @@
+Bonjour {name},
+
+Nous vous envoyons ce message de la part de {sentby}, qui veut vous faire connaître everCount.
+
+everCount est une application de gestion financière personnelle, visant des situations concrètes ; son objectif est de vous aider à gérer votre argent dans toutes les situations que vous pourrez rencontrer.
+
+Apprenez-en plus sur:
+http://www.evercount.net/
+
+Cordialement,
+l'équipe d'everCount.
