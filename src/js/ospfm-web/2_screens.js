@@ -22,94 +22,94 @@
 /**
  * contains all screens
  */
-screens = {
-    /**
-     * list of screens
-     *
-     * either a Screen object
-     * or a string, corresponding to another entry in this list
-     * (like symbolic links)
-     */
-    'screens': {},
-    /**
-     * loads and displays a screen
-     *
-     * @param String screen name
-     * @param String optional URL hash
-     * @param mixed do not touch the history (useful for the first page or
-     *                                        when the URL is manually changed)
-     */
-    'load': function(url, hash, nohistory) {
-        var element,
-            nextdest,
-            maincontent,
-            url_content;
-        if (hash) {
-            hash = hash.replace(/^#/,'');
-        } else {
-            hash = '';
+screens = new Observer();
+/**
+ * list of screens
+ *
+ * either a Screen object
+ * or a string, corresponding to another entry in this list
+ * (like symbolic links)
+ */
+screens.screens = {};
+/**
+ * loads and displays a screen
+ *
+ * @param String screen name
+ * @param String optional URL hash
+ * @param mixed do not touch the history (useful for the first page or
+ *                                        when the URL is manually changed)
+ */
+screens.load = function(url, hash, nohistory) {
+    var element,
+        nextdest,
+        maincontent,
+        url_content;
+    if (hash) {
+        hash = hash.replace(/^#/,'');
+    } else {
+        hash = '';
+    };
+    // If nohistory, change screen no matter what but do not touch history
+    // If url != location.pathname, change screen and update history
+    if (nohistory || url != location.pathname || hash != location.hash) {
+        url_content = screens.screens[url];
+        if (typeof url_content == 'string') {
+            url_content = screens.screens[url_content];
         };
-        // If nohistory, change screen no matter what but do not touch history
-        // If url != location.pathname, change screen and update history
-        if (nohistory || url != location.pathname || hash != location.hash) {
-            url_content = screens.screens[url];
-            if (typeof url_content == 'string') {
-                url_content = screens.screens[url_content];
-            };
-            if (url_content) {
-                if (!nohistory) {
-                    screens.previouspath = location.pathname;
-                    screens.previoushash = location.hash;
-                    if (hash) {
-                        history.pushState({}, '', url+'#'+hash);
-                    } else {
-                        history.pushState({}, '', url);
-                    };
-                } else if (nohistory == 'cascade') {
-                    history.replaceState({}, '', url);
-                };
-                maincontent = $('maincontent');
-                element = url_content.get_element(hash);
-                if (element) {
-                    screens.currentpath = url;
-                    maincontent.update(element);
-                    url_content.load(url, hash);
-                };
-            } else {
-                nextdest = url.split('/').slice(0, -1).join('/') || '/';
-                if (nohistory) {
-                    screens.load(nextdest, hash, 'cascade');
+        if (url_content) {
+            if (!nohistory) {
+                screens.previouspath = location.pathname;
+                screens.previoushash = location.hash;
+                if (hash) {
+                    history.pushState({}, '', url+'#'+hash);
                 } else {
-                    screens.load(nextdest, hash);
+                    history.pushState({}, '', url);
                 };
+            } else if (nohistory == 'cascade') {
+                history.replaceState({}, '', url);
+            };
+            maincontent = $('maincontent');
+            element = url_content.get_element(hash);
+            if (element) {
+                screens.currentpath = url;
+                maincontent.update(element);
+                screens.fire('loaded', url);
+                url_content.load(url, hash);
+            };
+        } else {
+            nextdest = url.split('/').slice(0, -1).join('/') || '/';
+            if (nohistory) {
+                screens.load(nextdest, hash, 'cascade');
+            } else {
+                screens.load(nextdest, hash);
             };
         };
-    },
-    /**
-     * loads the screen corresponding to the current URL
-     */
-    'loadcurrent': function() {
-        var url = purl();
-        this.load(url.attr('path'), url.attr('fragment'), true);
-    },
-    /**
-     * loads the previous screen or '/' if there is no previous screen
-     */
-    'back': function() {
-        if (screens.previouspath) {
-            screens.load(screens.previouspath, screens.previoushash);
-        } else {
-            screens.load('/');
-        };
-    },
-    /**
-     * adds a displayable screen
-     *
-     * @param Screen or RemoteScreen new screen
-     */
-    'add': function(screen) {
-        this.screens[screen.url] = screen;
-    },
+    };
+};
+/**
+ * loads the screen corresponding to the current URL
+ */
+screens.loadcurrent = function() {
+    var url = purl();
+    this.load(url.attr('path'), url.attr('fragment'), true);
+};
+/**
+ * loads the previous screen or '/' if there is no previous screen
+ */
+screens.back = function() {
+    if (screens.previouspath) {
+        screens.load(screens.previouspath, screens.previoushash);
+    } else {
+        screens.load('/');
+    };
+};
+/**
+ * adds a displayable screen
+ *
+ * @param Screen or RemoteScreen new screen
+ */
+screens.add = function(screen) {
+    this.screens[screen.url] = screen;
 };
 
 /**
