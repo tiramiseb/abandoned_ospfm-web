@@ -19,7 +19,9 @@
 l10n_locales = {
     "en-GB": "Anglais (Royaume Uni)",
     "fr-FR": "Français (France)",
-    "en-US": "Anglais (États-Unis)"
+    "en-US": "Anglais (États-Unis)",
+    "en": "Anglais",
+    "fr": "Français"
 }
 l10n_numbers = {
     "decimal": ",",
@@ -57,6 +59,14 @@ l10n_strings = {
     "\"%CATEGORYSHORTNAME%\" in \"%PARENTFULLNAME%\"":
         "«&nbsp;%CATEGORYSHORTNAME%&nbsp;» dans «&nbsp;%PARENTFULLNAME%&nbsp;»",
 
+    // src/js/ospfm-web/contacts.js:129
+    "\"%NAME%\" matches the following people:":
+        "«&nbsp;%NAME%&nbsp;» correspond aux personnes suivantes&nbsp;:",
+
+    // src/js/ospfm-web/contacts.js:140
+    "\"%NAME%\": No matching user":
+        "«&nbsp;%NAME%&nbsp;»&nbsp;: aucun utilisateur ne correspond",
+
     // OSPFM error message in authentication.py
     "3 previous attempts failed, please wait 2 minutes":
         "Les 3 tentatives précédentes ont échoué, veuillez patienter 2 minutes",
@@ -77,12 +87,13 @@ l10n_strings = {
     "Account":
         "Compte",
 
-    // src/js/ospfm-web-settings/settings.js:27
+    // src/js/ospfm-web-settings/settings.js:387
     // src/js/ospfm-web/widgets.js:72
     "Accounts":
         "Comptes",
 
-    // src/js/ospfm-web/2_ospfm_objects.js:735
+    // src/js/ospfm-web-settings/settings.js:363
+    // src/js/ospfm-web/2_ospfm_objects.js:732
     "Add":
         "Ajouter",
 
@@ -94,9 +105,9 @@ l10n_strings = {
     "Add a transaction":
         "Ajouter une transaction",
 
-    // src/js/ospfm-web/contacts.js:104
-    "Add this contact":
-        "Ajouter ce contact",
+    // src/js/ospfm-web/contacts.js:116
+    "Add this person":
+        "Ajouter cette personne",
 
     // src/js/ospfm-web/transactionscreen.js:115
     "All transactions have been displayed!":
@@ -107,7 +118,7 @@ l10n_strings = {
         "Montant",
 
     // src/js/ospfm-web/widgets.js:302
-    // src/js/ospfm-web/2_ospfm_objects.js:727
+    // src/js/ospfm-web/2_ospfm_objects.js:724
     "Apply":
         "Appliquer",
 
@@ -138,7 +149,7 @@ l10n_strings = {
     "Cannot add contacts to demo accounts":
         "Il n'est pas possible d'ajouter des contacts aux comptes de démonstration",
 
-    // src/js/ospfm-web-settings/settings.js:28
+    // src/js/ospfm-web-settings/settings.js:388
     // src/js/ospfm-web/widgets.js:131
     "Categories":
         "Catégories",
@@ -147,19 +158,33 @@ l10n_strings = {
     "Category":
         "Categorie",
 
-    // src/js/ospfm-web-settings/settings.js:33
+    // src/js/ospfm-web-settings/settings.js:173
+    "Change currency":
+        "Changer la monnaie",
+
+    // src/js/ospfm-web-settings/settings.js:171
+    "Change currency and language, then reload":
+        "Changer la monnaie et la langue, puis recharger",
+
+    // src/js/ospfm-web-settings/settings.js:175
+    "Change language, then reload":
+        "Changer la langue, puis recharger",
+
+    // src/js/ospfm-web-settings/settings.js:101
+    // src/js/ospfm-web-settings/settings.js:391
     "Change password":
-        "Changer le mot de passe",
+        "Modifier le mot de passe",
 
-    // src/js/ospfm-web/contacts.js:129
-    "Close":
-        "Fermer",
-
-    // src/js/ospfm-web/contacts.js:145
+    // src/js/ospfm-web/contacts.js:60
     "Comment":
         "Commentaire",
 
-    // src/js/ospfm-web-settings/settings.js:30
+    // src/js/ospfm-web-settings/settings.js:54
+    // src/js/ospfm-web-settings/settings.js:94
+    "Confirm password":
+        "Confirmer le mot de passe",
+
+    // src/js/ospfm-web-settings/settings.js:390
     // src/js/ospfm-web/widgets.js:321
     "Contacts":
         "Contacts",
@@ -177,7 +202,7 @@ l10n_strings = {
     "Created category":
         "Catégorie créée",
 
-    // src/js/ospfm-web/contacts.js:159
+    // src/js/ospfm-web/contacts.js:222
     "Created contact":
         "Contact créé",
 
@@ -189,15 +214,15 @@ l10n_strings = {
     "Created transaction":
         "Transaction créée",
 
-    // src/js/ospfm-web/2_ospfm_objects.js:450
+    // src/js/ospfm-web/2_ospfm_objects.js:447
     "Creation failed":
         "La création a échoué",
 
-    // src/js/ospfm-web/2_ospfm_objects.js:439
+    // src/js/ospfm-web/2_ospfm_objects.js:436
     "Creation successful":
         "Création réussie",
 
-    // src/js/ospfm-web-settings/settings.js:29
+    // src/js/ospfm-web-settings/settings.js:389
     // src/js/ospfm-web/widgets.js:352
     "Currencies":
         "Monnaies",
@@ -206,6 +231,15 @@ l10n_strings = {
     // src/js/ospfm-web/accounts.js:61
     "Currency":
         "Monnaie",
+
+    // src/js/ospfm-web-settings/settings.js:41
+    // src/js/ospfm-web-settings/settings.js:80
+    "Current password":
+        "Mot de passe actuel",
+
+    // src/js/ospfm-web-settings/settings.js:29
+    "Custom currencies allow you to manage other payment means: vouchers, etc.":
+        "Les monnaies personnalisées vous permettent de gérer d'autres moyens de paiement&nbsp;: bons d'échange, titres restaurant, etc.",
 
     // src/js/ospfm-web/wizard.js:28
     "Data creation wizard":
@@ -220,7 +254,7 @@ l10n_strings = {
     "Date":
         "Date",
 
-    // src/js/ospfm-web/2_ospfm_objects.js:670
+    // src/js/ospfm-web/2_ospfm_objects.js:667
     // src/js/ospfm-web/transactions_0.js:217
     "Delete":
         "Supprimer",
@@ -233,7 +267,7 @@ l10n_strings = {
     "Deleted category":
         "Catégorie supprimée",
 
-    // src/js/ospfm-web/contacts.js:164
+    // src/js/ospfm-web/contacts.js:226
     "Deleted contact":
         "Contact supprimé",
 
@@ -245,11 +279,11 @@ l10n_strings = {
     "Deleted transaction":
         "Transaction supprimée",
 
-    // src/js/ospfm-web/2_ospfm_objects.js:559
+    // src/js/ospfm-web/2_ospfm_objects.js:556
     "Deletion failed":
         "La suppression a échoué",
 
-    // src/js/ospfm-web/2_ospfm_objects.js:548
+    // src/js/ospfm-web/2_ospfm_objects.js:545
     "Deletion successful":
         "Suppression réussie",
 
@@ -265,6 +299,10 @@ l10n_strings = {
     "Display category this deep...":
         "Afficher les catégories de cette profondeur...",
 
+    // src/js/ospfm-web-settings/settings.js:282
+    "Do you really want to reinitialize your everCount data?":
+        "Voulez-vous vraiment réinitialiser vos données d'everCount&nbsp;?",
+
     // src/js/ospfm-web/categories.js:162
     "Do you want to create the following categories?":
         "Voulez-vous créer les catégories suivantes&nbsp;?",
@@ -273,14 +311,24 @@ l10n_strings = {
     "Do you want to create the following category?":
         "Voulez-vous créer la catégorie suivante&nbsp;?",
 
+    // src/js/ospfm-web/contacts.js:144
+    "Do you want to send an invitation?":
+        "Voulez-vous envoyer une invitation&nbsp;?",
+
     // src/js/ospfm-web/widgets.js:470
     "ERROR: ":
         "ERREUR : ",
 
-    // src/js/ospfm-web/2_ospfm_objects.js:664
+    // src/js/ospfm-web/2_ospfm_objects.js:661
     // src/js/ospfm-web/transactions_0.js:89
     "Edit":
         "Éditer",
+
+    // src/js/ospfm-web-settings/settings.js:298
+    // src/js/ospfm-web/contacts.js:80
+    // src/js/ospfm-web/contacts.js:182
+    "Email address":
+        "Adresse e-mail",
 
     // src/js/ospfm-web/wizard.js:137
     "Empty data":
@@ -290,6 +338,10 @@ l10n_strings = {
     "Empty values are forbidden":
         "Les valeurs vides sont interdites",
 
+    // Invitation dialogs
+    "Error":
+        "Erreur",
+
     // src/js/ospfm-web/accounts.js:72
     "Error creating account":
         "Erreur lors de la création du compte",
@@ -298,7 +350,7 @@ l10n_strings = {
     "Error creating category":
         "Erreur lors de la création de la catégorie",
 
-    // src/js/ospfm-web/contacts.js:161
+    // src/js/ospfm-web/contacts.js:223
     "Error creating contact":
         "Erreur lors de la création du contact",
 
@@ -318,7 +370,7 @@ l10n_strings = {
     "Error deleting category":
         "Erreur lors de la suppression de la catégorie",
 
-    // src/js/ospfm-web/contacts.js:165
+    // src/js/ospfm-web/contacts.js:227
     "Error deleting contact":
         "Erreur lors de la suppression du contact",
 
@@ -338,7 +390,7 @@ l10n_strings = {
     "Error updating category":
         "Erreur lors de la mise à jour de la catégorie",
 
-    // src/js/ospfm-web/contacts.js:163
+    // src/js/ospfm-web/contacts.js:225
     "Error updating contact":
         "Erreur lors de la mise à jour du contact",
 
@@ -354,9 +406,13 @@ l10n_strings = {
     "Error updating transaction":
         "Erreur lors de la mise à jour de la transaction",
 
-    // src/js/ospfm-web/contacts.js:120
+    // src/js/ospfm-web/contacts.js:217
     "Error while loading search results":
         "Erreur lors du chargement des résultats de recherche",
+
+    // src/js/ospfm-web-settings/settings.js:284
+    "Everything will be erased: accounts, categories, transactions... You will not be able to recover anything of these.":
+        "Tout sera effacé&nbsp;: comptes, catégories, transactions... Vous ne pourrez plus récupérer aucune de ces données.",
 
     // src/js/ospfm-web/currencies.js:30
     "Exchange rate":
@@ -367,7 +423,7 @@ l10n_strings = {
     "Expense":
         "Dépense",
 
-    // src/js/ospfm-web/api.js:229
+    // src/js/ospfm-web/api.js:230
     "Failed to get exchange rate, sorry":
         "Échec de la récupération du taux de change, désolé",
 
@@ -375,13 +431,13 @@ l10n_strings = {
     "Failed to load screen":
         "Erreur au chargement de l'écran",
 
+    // src/js/ospfm-web-settings/settings.js:228
+    "First name":
+        "Prénom",
+
     // src/js/ospfm-web/transactions_transfer.js:80
     "From:":
         "De&nbsp;:",
-
-    // src/js/ospfm-web/contacts.js:144
-    "Full name":
-        "Nom complet",
 
     // OSPFM error message in currency.py
     "Globally defined currencies cannot be deleted":
@@ -402,6 +458,10 @@ l10n_strings = {
     // src/js/ospfm-web/wizard.js:54
     "Identity and preferences":
         "Identité et préférences",
+
+    // src/js/ospfm-web/contacts.js:134
+    "If the person you are looking for is not in this list, you may invite her/him.":
+        "Si la personne que vous cherchez n'est pas dans cette liste, vous pouvez l'inviter.",
 
     // src/js/ospfm-web/transactions_expenseincome.js:50
     "In categories:":
@@ -436,6 +496,15 @@ l10n_strings = {
     "Interface language:":
         "Langue de l'interface&nbsp;:",
 
+    // src/js/ospfm-web-settings/settings.js:251
+    // src/js/ospfm-web/contacts.js:188
+    "Language":
+        "Langue",
+
+    // src/js/ospfm-web-settings/settings.js:232
+    "Last name":
+        "Nom de famille",
+
     // OSPFM error message in transaction.py
     "Listing all transactions is forbidden":
         "Il n'est pas possible de lister toutes les transactions",
@@ -444,7 +513,7 @@ l10n_strings = {
     "Listing all users is forbidden":
         "Il n'est pas possible de lister tous les utilisateurs",
 
-    // src/js/ospfm-web/authentication.js:138
+    // src/js/ospfm-web/authentication.js:137
     // src/js/ospfm-web/1_main.js:55
     "Loading...":
         "Chargement en cours...",
@@ -454,20 +523,35 @@ l10n_strings = {
     "Login":
         "Connexion",
 
+    // src/js/ospfm-web-settings/settings.js:48
+    "Minimum 8 characters":
+        "8 caractères au minimum",
+
     // src/js/ospfm-web/transactions_0.js:278
     // src/js/ospfm-web/transactions_0.js:279
     "Modify":
         "Modifier",
 
     // src/js/ospfm-web/categories.js:41
+    // src/js/ospfm-web/contacts.js:59
+    // src/js/ospfm-web/contacts.js:89
+    // src/js/ospfm-web/contacts.js:176
     // src/js/ospfm-web/currencies.js:28
     // src/js/ospfm-web/accounts.js:54
     "Name":
         "Nom",
 
-    // src/js/ospfm-web/contacts.js:116
-    "No result found":
-        "Aucun résultat trouvé",
+    // src/js/ospfm-web/contacts.js:44
+    "Name, nickname or email":
+        "Nom, surnom ou e-mail",
+
+    // src/js/ospfm-web-settings/settings.js:293
+    "New email address":
+        "Nouvelle adresse e-mail",
+
+    // src/js/ospfm-web-settings/settings.js:87
+    "New password":
+        "Nouveau mot de passe",
 
     // src/js/ospfm-web/categories.js:208
     "No thanks":
@@ -517,7 +601,21 @@ l10n_strings = {
     "Nonexistent transaction cannot be modified (or you do not own it)":
         "Une transaction inexistante ne peut pas être modifiée (ou vous n'en êtes pas le propriétaire)",
 
-    // src/js/ospfm-web/wizard.js:216
+    // src/js/ospfm-web-settings/settings.js:68
+    // src/js/ospfm-web-settings/settings.js:179
+    // src/js/ospfm-web-settings/settings.js:219
+    "Nothing to change":
+        "Rien à modifier",
+
+    // src/js/ospfm-web-settings/settings.js:327
+    "Notifications are not sent to this address.<br>Click here to send notification to this address.":
+        "Les notifications ne sont pas envoyées à cette adresse.<br>Cliquez ici pour envoyer les notifications à cette adresse.",
+
+    // src/js/ospfm-web-settings/settings.js:316
+    "Notifications are sent to this address.<br>Click here to stop sending notification to this address.":
+        "Les notifications sont envoyées à cette adresse.<br>Cliquez ici pour arrêter d'envoyer les notifications à cette adresse.",
+
+    // src/js/ospfm-web/wizard.js:217
     "OK":
         "OK",
 
@@ -537,7 +635,7 @@ l10n_strings = {
     "Period for which to display the balance":
         "Période pour laquelle afficher le solde",
 
-    // src/js/ospfm-web/2_ospfm_objects.js:598
+    // src/js/ospfm-web/2_ospfm_objects.js:595
     "Place this category at root":
         "Mettre cette catégorie à la racine",
 
@@ -545,9 +643,21 @@ l10n_strings = {
     "Please choose a wizard type":
         "Veuillez choisir un type d'assistant",
 
+    // src/js/ospfm-web-settings/settings.js:111
+    "Please enter the same password in \"New password\" and \"Confirm password\"":
+        "Veuillez entrer le même mot de passe dans «&nbsp;Nouveau mot de passe&nbsp;» et «&nbsp;Confirmer le mot de passe&nbsp;»",
+
     // src/js/ospfm-web/wizard.js:49
     "Please fill in the following fields in order to initialize your everCount data:":
         "Veuillez renseigner les champs suivants afin d'initialiser vos données d'everCount",
+
+    // OSPFM error message in user.py
+    "Please give at least 3 characters":
+        "Veuillez fournir au moins 3 caractères",
+
+    // Invitation dialogs
+    "Please provide all needed data.":
+        "Veuillez fournir toutes les informations nécessaires.",
 
     // OSPFM error message in category.py
     "Please provide category name and currency":
@@ -565,6 +675,10 @@ l10n_strings = {
     "Please provide the correct current password":
         "Veuillez indiquer le mot de passe actuel",
 
+    // Invitation dialogs
+    "Please provide this person's name and email address":
+        "Veuillez fournir le nom et l'adresse e-mail de cette personne",
+
     // OSPFM error message in transaction.py
     "Please provide transaction description, currency, amount and date":
         "Veuillez indiquer la description, la monnaie, le montant et la date de la transaction",
@@ -573,9 +687,13 @@ l10n_strings = {
     "Please update the preference: if it does not exist, it will be created":
         "Veuillez mettre la préférence à jour: si elle n'existe pas, elle sera créée",
 
-    // src/js/ospfm-web-settings/settings.js:32
+    // src/js/ospfm-web-settings/settings.js:392
     "Preferences and identity":
         "Préférences et identité",
+
+    // src/js/ospfm-web-settings/settings.js:247
+    "Preferred currency":
+        "Monnaie préférée",
 
     // src/js/ospfm-web/topbar_right.js:38
     "Quit":
@@ -585,32 +703,41 @@ l10n_strings = {
     "Rate cannot be calculated":
         "Le taux ne peut pas être calculé",
 
+    // src/js/ospfm-web-settings/settings.js:279
+    "Really reinitialize?":
+        "Réellement réinitialiser&nbsp;?",
+
+    // Invitation dialogs
+    "Recipient:":
+        "Destinataire&nbsp;:",
+
+    // src/js/ospfm-web-settings/settings.js:276
+    "Reinitialize everything":
+        "Tout réinitialiser",
+
     // src/js/ospfm-web/transactions_0.js:531
     "Remove this category":
         "Enlever cette catégorie",
 
-    // src/js/ospfm-web/contacts.js:53
-    // src/js/ospfm-web/contacts.js:64
-    // src/js/ospfm-web/contacts.js:76
+    // src/js/ospfm-web-settings/settings.js:345
+    "Remove this email address":
+        "Enlever cette adresse e-mail",
+
     // src/js/ospfm-web/transactionscreen.js:25
     // src/js/ospfm-web/transactionscreen.js:133
     "Search":
         "Rechercher",
 
-    // src/js/ospfm-web/contacts.js:70
-    "Search a contact":
-        "Rechercher un contact",
+    // src/js/ospfm-web/contacts.js:197
+    "Send an invitation":
+        "Envoyer une invitation",
 
-    // src/js/ospfm-web/contacts.js:124
-    "Search criterion cannot be emtpy":
-        "Le critère de recherche ne peut pas être vide",
-
-    // src/js/ospfm-web-settings/settings.js:37
+    // src/js/ospfm-web-settings/settings.js:396
     // src/js/ospfm-web/topbar_right.js:28
     "Settings":
         "Paramètres",
 
-    // src/js/ospfm-web/api.js:62
+    // src/js/ospfm-web/api.js:63
     // src/js/ospfm-web/1_main.js:50
     "Sorry, a problem occured. Please try again later...":
         "Désolé, une erreur s'est produite. Veuillez réessayer ultérieurement...",
@@ -627,6 +754,18 @@ l10n_strings = {
     "The currency cannot be changed because<br/>there are transactions in this account.":
         "La monnaie ne peut pas être changée<br/>car il y a des transactions dans ce compte.",
 
+    // src/js/ospfm-web-settings/settings.js:113
+    "The current password cannot be empty":
+        "Le mot de passe actuel ne peut pas être vide",
+
+    // Invitation dialogs
+    "The following message will be sent.":
+        "Le message suivant sera envoyé.",
+
+    // src/js/ospfm-web-settings/settings.js:115
+    "The new password cannot be empty":
+        "Le nouveau mot de passe ne peut pas être vide",
+
     // OSPFM error message in user.py
     "The only user you can modify is yourself":
         "Le seul utilisateur que vous puissiez modifier est vous-même",
@@ -634,6 +773,10 @@ l10n_strings = {
     // OSPFM error message in category.py
     "The parent is already a child of this category":
         "La catégorie mère est déjà une fille de cette catégorie",
+
+    // Invitation dialogs
+    "There is no message in this language:":
+        "Il n'y a pas de message dans cette langue&nbsp;:",
 
     // OSPFM error message in account.py
     "This account does not exist or you do not own it":
@@ -670,6 +813,10 @@ l10n_strings = {
     "This date cannot be understood":
         "Cette date n'est pas comprise",
 
+    // Invitation dialogs
+    "This is not an email address:":
+        "Ceci n'est pas une adresse e-mail&nbsp;:",
+
     // OSPFM error message in category.py
     // OSPFM error message in category.py
     "This parent category does not exist":
@@ -683,6 +830,10 @@ l10n_strings = {
     // OSPFM error message in user.py
     "This user does not exist":
         "Cet utilisateur n'existe pas",
+
+    // src/js/ospfm-web/contacts.js:171
+    "To invite someone, please provide the following information:":
+        "Pour inviter quelqu'un, veuillez fournir les informations suivantes&nbsp;:",
 
     // src/js/ospfm-web/transactions_transfer.js:84
     "To:":
@@ -705,11 +856,11 @@ l10n_strings = {
     "Unknown type":
         "Type inconnu",
 
-    // src/js/ospfm-web/2_ospfm_objects.js:510
+    // src/js/ospfm-web/2_ospfm_objects.js:507
     "Update failed":
         "Échec de la mise à jour",
 
-    // src/js/ospfm-web/2_ospfm_objects.js:499
+    // src/js/ospfm-web/2_ospfm_objects.js:496
     "Update successful":
         "Mise à jour réussie",
 
@@ -721,7 +872,7 @@ l10n_strings = {
     "Updated category":
         "Catégorie mise à jour",
 
-    // src/js/ospfm-web/contacts.js:162
+    // src/js/ospfm-web/contacts.js:224
     "Updated contact":
         "Contact mis à jour",
 
@@ -749,7 +900,7 @@ l10n_strings = {
     "When you choose to create an empty everCount account, you will have to create everything by yourself: accounts, categories, etc. This option is for people who already know how to use a financial application and who know exactly what they want to do.":
         "Quand vous choisissez de créer un compte everCount vide, vous devrez tout créer vous-mêmes&nbsp;: les comptes, les catégories, etc. Cette option est adaptée aux personnes qui savent déjà comment utiliser une application financière et qui savent exactement ce qu'elles veulent faire.",
 
-    // src/js/ospfm-web-settings/settings.js:31
+    // src/js/ospfm-web-settings/settings.js:394
     "Widgets":
         "Gadgets",
 
@@ -757,7 +908,7 @@ l10n_strings = {
     "With this option, multiple elements will be created, simulating an already-used everCount account: accouts, categories, transactions, etc. This option is for people who want to discover everCount and all its features.":
         "Avec cette option, de nombreux éléments seront créés, simulant un compte everCount en cours d'utilisation&nbsp;: comptes, catégories, transactions, etc. Cette option est adaptée aux personnes qui veulent découvrir everCount et toutes ses fonctionnalités.",
 
-    // src/js/ospfm-web/authentication.js:130
+    // src/js/ospfm-web/authentication.js:129
     // OSPFM error message in authentication.py
     "Wrong username or password":
         "Mauvais nom d'utilisateur ou mot de passe",
@@ -769,6 +920,18 @@ l10n_strings = {
     // src/js/ospfm-web/categories.js:166
     "Yes, create the category":
         "Oui, créer la catégorie",
+
+    // src/js/ospfm-web-settings/settings.js:285
+    "Yes, erase and reinitialize my data":
+        "Oui, effacer et réinitialiser mes données",
+
+    // Invitation dialogs
+    "Yes, send this message!":
+        "Oui, envoyer ce message&nbsp;!",
+
+    // src/js/ospfm-web-settings/settings.js:273
+    "You can flush and reinitialize your data and re-run the initial wizard by clicking on this button:":
+        "Vous pouvez vider et réinitialiser vos données puis relancer l'assistant de configuration initial en cliquant sur ce bouton&nbsp;:",
 
     // src/js/ospfm-web/widgets.js:124
     "You have no account":
@@ -786,13 +949,25 @@ l10n_strings = {
     "You have not defined any personalized currency":
         "Vous n'avez défini aucune monnaie personnalisée",
 
-    // src/js/ospfm-web/wizard.js:209
+    // src/js/ospfm-web-settings/settings.js:339
+    "You should confirm this email address by<br>answering to the email that has been sent to you.<br>Click here to re-send this email.":
+        "Vous devez confirmer cette adresse e-mail en<br>répondant au courrier électronique qui vous a été envoyé.<br>Cliquez ici pour réenvoyer cet e-mail.",
+
+    // src/js/ospfm-web/wizard.js:210
     "Your account has been successfully (re)initialized.":
         "Votre compte a été (ré)initialisé.",
+
+    // src/js/ospfm-web-settings/settings.js:57
+    "Your first name":
+        "Votre prénom",
 
     // src/js/ospfm-web/wizard.js:62
     "Your first name:":
         "Votre prénom&nbsp;:",
+
+    // src/js/ospfm-web-settings/settings.js:60
+    "Your last name":
+        "Votre nom de famille",
 
     // src/js/ospfm-web/wizard.js:76
     "Your last name:":
@@ -806,7 +981,7 @@ l10n_strings = {
     "all categories":
         "toutes les catégories",
 
-    // src/js/ospfm-web/wizard.js:212
+    // src/js/ospfm-web/wizard.js:213
     "everCount will be reloaded to reinitialize the interface.":
         "everCount sera rechargé afin de réinitialiser l'interface.",
 
