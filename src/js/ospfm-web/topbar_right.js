@@ -22,6 +22,7 @@
 init.on('go', function() {
     // init.start and init.success are not needed here
     $('userinfo').insert([
+        // TODO : Change the "settings" button to a "back" button...
         new Button('green', 'settings')
             .onClick(function() {
                 screens.load('/settings');

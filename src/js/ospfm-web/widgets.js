@@ -328,7 +328,7 @@ widgets.register('contacts', new Class(Widget, {
         var conts = contacts.list(),
             table = [];
         if (conts.length) {
-            // TODO: When debts will be implemented, display users debts
+            // TODO When debts will be implemented, display users debts
             conts.forEach(function(contact) {
                 table.push(
                     new Element('div', {'html':''+contact}).tooltip(
