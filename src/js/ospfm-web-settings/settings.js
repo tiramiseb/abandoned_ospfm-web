@@ -530,7 +530,6 @@ function end_move_widgets() {
 };
 
 
-
 screens.add(
     new SettingsScreen()
 );
