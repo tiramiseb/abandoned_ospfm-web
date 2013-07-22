@@ -30,6 +30,7 @@ ContactNameField = new Class(Field, {
     input: function() {
         var content;
         if (this.object.data.username) {
+            // A contact name cannot be modified
             content = this.display();
             content.insert(
                 new Input({
@@ -39,99 +40,13 @@ ContactNameField = new Class(Field, {
                 })
             );
         } else {
-            content = this.$super(this.makeinput());
-            this.contentspan = content.children()[1];
-        }
-        return content;
-    },
-    updateinput: function() {
-        this.contentspan.update(this.makeinput());
-    },
-    makeinput: function() {
-        var btn,
-            content;
-        if (this.selectedvalue) {
-            btn = new Button('blue', 'search').tooltip(_('Search'));
-            content = [
-                btn,
-                new Element('span', {'html':this.selectedvalue[1]}),
-                new Input({
-                    'type': 'hidden',
-                    'name': 'username',
-                    'value': this.selectedvalue[0]
-                })
-            ];
-        } else {
-            content = btn = new Button('blue', 'search', _('Search'))
-                                    .setStyle('width', '90%');
+            content = this.$super(new Input({
+                'name': this.id,
+                'placeholder': _('Name, nickname or email'),
+                'maxlength': 255,
+                'value': this.value() || ''
+            }));
         };
-        btn.onClick(function() {
-            var resultslist = new Element('div');
-            dialog([
-                new Element('h1', {'html':_('Search a contact')}),
-                new Element('p', {'html':_(
-                    'You can search an email address or a name.'
-                )}),
-                new Element('form').insert([
-                    new Input({'name':'criterion'}),
-                    new Button('green', 'search', _('Search'), 'submit')
-                ]).onSubmit(function(event) {
-                    var criterion = event.currentTarget.values().criterion,
-                        parameters;
-                    event.preventDefault();
-                    if (criterion) {
-                        parameters = { key: authentication.key };
-                        Xhr.load(api_url+'users/search/'+criterion, {
-    params: parameters,
-    // Indentation is not respected because of the deepness of this stuff...
-    onSuccess: function(request) {
-        var results = [];
-        // Display users who are not already in the contacts list
-        request.responseJSON.response.forEach(function(result) {
-            if (!contacts.get(result.username)) {
-                results.push(result)
-            };
-        });
-        resultslist.clean();
-        if (results.length) {
-            results.forEach(function(result) {
-                var fullname = loc_nameandnick(
-                                    result.first_name,
-                                    result.last_name,
-                                    result.username
-                                );
-                resultslist.insert(new Element('div').insert([
-                    new Button('green', 'ok')
-                        .tooltip(_('Add this contact'))
-                        .set('nameinfo', [result.username, fullname])
-                        .onClick(function(event) {
-                            this.selectedvalue= event.currentTarget._.nameinfo;
-                            this.updateinput();
-                            close_dialog();
-                        }.bind(this)),
-                    new Element('span', {'html':fullname})
-                ]));
-
-            }, this);
-        } else {
-            resultslist.insert(_('No result found'));
-        };
-    }.bind(this),
-    onFailure: function() {
-        popup(_('Error while loading search results'), true);
-    }
-                        });
-                    } else {
-                        popup(_('Search criterion cannot be emtpy'), true);
-                    };
-                }.bind(this)),
-                resultslist,
-                new Element('div', {'class':'bottombuttons'}).insert([
-                        new Button('blue', 'delete', _('Close'))
-                            .onClick(function() { close_dialog() })
-                    ])
-            ])
-        }.bind(this));
         return content;
     }
 });
@@ -142,7 +57,7 @@ Contact = new Class(OspfmObject, {
     initialize: function(data) {
         this.$super(data);
         this.fields = {
-            'fullname': new ContactNameField(this, 'fullname', _('Full name')),
+            'fullname': new ContactNameField(this, 'fullname', _('Name')),
             'comment': new StringField(this, 'comment', _('Comment'), null,
                                        null, null, 100)
         };
@@ -154,11 +69,158 @@ Contact = new Class(OspfmObject, {
             this.data.username
         )
     },
-    createsuccess:function() {
-        delete this.fields.fullname.selectedvalue;
-        this.fields.fullname.updateinput();
-        return _('Created contact');
+    create:function(data) {
+        Xhr.load(api_url+'users/search/'+data.fullname, {
+            params: { key: authentication.key },
+            onSuccess: function(request) {
+                var inviteform,
+                    resultsdisplaylist,
+                    emailinput     = new Input({
+                                            'id': 'invite_address',
+                                            'name': 'address',
+                                            'placeholder':_('Email address'),
+                                        }),
+                    langinput      = new Element('select', {
+                                            'id': 'invite_language',
+                                            'name': 'language'
+                                        }),
+                    nameinput      = new Input({
+                                            'id': 'invite_name',
+                                            'name': 'name',
+                                            'placeholder':_('Name'),
+                                        }),
+                    resultsdisplay = new Element('div', {
+                                                'class': 'contactsearchlist'}),
+                    results = [];
+                // Extract users who are not already in the contacts list
+                request.responseJSON.response.forEach(function(result) {
+                    if (!contacts.get(result.username)) {
+                        results.push(result)
+                    };
+                });
+                if (results.length) {
+                    resultsdisplaylist = new Element('table');
+                    results.forEach(function(result) {
+                        resultsdisplaylist.insert(
+                            new Element('tr').insert([
+                                new Element('td', {
+                                        'class':'nowrap'
+                                    }).insert(
+                                    loc_nameandnick(
+                                        result.first_name,
+                                        result.last_name,
+                                        result.username
+                                    )
+                                ),
+                                new Element('td').insert(
+                                    new Button('green', 'add',
+                                               _('Add this person'))
+                                        .onClick(function() {
+                                            data.username = result.username;
+                                            console.log(data);
+                                            close_dialog();
+                                            this.$super(data);
+                                        }.bind(this))
+                                )
+                            ])
+                        );
+                    }.bind(this));
+                    resultsdisplay.insert([
+                        new Element('p').insert(
+                           _('"%NAME%" matches the following people:').replace(
+                                                       '%NAME%', data.fullname)
+                        ),
+                        resultsdisplaylist,
+                        new Element('p', {
+                            'html': _('If the person you are looking for is not in this list, you may invite her/him.')
+                        })
+                    ])
+                } else {
+                    resultsdisplay.insert([
+                        new Element('p', {
+                            'html': _('"%NAME%": No matching user').replace(
+                                                       '%NAME%', data.fullname)
+                        }),
+                        new Element('p', {
+                            'html': _('Do you want to send an invitation?')
+                        })
+                    ]);
+                };
+                Xhr.load('/shortlocales', {
+                    onSuccess: function(response) {
+                        response.responseJSON.locales.forEach(function(loc) {
+                            var option = new Element('option', {
+                                            'value': loc
+                                        }).insert(
+                                            l10n_locales[loc]
+                                        );
+                            if (loc == locale.shortform) {
+                                option._.defaultSelected = true;
+                            };
+                            langinput.insert(option);
+                        });
+                    }
+                });
+                inviteform = new Form({
+                    'method': 'POST',
+                    'action': '/invite',
+                    'id': 'inviteuser'
+                }).insert([
+                    new Element('p', {
+                        'class': 'nowrap',
+                        'html':
+                            _('To invite someone, please provide the following information:')
+                    }),
+                    new Element('label', {
+                        'for': 'invite_name',
+                        'html':
+                            _('Name')
+                    }),
+                    nameinput,
+                    new Element('label', {
+                        'for': 'invite_address',
+                        'html':
+                            _('Email address')
+                    }),
+                    emailinput,
+                    new Element('label', {
+                        'for': 'invite_language',
+                        'html':
+                            _('Language')
+                    }),
+                    langinput,
+                    new Input({
+                        'type': 'hidden',
+                        'name': 'sentby',
+                        'value': user_me.toString()
+                    }),
+                    new Button('blue', 'contact',
+                               _('Send an invitation'), 'submit')
+                ]).remotize({
+                    onComplete: function(event) {
+                        dialog(event.responseText);
+                    }
+                });
+                if (data.fullname.includes('@')) {
+                    emailinput.setValue(data.fullname);
+                    nameinput.setValue(data.fullname.split('@')[0]);
+                } else {
+                    nameinput.setValue(data.fullname);
+                };
+                resultsdisplay.insert([
+                    new Element('hr'),
+                    inviteform
+                ])
+                dialog(resultsdisplay)
+            }.bind(this),
+            onFailure: function(request) {
+                var errormessage = request.responseJSON.details ||
+                                       _('Error while loading search results');
+                popup(_(errormessage), true);
+            }
+        });
     },
+    createsuccess:function() { return _('Created contact'); },
     createfailed:function() { return _('Error creating contact'); },
     updatesuccess:function() { return _('Updated contact'); },
     updatefailed:function() { return _('Error updating contact'); },
