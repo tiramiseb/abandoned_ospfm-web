@@ -33,7 +33,7 @@ Icon = new Class(Element, {
     }
 });
 
-icon = function(name) {
+function icon(name) {
     return new Icon(name)._.outerHTML
 }
 
@@ -89,7 +89,8 @@ Button = new Class(Element, {
         return this;
     },
     disable:function() {
-        return this.removeClass(this.color).set('disabled', 'disabled');
+        this.removeClass(this.color).set('disabled', 'disabled');
+        return this;
     }
 });
 
@@ -104,7 +105,7 @@ function dialog_enable_overflow() {
     if (content && container) {
         if (content._.offsetHeight > container._.offsetHeight) {
             container.setStyle('overflow-y', 'scroll');
-            container.setWidth(content._.offsetWidth+20);
+            container.setWidth(content._.offsetWidth+15);
         } else {
             container.setStyle('overflow-y', 'hidden');
             container.setWidth(content._.offsetWidth);
@@ -123,8 +124,9 @@ $(window).onResize(dialog_enable_overflow);
  * @param mixed content of the dialog window
  * @param Boolean display the button bar
  */
-// Defined this way in order to make it a global function
-dialog = function (content, closable, focuson) {
+function dialog(content, closable) {
+    var translate,
+        putfocus;
     closable = closable === undefined ? true: closable;
     if (closable) {
         Lightbox.Options.hideOnEsc = true;
@@ -136,9 +138,16 @@ dialog = function (content, closable, focuson) {
         Lightbox.Options.showCloseButton = false;
     }
     Lightbox.show(content);
-    dialog_enable_overflow.delay(1000);
+    translate = function() {
+        $$('div.rui-lightbox-content')[0].find('.translatable').each(
+            function(element) {
+                console.log(element);
+                element.html(_(element.html()));
+            }
+        )
+    }.delay(500);
     // Put the focus on the first input or the first select, if there is one
-    function putfocus() {
+    putfocus = function() {
         var firstinput = $$('div.rui-lightbox-content')[0].first('input');
         if (!firstinput) {
             firstinput = $$('div.rui-lightbox-content')[0].first('select');
@@ -146,13 +155,13 @@ dialog = function (content, closable, focuson) {
         if (firstinput) {
             firstinput.focus();
         }
-    };
-    putfocus.delay(500);
+    }.delay(1000);
+    dialog_enable_overflow.delay(1000);
 };
 /**
  * closes the dialog window
  */
-close_dialog = function () {
+function close_dialog() {
     Lightbox.hide();
 }
 
@@ -197,7 +206,7 @@ Element.include({
  * @param String or Element popup content
  * @param Boolean true if it is an error message
  */
-popup = function(content, error) {
+function popup(content, error) {
     var delay,
         pp = $('popup');
     if (content) {

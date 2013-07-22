@@ -17,7 +17,7 @@
  *    along with OSPFM-web.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-wizard = function(firstrun) {
+function wizard(firstrun) {
     var cancelbutton  = new Button('blue', 'cancel', _('Cancel')),
         localesinput  = new Element('select', {'id': 'wizardlocale',
                                                'name': 'locale'}),
@@ -207,6 +207,7 @@ wizard = function(firstrun) {
                                 'html':_('Initialization successful')
                             }),
                             new Element('p', {
+                                'class': 'nowrap',
                                 'html':_('Your account has been successfully (re)initialized.')
                             }),
                             new Element('p', {
