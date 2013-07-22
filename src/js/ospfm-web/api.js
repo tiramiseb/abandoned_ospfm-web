@@ -46,6 +46,7 @@ function api_success(request, handler) {
 function api_failure(request, errorhandler, func, args) {
     var responseJSON = request.responseJSON;
     if (responseJSON) {
+        // XXX On error 401, a popup is displayed instead of a reauthentication
         if (responseJSON.status == 401) {
             authentication.authenticate(func, args);
         } else {
