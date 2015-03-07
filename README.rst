@@ -2,6 +2,8 @@
 OSPFM-web
 #########
 
+**THIS PROJECT HAS BEEN ABANDONED**
+
 *OSPFM-web*  is a web GUI  (graphical user interface)  for OSPFM  (*Open Source
 Personal Finance Management server*).
 
